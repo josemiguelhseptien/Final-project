@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { LandingPage } from "./pages/landingPage";
+import { Dashboard } from "./pages/dashboard";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -23,6 +24,7 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/" component={LandingPage} />
+						<Route exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
