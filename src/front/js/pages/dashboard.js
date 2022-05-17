@@ -18,7 +18,7 @@ export const Dashboard = props => {
                             Menu
                         </button>
                     </p>
-                    <div style={{ minHeight: "100vh" }}>
+                    <div className="d-inline-flex">
                         <div className="collapse collapse-horizontal" id="collapseWidthExample">
                             <div className="card card-body justify-content-center" style={{ width: "50px", minHeight: "80vh" }}>
                                 <ul className="nav flex-column">
@@ -40,6 +40,13 @@ export const Dashboard = props => {
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div className="d-inline mx-5">
+                        {viewType == "glance" ? ("glance") : (null)}
+                        {viewType == "calendar" ? ("calendar") : (null)}
+                        {viewType == "money" ? ("money") : (null)}
+                        {viewType == "graph" ? ("graph") : (null)}
+                        {viewType == "clients" ? ("clients") : (null)}
                     </div>
                 </div>
             ) : ("that")}
