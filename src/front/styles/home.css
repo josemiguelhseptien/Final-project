@@ -1,14 +1,33 @@
+.center {
+    text-align: center;
+}
+
+.size {
+    width: 700px;
+}
+
 .loginCard {
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
     padding-top: 3rem;
 }
 
 .profilePicture {
-    width: 20rem;
-    height: 20rem;
-    background-color: gray;
-    padding: 1rem;
-    border-radius: 50%;
-    object-fit: cover
+    width: 30%;
+    padding-top: 100%;
+    background-color: black;
+    padding: 0.000001rem;
+    margin-right: 5%;
+    margin-left: 3%;
+    clip-path: circle();
+    object-fit: contain;
+
+}
+
+.professionalCard {
+    margin: 5vh;
+    font-size: x-large;
+    align-items: center;
+    vertical-align: middle;
+
 }

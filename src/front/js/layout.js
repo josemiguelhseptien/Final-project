@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
+import { Home } from "./pages/home";
+import { SignUp } from "./pages/signUp";
 import { LandingPage } from "./pages/landingPage";
 import { Dashboard } from "./pages/dashboard";
 import { Demo } from "./pages/demo";
@@ -29,9 +31,11 @@ const Layout = () => {
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/account" component={Account} />
 						<Route exact path="/dashboard" component={Dashboard} />
+						<Route exact path="/signup" component={SignUp} />
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
+
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
@@ -39,6 +43,7 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
+
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>

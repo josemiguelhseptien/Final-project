@@ -19,9 +19,9 @@ export const Account = props => {
                             <img className="profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
                             <div className="professionalCard">
                                 <div className="Name">Name</div>
-                                <div className="email"><i class="fas fa-envelope"></i>email</div>
-                                <div className="phone"><i class="fas fa-phone"></i>phone</div>
-                                <div className="background"><i class="fas fa-school"></i>background</div>
+                                <div className="email"><i className="fas fa-envelope"></i>email</div>
+                                <div className="phone"><i className="fas fa-phone"></i>phone</div>
+                                <div className="background"><i className="fas fa-school"></i>background</div>
                                 <div className="pricing">pricing</div>
                             </div>
                         </div>
