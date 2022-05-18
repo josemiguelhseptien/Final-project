@@ -14,11 +14,14 @@ export const Navbar = () => {
         </Link>
         {store.user ? (
           <div className="ml-auto">
-            <Link to="/demo">
+            <Link to="/dashboard">
               <button className="btn btn-primary mx-2">Dashboard</button>
             </Link>
-            <Link to="/demo">
+            <Link to="/marketplace">
               <button className="btn btn-primary mx-2">Marketplace</button>
+            </Link>
+            <Link to="/profile">
+              <button className="btn btn-primary mx-2">Profile</button>
             </Link>
           </div>
         ) : (
