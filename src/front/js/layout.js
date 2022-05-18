@@ -8,6 +8,8 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
+import { Account } from "./pages/account"
+import { Login } from "./pages/login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -24,6 +26,8 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/" component={LandingPage} />
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/account" component={Account} />
 						<Route exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/demo">
 							<Demo />
