@@ -11,3 +11,8 @@
 .size {
   width: 700px;
 }
+.loginCard {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
