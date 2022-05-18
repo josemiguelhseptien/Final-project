@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-    const [profileType, setProfileType] = useState("professional")
+    const [profileType, setProfileType] = useState("client")
     const [viewType, setViewType] = useState("glance")
 
     return (
@@ -41,15 +41,95 @@ export const Dashboard = props => {
                             </div>
                         </div>
                     </div>
-                    <div className="d-inline mx-5">
-                        {viewType == "glance" ? ("glance") : (null)}
-                        {viewType == "calendar" ? ("calendar") : (null)}
-                        {viewType == "money" ? ("money") : (null)}
-                        {viewType == "graph" ? ("graph") : (null)}
-                        {viewType == "clients" ? ("clients") : (null)}
+                    {viewType == "glance" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                <h3>Upcoming Apointments</h3>
+                                <div>Card Row</div>
+                            </div>
+                            <div>
+                                <h3>Confirm Appointments</h3>
+                                <div>Card Row</div>
+                            </div>
+                            <div>
+                                <h3>Payment Confirmation</h3>
+                                <div>Card Row</div>
+                            </div>
+                            <div>
+                                <h3>Prospective Clients</h3>
+                                <div>Card Row</div>
+                            </div>
+                        </div>
+                    ) : (null)}
+                    {viewType == "calendar" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                <h3>Color Key</h3>
+                                <p>Requested, Confirmed, Owed, Paid</p>
+                            </div>
+                            <div>
+                                Calendar
+                            </div>
+                        </div>
+                    ) : (null)}
+                    {viewType == "money" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                <h3>Sessions Paid</h3>
+                                <div>box</div>
+                            </div>
+                            <div>
+                                <h3>Sessions Owed</h3>
+                                <div>box</div>
+                            </div>
+                            <div>
+                                <h3>Income Chart</h3>
+                                <div>Week, Month, Year</div>
+                            </div>
+                        </div>
+
+                    ) : (null)}
+                    {viewType == "graph" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                <h3>Bookt Chart</h3>
+                                <div>graph: #booked/mo, attended, canceled</div>
+                            </div>
+                            <div>
+                                <h3>Earned Owed Chart</h3>
+                                <div>graph: #potential/mo, paid, owed</div>
+                            </div>
+                        </div>
+                    ) : (null)}
+                    {viewType == "clients" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                <h3>Fidn Client</h3>
+                                <div>Search box</div>
+                            </div>
+                            <div>
+                                <h3>Clients</h3>
+                                <div>Card Row</div>
+                            </div>
+                        </div>
+                    ) : (null)}
+                </div>
+            ) : (
+                <div className="d-inline-block mx-5">
+                    <div>
+                        <h3>Payment Owed</h3>
+                        <div>Card Row</div>
+                    </div>
+                    <div>
+                        <h3>Your Schedule</h3>
+                        <div>calendar</div>
+                    </div>
+                    <div>
+                        <h3>Your Providers</h3>
+                        <div>Card Row</div>
                     </div>
                 </div>
-            ) : ("that")}
+            )}
         </div>
     );
 };
