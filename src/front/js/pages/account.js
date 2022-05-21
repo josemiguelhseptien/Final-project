@@ -39,36 +39,37 @@ export const Account = props => {
 
         <div className="container">
             {/*------------------ Pro user view-------------------------------- */}
-            {profileType == "professional" ? (
-                <div className="container-box">
-                    <div className="userInfo">
-                        <div className="userCard d-flex">
-                            <img className="profilePicture" src={userInfo.profilePicture} />
-                            <div className="professionalCard">
-                                <div className="userInfo d-flex">
-                                    <div>
-                                        <div className="Name">{userInfo.name}</div>
-                                        <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
-                                        <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
-                                        <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
-                                    </div>
-                                    <div className="userRating">*****</div>
+
+            <div className="container-box">
+                <div className="userInfo">
+                    <div className="userCard d-flex">
+                        <img className="profilePicture" src={userInfo.profilePicture} />
+                        <div className="professionalCard">
+                            <div className="userInfo d-flex">
+                                <div>
+                                    <div className="Name">{userInfo.name}</div>
+                                    <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
+                                    <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
+                                    <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
                                 </div>
-                                <div className="aboutCard">
-                                    <div className="aboutTitle">about Title</div>
-                                    <div className="aboutText">{userInfo.about}</div>
-                                </div>
+                                <div className="userRating">*****</div>
+                            </div>
+                            <div className="aboutCard">
+                                <div className="aboutTitle">about Title</div>
+                                <div className="aboutText">{userInfo.about}</div>
                             </div>
                         </div>
                     </div>
-                    <div className="servicesCard">
-                        <div className="services">Services</div>
-                        <div>Math</div>
-                    </div>
-                    <div className="availabilityCard">
-                        <div className="availability">availability</div>
-                        <div>M-F 9-5</div>
-                    </div>
+                </div>
+                <div className="servicesCard">
+                    <div className="services">Services</div>
+                    <div>Math</div>
+                </div>
+                <div className="availabilityCard">
+                    <div className="availability">availability</div>
+                    <div>M-F 9-5</div>
+                </div>
+                {profileType == "professional" ? (
                     <div>
                         {/*------------------ Pro user modal-------------------------------- */}
                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -125,42 +126,16 @@ export const Account = props => {
                             </div>
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div>
-                    <div className="userInfo">
-                        <div className="userCard d-flex">
-                            <img className="profilePicture" src={userInfo.profilePicture} />
-                            <div className="professionalCard">
-                                <div className="userInfo d-flex">
-                                    <div>
-                                        <div className="Name">{userInfo.name}</div>
-                                        <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
-                                        <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
-                                        <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
-                                    </div>
-                                    <div className="userRating">*****</div>
-                                </div>
-                                <div className="aboutCard">
-                                    <div className="aboutTitle">about Title</div>
-                                    <div className="aboutText">{userInfo.about}</div>
-                                </div>
-                            </div>
-                        </div>
+
+                ) : (
+                    <div>
+
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Contact me
+                        </button>
                     </div>
-                    <div className="servicesCard">
-                        <div className="services">Services</div>
-                        <div>Math</div>
-                    </div>
-                    <div className="availabilityCard">
-                        <div className="availability">availability</div>
-                        <div>M-F 9-5</div>
-                    </div>
-                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Contact media
-                    </button>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };
