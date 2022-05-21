@@ -12,7 +12,6 @@ export const Account = props => {
     });
     const [profileType, setProfileType] = useState("professional")
 
-
     const [modalInfo, setModalInfo] = useState({
         id: "1",
         name: accountUser.name,
@@ -26,6 +25,7 @@ export const Account = props => {
 
     const userInfo = {
         id: "1",
+        profilePicture: accountUser.profilePicture,
         name: accountUser.name,
         phone: accountUser.phone,
         email: accountUser.email,
@@ -35,7 +35,6 @@ export const Account = props => {
         availability: accountUser.availability
     }
 
-
     return (
 
         <div className="container">
@@ -44,7 +43,7 @@ export const Account = props => {
                 <div className="container-box">
                     <div className="userInfo">
                         <div className="userCard d-flex">
-                            <img className="profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
+                            <img className="profilePicture" src={userInfo.profilePicture} />
                             <div className="professionalCard">
                                 <div className="userInfo d-flex">
                                     <div>
@@ -70,7 +69,6 @@ export const Account = props => {
                         <div className="availability">availability</div>
                         <div>M-F 9-5</div>
                     </div>
-
                     <div>
                         {/*------------------ Pro user modal-------------------------------- */}
                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -87,7 +85,9 @@ export const Account = props => {
                                         <div>
                                             <div>
                                                 <label htmlFor="exampleFormControlFile1">Profile picture</label>
-                                                <input type="file" className="form-control-file" id="exampleFormControlFile1" />
+                                                <input type="file" className="form-control-file" id="exampleFormControlFile1" accept=".jpg, .jpeg, .png" onChange={e => {
+                                                    setModalInfo({ ...modalInfo, profilePicture: e.target.result });
+                                                }} />
                                             </div>
                                             <div>
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
@@ -108,7 +108,7 @@ export const Account = props => {
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">About</label>
                                                 <input type="text" className="form-control" placeholder={userInfo.about} aria-label="About" aria-describedby="basic-addon1" rows="4" cols="100" value={modalInfo.about ? modalInfo.about : userInfo.about} onChange={e => {
-                                                    setModalInfo({ ...modalInfo, background: e.target.about });
+                                                    setModalInfo({ ...modalInfo, about: e.target.value });
                                                 }} />
                                             </div>
                                         </div>
@@ -125,14 +125,42 @@ export const Account = props => {
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
-            ) : ("that")}
-
-
+            ) : (
+                <div>
+                    <div className="userInfo">
+                        <div className="userCard d-flex">
+                            <img className="profilePicture" src={userInfo.profilePicture} />
+                            <div className="professionalCard">
+                                <div className="userInfo d-flex">
+                                    <div>
+                                        <div className="Name">{userInfo.name}</div>
+                                        <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
+                                        <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
+                                        <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
+                                    </div>
+                                    <div className="userRating">*****</div>
+                                </div>
+                                <div className="aboutCard">
+                                    <div className="aboutTitle">about Title</div>
+                                    <div className="aboutText">{userInfo.about}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="servicesCard">
+                        <div className="services">Services</div>
+                        <div>Math</div>
+                    </div>
+                    <div className="availabilityCard">
+                        <div className="availability">availability</div>
+                        <div>M-F 9-5</div>
+                    </div>
+                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Contact media
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

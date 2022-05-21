@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       accountUser: [
         {
           id: "1",
+          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "FIRST",
           phone: "4896415154",
           email: "asdasas@fcac",
@@ -29,17 +30,20 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
+      addUser: (formData) => {
+        const userArr = getStore().accountUser;
+        userArr.push(formData)
+        setStore({ accountUser: userArr })
+      },
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
         let filterUser = store.accountUser.filter(element => {
           element.id != modalInfo.id
         })
+        filterUser.push(modalInfo)
         setStore({ accountUser: filterUser, modalInfo });
       },
-
-
-
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
