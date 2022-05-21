@@ -7,9 +7,13 @@
 }
 
 .loginCard {
-    width: 30%;
+    width: 40%;
     margin: 0 auto;
     padding-top: 3rem;
+}
+
+.loginBar {
+    text-align: center;
 }
 
 .profilePicture {

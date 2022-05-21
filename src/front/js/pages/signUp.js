@@ -15,7 +15,7 @@ export const SignUp = props => {
         phone: '',
         zip_code: '',
         service: [],
-        prices: [],
+        price: [],
         userType: "client"
     })
 
