@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Calendar } from "./../component/calendar";
 
 
 export const Dashboard = props => {
@@ -46,7 +47,7 @@ export const Dashboard = props => {
                                 <h3>Calendar</h3>
                             </div>
                             <div>
-                                Calendar component
+                                <Calendar />
                             </div>
                         </div>
                     ) : (null)}
@@ -166,9 +167,9 @@ export const Dashboard = props => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
 Dashboard.propTypes = {
-    match: PropTypes.object
+    match: PropTypes.object,
 };
