@@ -4,6 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      calendarEntries: [],
+      demo: [],
       user: "username",
       calendarEntries: [
         {
