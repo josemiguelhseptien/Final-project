@@ -1,12 +1,46 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      demo: [],
       user: "username",
+      accountUser: [
+        {
+          id: "1",
+          name: "FIRST",
+          phone: "4896415154",
+          email: "asdasas@fcac",
+          background: "",
+          about: " Lorem ipsum dolor sit amet",
+          services: [],
+          availability: {
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: ""
+          }
+
+        }],
+
     },
     actions: {
       // Use getActions to call a function within a fuction
+
+      editUserInfo: (modalInfo) => {
+        const store = getStore();
+        let filterUser = store.accountUser.filter(element => {
+          element.id != modalInfo.id
+        })
+        setStore({ accountUser: filterUser, modalInfo });
+      },
+
+
+
+
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },

@@ -25,9 +25,14 @@
 }
 
 .professionalCard {
+
     margin: 5vh;
     font-size: x-large;
     align-items: center;
     vertical-align: middle;
 
+}
+
+.userCard {
+    background-color: gray;
 }
