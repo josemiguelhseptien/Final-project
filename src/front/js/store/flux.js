@@ -5,6 +5,15 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       message: null,
       user: "username",
+      calendarEntries: [
+        {
+          text: `Booking`,
+          startDate: new Date("2022-04-15T16:30:00.000Z"),
+          endDate: new Date("2022-04-15T18:30:00.000Z"),
+          allDay: true,
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        },
+      ],
       accountUser: [
         {
           id: "1",
@@ -21,25 +30,35 @@ const getState = ({ getStore, getActions, setStore }) => {
             Thursday: "",
             Friday: "",
             Saturday: "",
-            Sunday: ""
-          }
-
-        }],
-
+            Sunday: "",
+          },
+        },
+      ],
     },
     actions: {
       // Use getActions to call a function within a fuction
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
-        let filterUser = store.accountUser.filter(element => {
-          element.id != modalInfo.id
-        })
+        let filterUser = store.accountUser.filter((element) => {
+          element.id != modalInfo.id;
+        });
         setStore({ accountUser: filterUser, modalInfo });
       },
 
+      addAppt: () => {
+        let dataArray = getStore().calendarEntries;
 
+        dataArray.push({
+          text: `Booking`,
+          startDate: new Date("2022-04-15T16:30:00.000Z"),
+          endDate: new Date("2022-04-15T18:30:00.000Z"),
+          allDay: false,
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        });
 
+        setStore({ calendarEntries: dataArray });
+      },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
