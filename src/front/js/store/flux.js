@@ -24,8 +24,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           phone: "4896415154",
           email: "asdasas@fcac",
           background: "",
+          userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: [],
+          services: ["Math tutoring"],
+          prices: ["50"],
           availability: {
             Monday: "",
             Tuesday: "",
@@ -34,9 +36,55 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          },
+          }
         },
+
+        {
+          id: "2",
+          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+          name: "Second",
+          phone: "4896415154",
+          email: "asdasas@fcac",
+          background: "",
+          userType: "professional",
+          about: " Lorem ipsum dolor sit amet",
+          services: ["Math tutoring"],
+          prices: ["50"],
+          availability: {
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: "",
+          }
+        },
+
+        {
+          id: "3",
+          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+          name: "Third",
+          phone: "4896415154",
+          email: "asdasas@fcac",
+          background: "",
+          userType: "professional",
+          about: " Lorem ipsum dolor sit amet",
+          services: ["English tutoring"],
+          prices: ["50"],
+          availability: {
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: "",
+          }
+        }
+
       ],
+
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -82,6 +130,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("Error loading message from backend", error)
           );
       },
+
+
+
       changeColor: (index, color) => {
         //get the store
         const store = getStore();
@@ -92,6 +143,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (i === index) elm.background = color;
           return elm;
         });
+
+
 
         //reset the global store
         setStore({ demo: demo });

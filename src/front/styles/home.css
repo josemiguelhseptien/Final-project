@@ -28,6 +28,11 @@
 
 }
 
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
 .professionalCard {
 
     margin: 5vh;
@@ -39,4 +44,32 @@
 
 .userCard {
     background-color: gray;
+}
+
+.marketPlaceImgDiv {
+    width: 10%;
+}
+
+.marketPlacePics {
+    width: 100%;
+    padding-top: 100%;
+    background-color: black;
+    padding: 0.000001rem;
+    margin-right: 5%;
+    margin-left: 3%;
+    clip-path: circle();
+    object-fit: contain;
+}
+
+.marketPlaceCardInfo {
+    width: 70%;
+    padding: 1%;
+}
+
+.rating {
+    height: 80%;
+}
+
+.services {
+    width: 40%;
 }
