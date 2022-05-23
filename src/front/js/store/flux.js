@@ -16,6 +16,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
       ],
+      filteredUsers: [],
+      serviceInput: "",
+      nameInput: "",
+      priceInput: 0,
+      zip_codeInput: "",
       accountUser: [
         {
           id: "1",
@@ -26,8 +31,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: ["Math tutoring"],
-          prices: ["50"],
+          services: "Math tutoring",
+          prices: "30",
+          zip_code: "33156",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -48,8 +54,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: ["Math tutoring"],
-          prices: ["50"],
+          services: "Math tutoring",
+          prices: "50",
+          zip_code: "33014",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -70,8 +77,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: ["English tutoring"],
-          prices: ["50"],
+          services: "English tutoring",
+          prices: "40",
+          zip_code: "33156",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -116,6 +124,59 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         setStore({ calendarEntries: dataArray });
       },
+
+      typeFunction: (targetValue) => {
+        setStore({ serviceInput: targetValue });
+        console.log(getStore().serviceInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.services.includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      typeNameFunction: (targetValue) => {
+        setStore({ nameInput: targetValue });
+        console.log(getStore().nameInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.name.includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      typePriceFunction: (targetValue) => {
+        let number = parseInt(targetValue)
+        setStore({ priceInput: number });
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.price == number
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+
+      typeZipCodeFunction: (targetValue) => {
+        setStore({ zip_codeInput: targetValue });
+        console.log(getStore().zip_codeInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.zip_code.includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      clearSearch: () => {
+        setStore({ zip_codeInput: "" });
+        setStore({ priceInput: 0 });
+        setStore({ nameInput: "" });
+        setStore({ serviceInput: "" });
+        setStore({ filteredUsers: [] });
+      },
+
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");

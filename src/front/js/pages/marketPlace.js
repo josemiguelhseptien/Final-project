@@ -18,45 +18,55 @@ export const MarketPlace = (props) => {
     zip_code: "",
   })
 
-  console.log(marketPlaceInput.services)
+
+
+  function mapAccountUser() {
+    let mappedArr = store.accountUser.map((accountUser, index) => {
+      let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
+      if (accountUser.userType == "professional") return componentCard
+    })
+    return mappedArr
+  }
+
+  function mapFilteredUsers() {
+    let mappedArr = store.filteredUsers.map((accountUser, index) => {
+      let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
+      if (accountUser.userType == "professional") return componentCard
+    })
+    return mappedArr
+  }
+
+
 
   return (
     <div className="container-fluid">
       <br></br>
       <div className="d-flex justify-content-between">
         <div className="d-flex">
-
-
-
-
           <input type="text" className="form-control" placeholder="service" aria-label="service" aria-describedby="basic-addon1"
-            value={marketPlaceInput.services} onChange={(e) => { setMarketPlaceInput({ ...marketPlaceInput, services: e.target.value }) }} />
-
-
-
-
+            value={store.serviceInput} onChange={(e) => { actions.typeFunction(e.target.value) }} />
         </div>
         <div className="d-flex">
-          <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1" />
+          <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"
+            value={store.nameInput} onChange={(e) => { actions.typeNameFunction(e.target.value) }} />
         </div>
         <div className="d-flex">
-          <input type="text" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1" />
+          <input type="text" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
+            value={store.priceInput} onChange={(e) => { actions.typePriceFunction(e.target.value) }} />
         </div>
         <div className="d-flex">
           <input type="text" className="form-control" placeholder="rating" aria-label="rating" aria-describedby="basic-addon1" />
         </div>
         <div className="d-flex">
-          <input type="text" className="form-control" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1" />
+          <input type="text" className="form-control" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1"
+            value={store.zip_codeInput} onChange={(e) => { actions.typeZipCodeFunction(e.target.value) }} />
         </div>
-        <button type="button" className="btn btn-light"><i className="fas fa-sync-alt"></i></button>
+        <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button>
       </div>
       <br></br>
       <div className="list-group">
         <div>
-          {store.accountUser.map((accountUser, index) => {
-            let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
-            if (accountUser.userType == "professional") return componentCard
-          })}
+          {store.filteredUsers.length == 0 ? mapAccountUser() : mapFilteredUsers()}
         </div>
       </div>
     </div>

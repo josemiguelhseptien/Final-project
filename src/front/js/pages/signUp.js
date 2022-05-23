@@ -99,10 +99,10 @@ export const SignUp = props => {
                         <input type="text" aria-label="Name" className="form-control" name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
+                        <input type="email" className="form-control" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
+                        <input type="password" className="form-control" name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
                     </div>
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" aria-label="Sizing example input" name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone" onChange={handleChange} value={inputField.phone} />
@@ -127,7 +127,9 @@ export const SignUp = props => {
 
                 </div>
                 <div className="center">
-                    <button type="button" className="btn btn-primary" onClick={(e) => { actions.addUser(inputField), console.log(inputField) }}>Sign up</button>
+                    <Link to="/dashboard">
+                        <button type="button" className="btn btn-primary" onClick={(e) => { actions.addUser(inputField), console.log(inputField) }}>Sign up</button>
+                    </Link>
                 </div>
             </div>
         </div>

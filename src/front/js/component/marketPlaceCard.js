@@ -18,7 +18,7 @@ export const MarketPlaceCard = (props) => {
                 }}>
                     <div className="d-flex justify-content-between">
                         <div className="marketPlaceImgDiv">
-                            <img className="marketPlacePics" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
+                            <img className="img-fluid marketPlacePics" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
                         </div>
                         <div className="marketPlaceCardInfo">
                             <div className="userName"><h5 className="mb-1">{props.user.name}</h5></div>
