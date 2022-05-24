@@ -10,7 +10,7 @@ export const Login = props => {
         username: "",
         email: "",
         password: "",
-        userType: ""
+        userType: "client"
     })
 
     const proUser = () => {
@@ -25,29 +25,32 @@ export const Login = props => {
     const params = useParams();
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid ">
+
             <div className="loginCard">
+                <div className="loginBar"><h2>Login</h2></div>
+                <br></br>
                 <div className="userToggle d-flex justify-content-between">
                     <button type="button" className="btn btn-primary" onClick={() => { clientUser() }}>Client</button>
                     <button type="button" className="btn btn-primary" onClick={() => { proUser() }}>Professional</button>
                 </div>
-
+                <br></br>
                 <form>
                     <div className="mb-3">
-                        <label for="Username" className="form-label">Username</label>
+                        <label htmlFor="Username" className="form-label">Username</label>
                         <input type="text" className="form-control" value={loginInput.username} onChange={e => {
                             setLoginInput({ ...loginInput, username: e.target.value });
                         }}
                             placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                     <div className="mb-3">
-                        <label for="exampleInputEmail1" className="form-label">Email address</label>
+                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input type="email" className="form-control" value={loginInput.email} onChange={e => {
                             setLoginInput({ ...loginInput, email: e.target.value });
                         }} placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     </div>
                     <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Password</label>
+                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" value={loginInput.password} onChange={e => {
                             setLoginInput({ ...loginInput, password: e.target.value });
                         }} id="exampleInputPassword1" />

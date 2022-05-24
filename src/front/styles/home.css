@@ -1,23 +1,33 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
 .center {
-  text-align: center;
+    text-align: center;
 }
+
 .size {
-  width: 700px;
+    width: 700px;
 }
 .checked {
   color: orange;
 }
 .loginCard {
-  width: 40%;
-  margin: 0 auto;
-  padding-top: 3rem;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+
+.loginBar {
+    text-align: center;
+}
+
+.profilePicture {
+    width: 30%;
+    padding-top: 100%;
+    background-color: black;
+    padding: 0.000001rem;
+    margin-right: 5%;
+    margin-left: 3%;
+    clip-path: circle();
+    object-fit: contain;
+
 }
 button {
   background-color: transparent;
@@ -30,4 +40,59 @@ button {
 }
 .off {
   color: #ccc;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.signupbtn {
+    text-align: left;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.professionalCard {
+
+    margin: 5vh;
+    font-size: x-large;
+    align-items: center;
+    vertical-align: middle;
+
+}
+
+.userCard {
+    background-color: gray;
+}
+
+.marketPlaceImgDiv {
+    width: 10%;
+}
+
+.marketPlacePics {
+    width: 100%;
+    padding-top: 100%;
+    background-color: black;
+    padding: 0.000001rem;
+    margin-right: 5%;
+    margin-left: 3%;
+    clip-path: circle();
+    object-fit: contain;
+}
+
+.marketPlaceCardInfo {
+    width: 70%;
+    padding: 1%;
+}
+
+.rating {
+    height: 80%;
+}
+
+.services {
+    width: 40%;
 }
