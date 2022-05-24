@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       filteredUsers: [],
       serviceInput: "",
       nameInput: "",
-      priceInput: 0,
+      priceInput: "",
       zip_codeInput: "",
       accountUser: [
         {
@@ -32,8 +32,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
           services: "Math tutoring",
-          prices: "30",
+          prices: 30,
           zip_code: "33156",
+          format: "Online only",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -55,8 +56,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
           services: "Math tutoring",
-          prices: "50",
+          prices: 50,
           zip_code: "33014",
+          format: "Online only",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -78,8 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
           services: "English tutoring",
-          prices: "40",
+          prices: 40,
           zip_code: "33156",
+          format: "Online only",
           availability: {
             Monday: "",
             Tuesday: "",
@@ -126,10 +129,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       typeFunction: (targetValue) => {
-        setStore({ serviceInput: targetValue });
+        setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.services.includes(targetValue)
+          return element.services.toLowerCase().includes(targetValue)
 
         });
         console.log(filterTargetValue)
@@ -137,10 +140,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       typeNameFunction: (targetValue) => {
-        setStore({ nameInput: targetValue });
+        setStore({ nameInput: targetValue.toLowerCase() });
         console.log(getStore().nameInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.name.includes(targetValue)
+          return element.name.toLowerCase().includes(targetValue)
 
         });
         console.log(filterTargetValue)
@@ -148,10 +151,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       typePriceFunction: (targetValue) => {
+        const store = getStore();
         let number = parseInt(targetValue)
         setStore({ priceInput: number });
-        let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.price == number
+        console.log(targetValue.length)
+        let filterTargetValue = store.accountUser.filter((element) => {
+          return element.prices <= number
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });

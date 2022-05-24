@@ -37,7 +37,6 @@ export const MarketPlace = (props) => {
   }
 
 
-
   return (
     <div className="container-fluid">
       <br></br>

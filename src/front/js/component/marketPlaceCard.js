@@ -30,7 +30,7 @@ export const MarketPlaceCard = (props) => {
                         </div>
                         <div>
                             <div className="rating">5 Starts</div>
-                            <div className="format">Format: live and online</div>
+                            <div className="format">{props.user.format}</div>
                         </div>
                     </div>
                     <div>
