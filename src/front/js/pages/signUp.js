@@ -43,8 +43,10 @@ export const SignUp = props => {
                 <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
                     <div className="center"><span>SIGN UP</span></div>
                     <div className="input-group mb-3">
-                        <input type="text" name="first_name" className="form-control" placeholder="First name" onChange={handleChange} value={inputField.first_name} />
-                        <input type="text" name="Last_name" className="form-control" placeholder="Last name" onChange={handleChange} value={inputField.last_name} />
+                        <input type="text" className="form-control" name="first_name" aria-describedby="inputGroup-sizing-default" placeholder="First Name" onChange={handleChange} value={inputField.first_name} />
+                    </div>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" name="last_name" aria-describedby="inputGroup-sizing-default" placeholder="Last Name" onChange={handleChange} value={inputField.last_name} />
                     </div>
                     <div className="input-group mb-3">
                         <input type="email" className="form-control" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
@@ -56,7 +58,10 @@ export const SignUp = props => {
                         <input type="phonenumber" className="form-control" name="phone_number" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" onChange={handleChange} value={inputField.phone_number} />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control" name="location" aria-describedby="inputGroup-sizing-default" placeholder="city, state" onChange={handleChange} value={inputField.location} />
+                        <input type="text" className="form-control" name="city" aria-describedby="inputGroup-sizing-default" placeholder="City" onChange={handleChange} value={inputField.city} />
+                    </div>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" name="state" aria-describedby="inputGroup-sizing-default" placeholder="State" onChange={handleChange} value={inputField.state} />
                     </div>
 
                     <div className="center">
@@ -68,44 +73,46 @@ export const SignUp = props => {
 
 
                 <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-                    <div className="center"><span className="mb-3"> SIGN UP</span></div>
+                    <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
+                        <div className="center"><span>SIGN UP</span></div>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" name="first_name" aria-describedby="inputGroup-sizing-default" placeholder="First Name" onChange={handleChange} value={inputField.first_name} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" name="last_name" aria-describedby="inputGroup-sizing-default" placeholder="Last Name" onChange={handleChange} value={inputField.last_name} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="email" className="form-control" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="password" className="form-control" name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="phonenumber" className="form-control" name="phone_number" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" onChange={handleChange} value={inputField.phone_number} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" name="city" aria-describedby="inputGroup-sizing-default" placeholder="City" onChange={handleChange} value={inputField.city} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" name="state" aria-describedby="inputGroup-sizing-default" placeholder="State" onChange={handleChange} value={inputField.state} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <select className="form-select" id="inputGroupSelect01">
+                                <option value="-1">Choose a subject to teach</option>
+                                <option value="1">Math</option>
+                                <option value="2">English</option>
+                                <option value="3">Science</option>
+                            </select>
+                        </div>
 
-                    <div className="input-group mb-3">
-                        <input type="text" aria-label="First name" className="form-control" placeholder="First name" />
-                        <input type="text" aria-label="Last name" className="form-control" placeholder="Last name" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Email" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Password" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="city, state" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Email" />
-                    </div>
 
-                    <div className="input-group mb-3">
-                        <select className="form-select" id="inputGroupSelect01">
-                            <option value="-1">Choose a subject to teach</option>
-                            <option value="1">Math</option>
-                            <option value="2">English</option>
-                            <option value="3">Science</option>
-                        </select>
-                    </div>
+                        <div className="center">
+                            <button onClick={handleSubmit} type="button" className="btn btn-primary">Sign up</button>
+                            <button type="button" className="btn btn-secondary">Cancel</button>
+                        </div>
 
-                    <div className="center">
-                        <button type="button" className="btn btn-primary">Sign up</button>
-                        <button type="button" className="btn btn-secondary">Cancel</button>
                     </div>
-
                 </div>
-
             </div>
         </div>
     );

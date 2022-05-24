@@ -11,8 +11,23 @@
 .size {
   width: 700px;
 }
+.checked {
+  color: orange;
+}
 .loginCard {
   width: 40%;
   margin: 0 auto;
   padding-top: 3rem;
+}
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
 }

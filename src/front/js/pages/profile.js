@@ -8,7 +8,9 @@ export const Profile = props => {
     const params = useParams();
 
     return (
-        <div className="container-fluid">Profile</div>
+        <div className="container-fluid">
+            Profile
+        </div>
     );
 };
 
