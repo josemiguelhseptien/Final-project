@@ -10,7 +10,7 @@ export const Login = props => {
         username: "",
         email: "",
         password: "",
-        userType: ""
+        userType: "client"
     })
 
     const proUser = () => {
@@ -25,13 +25,16 @@ export const Login = props => {
     const params = useParams();
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid ">
+
             <div className="loginCard">
+                <div className="loginBar"><h2>Login</h2></div>
+                <br></br>
                 <div className="userToggle d-flex justify-content-between">
                     <button type="button" className="btn btn-primary" onClick={() => { clientUser() }}>Client</button>
                     <button type="button" className="btn btn-primary" onClick={() => { proUser() }}>Professional</button>
                 </div>
-
+                <br></br>
                 <form>
                     <div className="mb-3">
                         <label htmlFor="Username" className="form-label">Username</label>

@@ -9,6 +9,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { MarketPlace } from "./pages/marketPlace";
 
 import { Account } from "./pages/account";
 import { Login } from "./pages/login";
@@ -30,6 +31,7 @@ const Layout = () => {
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/account/:id" component={Account} />
+            <Route exact path="/marketplace" component={MarketPlace} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/demo">
