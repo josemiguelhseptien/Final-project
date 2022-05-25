@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      calendarEntries: [],
       demo: [],
       user: "username",
       calendarEntries: [
@@ -36,9 +35,64 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         },
       ],
+      moneyData: [
+        {
+          userID: "",
+          dateEntered: "",
+          earned: 1,
+          paid: 2,
+          owed: 3,
+        }
+      ]
     },
     actions: {
       // Use getActions to call a function within a fuction
+      addUserIncome: (moneyEntry) => {
+        let dataArray = getStore().moneyData;
+
+        dataArray.push({
+          userID: moneyEntry.userID,
+          dateEntered: moneyEntry.dateEntered,
+          earned: moneyEntry.earned,
+          paid: moneyEntry.paid,
+          owed: moneyEntry.owed,
+        });
+
+        setStore({ calendarEntries: dataArray });
+      },
+
+      displayTotalEarned: () => {
+        const money = getStore().moneyData;
+        let totalEarned = 0;
+
+        money.forEach(element => {
+          totalEarned += parseInt(element.earned);
+        });
+
+        return totalEarned;
+      },
+
+      displayTotalOwed: () => {
+        const money = getStore().moneyData;
+        let totalOwed = 0;
+
+        money.forEach(element => {
+          totalOwed += parseInt(element.owed);
+        });
+
+        return totalOwed;
+      },
+
+      displayTotalPaid: () => {
+        const money = getStore().moneyData;
+        let totalPaid = 0;
+
+        money.forEach(element => {
+          totalPaid += parseInt(element.paid);
+        });
+
+        return totalPaid;
+      },
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
@@ -71,8 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/api/hello")
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
-          .catch((error) =>
-            console.log("Error loading message from backend", error)
+          .catch((error) => { console.log("Error loading message from backend", error) }
           );
       },
       changeColor: (index, color) => {

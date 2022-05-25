@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
+import { Money } from "./../component/money";
 
 
 export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("calendar")
+    const [viewType, setViewType] = useState("money")
 
 
     return (
@@ -47,7 +48,7 @@ export const Dashboard = props => {
                                 <h3>Calendar</h3>
                             </div>
                             <div>
-                                <Calendar />
+                                {< Calendar />}
                             </div>
                         </div>
                     ) : (null)}
@@ -55,65 +56,9 @@ export const Dashboard = props => {
                         <div className="d-inline-block mx-5">
                             <div>
                                 <h3>Your Money</h3>
-                                <div>
-                                    <form className="d-inline-flex">
-                                        <div className="mb-3 mx-2">
-                                            <label className="form-label">Date</label>
-                                            <input type="date" className="form-control" id="incomeDate" />
-                                        </div>
-                                        <div>
-                                            <label className="form-label">Earned</label>
-                                            <div className="input-group mb-3">
-                                                <span className="input-group-text">$</span>
-                                                <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)" />
-                                                <span className="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label className="form-label">Paid</label>
-                                            <div className="input-group mb-3">
-                                                <span className="input-group-text">$</span>
-                                                <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)" />
-                                                <span className="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label className="form-label">Owed</label>
-                                            <div className="input-group mb-3">
-                                                <span className="input-group-text">$</span>
-                                                <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)" />
-                                                <span className="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                        <button type="submit" className="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
                             </div>
-                            <div className="d-inline-flex">
-                                <div className="mx-5">
-                                    <h3>Total Earned</h3>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            0
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mx-5">
-                                    <h3>Total Paid</h3>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            0
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mx-5">
-                                    <h3>Total Owed</h3>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            0
-                                        </div>
-                                    </div>
-                                </div>
+                            <div>
+                                {< Money />}
                             </div>
                             <div>
                                 <h3>Income Chart</h3>

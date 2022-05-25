@@ -91,7 +91,7 @@ export const Account = props => {
                                             </div>
                                             <div>
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                                                <input type="text" className="form-control" placeholder={userInfo.name} aria-label="Username" aria-describedby="basic-addon1" value={modalInfo.name ? modalInfo.name : userInfo.name} onChange={e => {
+                                                <input type="text" className="form-control" placeholder={userInfo.name} aria-label="Username" aria-describedby="basic-addon1" value={modalInfo.name} onChange={e => {
                                                     setModalInfo({ ...modalInfo, name: e.target.value });
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Phone</label>
