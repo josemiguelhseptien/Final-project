@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import propTypes from "prop-types";
 import "../../styles/home.css";
+import { RatingStar } from "./ratingStar";
 
 
 export const MarketPlaceCard = (props) => {
@@ -13,7 +14,7 @@ export const MarketPlaceCard = (props) => {
         <div className="container-fluid">
             <div className="userCard">
                 <Link className="list-group-item list-group-item-action" to={{
-                    pathname: `/account/${props.user.id}`,
+                    pathname: `/account/:id`,
                     state: props.user,
                 }}>
                     <div className="d-flex justify-content-between">
@@ -29,7 +30,7 @@ export const MarketPlaceCard = (props) => {
                             <div className="zipCode"><small className="text-muted">{props.user.zip_code}</small></div>
                         </div>
                         <div>
-                            <div className="rating">5 Starts</div>
+                            <div className="rating"><RatingStar /></div>
                             <div className="format">{props.user.format}</div>
                         </div>
                     </div>

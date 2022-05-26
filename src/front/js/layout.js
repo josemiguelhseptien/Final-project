@@ -15,7 +15,8 @@ import { Account } from "./pages/account";
 import { Login } from "./pages/login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { MarketPlace } from "./pages/marketPlace";
+import { Profile } from "./pages/profile";
+
 
 //create your first component
 const Layout = () => {
@@ -23,21 +24,6 @@ const Layout = () => {
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
 
-<<<<<<< HEAD
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/" component={LandingPage} />
-						<Route exact path="/dashboard" component={Dashboard} />
-						<Route exact path="/signup" component={SignUp} />
-						<Route exact path="/marketplace" component={MarketPlace} />
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-=======
   return (
     <div>
       <BrowserRouter basename={basename}>
@@ -50,10 +36,10 @@ const Layout = () => {
             <Route exact path="/marketplace" component={MarketPlace} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/demo">
               <Demo />
             </Route>
->>>>>>> 1ddf36ed94f8670b9d53834b6058eb6b25317286
 
             <Route exact path="/single/:theid">
               <Single />

@@ -187,20 +187,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
-<<<<<<< HEAD
-      // getMessage: () => {
-      //   // fetching data from the backend
-      //   fetch(process.env.BACKEND_URL + "/api/hello")
-      //     .then((resp) => resp.json())
-      //     .then((data) => setStore({ message: data.message }))
-      //     .catch((error) =>
-      //       console.log("Error loading message from backend", error)
-      //     );
-      // },
-      // changeColor: (index, color) => {
-      //   //get the store
-      //   const store = getStore();
-=======
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
@@ -216,26 +202,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeColor: (index, color) => {
         //get the store
         const store = getStore();
->>>>>>> 1ddf36ed94f8670b9d53834b6058eb6b25317286
 
-      //   //we have to loop the entire demo array to look for the respective index
-      //   //and change its color
-      //   const demo = store.demo.map((elm, i) => {
-      //     if (i === index) elm.background = color;
-      //     return elm;
-      //   });
+        //   //we have to loop the entire demo array to look for the respective index
+        //   //and change its color
+        //   const demo = store.demo.map((elm, i) => {
+        //     if (i === index) elm.background = color;
+        //     return elm;
+        //   });
 
-<<<<<<< HEAD
-      //   //reset the global store
-      //   setStore({ demo: demo });
-      // },
-=======
 
 
         //reset the global store
         setStore({ demo: demo });
       },
->>>>>>> 1ddf36ed94f8670b9d53834b6058eb6b25317286
     },
   };
 };
