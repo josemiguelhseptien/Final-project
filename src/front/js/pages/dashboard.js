@@ -4,13 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
 import { Money } from "./../component/money";
+import { Stats } from "./../component/stats";
 
 
 export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("money")
+    const [viewType, setViewType] = useState("stats")
 
 
     return (
@@ -73,8 +74,10 @@ export const Dashboard = props => {
                     {viewType == "stats" ? (
                         <div className="d-inline-block mx-5">
                             <div>
-                                <h3>Bookt Chart</h3>
-                                <div>Inputs: Daily log with appointments scheduled, completed, canceled</div>
+                                <h3>Appointment Stats</h3>
+                                <div>
+                                    {< Stats />}
+                                </div>
                             </div>
                             <div>
                                 <h3>API Chart</h3>

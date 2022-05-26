@@ -106,71 +106,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       ]
     },
-    // Use getActions to call a function within a fuction
-    addUser: (formData) => {
-      const userArr = getStore().accountUser;
-      userArr.push(formData)
-      setStore({ accountUser: userArr })
-    },
-
-    editUserInfo: (modalInfo) => {
-      const store = getStore();
-      console.log(modalInfo)
-      let filterUser = store.accountUser.filter(element => {
-        return element.id != modalInfo.id
-      })
-      filterUser.push(modalInfo)
-      setStore({ accountUser: filterUser, modalInfo });
-      console.log(filterUser)
-    },
-
-    addAppt: () => {
-      let dataArray = getStore().calendarEntries;
-
-      dataArray.push({
-        userID: moneyEntry.userID,
-        dateEntered: moneyEntry.dateEntered,
-        earned: moneyEntry.earned,
-        paid: moneyEntry.paid,
-        owed: moneyEntry.owed,
-      });
-
-      setStore({ calendarEntries: dataArray });
-    },
-
-    displayTotalEarned: () => {
-      const money = getStore().moneyData;
-      let totalEarned = 0;
-
-      money.forEach(element => {
-        totalEarned += parseInt(element.earned);
-      });
-
-      return totalEarned;
-    },
-
-    displayTotalOwed: () => {
-      const money = getStore().moneyData;
-      let totalOwed = 0;
-
-      money.forEach(element => {
-        totalOwed += parseInt(element.owed);
-      });
-
-      return totalOwed;
-    },
-
-    displayTotalPaid: () => {
-      const money = getStore().moneyData;
-      let totalPaid = 0;
-
-      money.forEach(element => {
-        totalPaid += parseInt(element.paid);
-      });
-
-      return totalPaid;
-
-    },
     actions: {
       // Use getActions to call a function within a fuction
       addUser: (formData) => {
@@ -181,25 +116,67 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
+        console.log(modalInfo)
         let filterUser = store.accountUser.filter(element => {
-          element.id != modalInfo.id
+          return element.id != modalInfo.id
         })
         filterUser.push(modalInfo)
         setStore({ accountUser: filterUser, modalInfo });
+        console.log(filterUser)
       },
 
       addAppt: () => {
         let dataArray = getStore().calendarEntries;
 
+
         dataArray.push({
-          text: `Booking`,
-          startDate: new Date("2022-04-15T16:30:00.000Z"),
-          endDate: new Date("2022-04-15T18:30:00.000Z"),
-          allDay: false,
-          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+          userID: moneyEntry.userID,
+          dateEntered: moneyEntry.dateEntered,
+          earned: moneyEntry.earned,
+          paid: moneyEntry.paid,
+          owed: moneyEntry.owed,
         });
 
         setStore({ calendarEntries: dataArray });
+      },
+
+      addUserIncome: (moneyEntry) => {
+        let dataArray = getStore().moneyData;
+      },
+
+
+      displayTotalEarned: () => {
+        const money = getStore().moneyData;
+        let totalEarned = 0;
+
+        money.forEach(element => {
+          totalEarned += parseInt(element.earned);
+        });
+
+        return totalEarned;
+      },
+
+      displayTotalOwed: () => {
+        const money = getStore().moneyData;
+        let totalOwed = 0;
+
+        money.forEach(element => {
+          totalOwed += parseInt(element.owed);
+        });
+
+        return totalOwed;
+      },
+
+      displayTotalPaid: () => {
+        const money = getStore().moneyData;
+        let totalPaid = 0;
+
+        money.forEach(element => {
+          totalPaid += parseInt(element.paid);
+        });
+
+        return totalPaid;
+
       },
 
       filterCalendarEntries: () => {
@@ -302,8 +279,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         //   setStore({ demo: demo });
       },
     },
+  }
+};
 
-  };
-}
 
 export default getState;
