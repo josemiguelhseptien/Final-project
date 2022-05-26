@@ -5,7 +5,9 @@
 .size {
     width: 700px;
 }
-
+.checked {
+  color: orange;
+}
 .loginCard {
     width: 40%;
     margin: 0 auto;
@@ -26,6 +28,18 @@
     clip-path: circle();
     object-fit: contain;
 
+}
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
 }
 
 .pointer {

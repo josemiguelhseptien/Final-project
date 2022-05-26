@@ -96,6 +96,79 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
 
       ],
+      moneyData: [
+        {
+          userID: "",
+          dateEntered: "",
+          earned: 1,
+          paid: 2,
+          owed: 3,
+        }
+      ]
+    },
+    // Use getActions to call a function within a fuction
+    addUser: (formData) => {
+      const userArr = getStore().accountUser;
+      userArr.push(formData)
+      setStore({ accountUser: userArr })
+    },
+
+    editUserInfo: (modalInfo) => {
+      const store = getStore();
+      console.log(modalInfo)
+      let filterUser = store.accountUser.filter(element => {
+        return element.id != modalInfo.id
+      })
+      filterUser.push(modalInfo)
+      setStore({ accountUser: filterUser, modalInfo });
+      console.log(filterUser)
+    },
+
+    addAppt: () => {
+      let dataArray = getStore().calendarEntries;
+
+      dataArray.push({
+        userID: moneyEntry.userID,
+        dateEntered: moneyEntry.dateEntered,
+        earned: moneyEntry.earned,
+        paid: moneyEntry.paid,
+        owed: moneyEntry.owed,
+      });
+
+      setStore({ calendarEntries: dataArray });
+    },
+
+    displayTotalEarned: () => {
+      const money = getStore().moneyData;
+      let totalEarned = 0;
+
+      money.forEach(element => {
+        totalEarned += parseInt(element.earned);
+      });
+
+      return totalEarned;
+    },
+
+    displayTotalOwed: () => {
+      const money = getStore().moneyData;
+      let totalOwed = 0;
+
+      money.forEach(element => {
+        totalOwed += parseInt(element.owed);
+      });
+
+      return totalOwed;
+    },
+
+    displayTotalPaid: () => {
+      const money = getStore().moneyData;
+      let totalPaid = 0;
+
+      money.forEach(element => {
+        totalPaid += parseInt(element.paid);
+      });
+
+      return totalPaid;
 
     },
     actions: {
@@ -108,13 +181,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
-        console.log(modalInfo)
         let filterUser = store.accountUser.filter(element => {
-          return element.id != modalInfo.id
+          element.id != modalInfo.id
         })
         filterUser.push(modalInfo)
         setStore({ accountUser: filterUser, modalInfo });
-        console.log(filterUser)
       },
 
       addAppt: () => {
@@ -131,6 +202,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ calendarEntries: dataArray });
       },
 
+      filterCalendarEntries: () => {
+        let store = getStore();
+      },
       typeFunction: (targetValue) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
@@ -185,21 +259,29 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: [] });
       },
 
-      filterCalendarEntries: () => {
-        let store = getStore();
-      },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
 
+      // getMessage: () => {
+      //   // fetching data from the backend
+      //   fetch(process.env.BACKEND_URL + "/api/hello")
+      //     .then((resp) => resp.json())
+      //     .then((data) => setStore({ message: data.message }))
+      //     .catch((error) =>
+      //       console.log("Error loading message from backend", error)
+      //     );
+      // },
+      // changeColor: (index, color) => {
+      //   //get the store
+      //   const store = getStore();
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
-          .catch((error) =>
-            console.log("Error loading message from backend", error)
+          .catch((error) => { console.log("Error loading message from backend", error) }
           );
       },
 
@@ -209,20 +291,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         //get the store
         const store = getStore();
 
-        //we have to loop the entire demo array to look for the respective index
-        //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
-        });
+        //   //we have to loop the entire demo array to look for the respective index
+        //   //and change its color
+        //   const demo = store.demo.map((elm, i) => {
+        //     if (i === index) elm.background = color;
+        //     return elm;
+        //   });
 
-
-
-        //reset the global store
-        setStore({ demo: demo });
+        //   //reset the global store
+        //   setStore({ demo: demo });
       },
     },
+
   };
-};
+}
 
 export default getState;
