@@ -37,6 +37,9 @@ export const Dashboard = props => {
                                     <li className="nav-item py-3">
                                         <span onClick={() => setViewType("clients")}>Clients</span>
                                     </li>
+                                    <li className="nav-item py-3">
+                                        <span onClick={() => setViewType("appointments")}>Appointments</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -48,6 +51,7 @@ export const Dashboard = props => {
                             </div>
                             <div>
                                 <Calendar />
+                                {actions.filterCalendarEntries()}
                             </div>
                         </div>
                     ) : (null)}
@@ -149,6 +153,13 @@ export const Dashboard = props => {
                             </div>
                         </div>
                     ) : (null)}
+                    {viewType == "appointments" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                Appointments
+                            </div>
+                        </div>
+                    ) : (null)}
                 </div>
             ) : (
                 <div className="d-inline-block mx-5">
@@ -166,6 +177,7 @@ export const Dashboard = props => {
                     </div>
                 </div>
             )}
+
         </div>
     )
 }

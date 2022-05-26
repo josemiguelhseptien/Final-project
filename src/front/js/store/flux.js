@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      calendarEntries: [],
+      filteredCalendar: [],
+      paidCalendarEntries: [],
       demo: [],
       user: "username",
       calendarEntries: [
@@ -107,11 +108,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
+        console.log(modalInfo)
         let filterUser = store.accountUser.filter(element => {
-          element.id != modalInfo.id
+          return element.id != modalInfo.id
         })
         filterUser.push(modalInfo)
         setStore({ accountUser: filterUser, modalInfo });
+        console.log(filterUser)
       },
 
       addAppt: () => {
@@ -182,6 +185,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: [] });
       },
 
+      filterCalendarEntries: () => {
+        let store = getStore();
+      },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
