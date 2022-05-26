@@ -42,7 +42,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
@@ -66,7 +84,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
@@ -90,26 +126,36 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         }
 
       ],
-      moneyData: [
-        {
-          userID: "",
-          dateEntered: "",
-          earned: 1,
-          paid: 2,
-          owed: 3,
-        }
-      ]
+
     },
     actions: {
       // Use getActions to call a function within a fuction
       addUserIncome: (moneyEntry) => {
-        let dataArray = getStore().moneyData;
+        const localUser = getStore().accountUser;
 
-        dataArray.push({
+        localUser[0].moneyData.push({
           userID: moneyEntry.userID,
           dateEntered: moneyEntry.dateEntered,
           earned: moneyEntry.earned,
@@ -117,11 +163,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           owed: moneyEntry.owed,
         });
 
-        setStore({ calendarEntries: dataArray });
+        setStore({ accountUser: localUser });
       },
 
       displayTotalEarned: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalEarned = 0;
 
         money.forEach(element => {
@@ -132,7 +178,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       displayTotalOwed: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalOwed = 0;
 
         money.forEach(element => {
@@ -143,7 +189,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       displayTotalPaid: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalPaid = 0;
 
         money.forEach(element => {
@@ -151,136 +197,182 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
 
         return totalPaid;
-
       },
-      actions: {
-        // Use getActions to call a function within a fuction
-        addUser: (formData) => {
-          const userArr = getStore().accountUser;
-          userArr.push(formData)
-          setStore({ accountUser: userArr })
-        },
 
-        editUserInfo: (modalInfo) => {
-          const store = getStore();
-          let filterUser = store.accountUser.filter(element => {
-            element.id != modalInfo.id
-          })
-          filterUser.push(modalInfo)
-          setStore({ accountUser: filterUser, modalInfo });
-        },
+      addUserStats: (statsEntry) => {
+        const localUser = getStore().accountUser;
 
-        addAppt: () => {
-          let dataArray = getStore().calendarEntries;
+        localUser[0].statsData.push({
+          userID: statsEntry.userID,
+          dateEntered: statsEntry.dateEntered,
+          earned: statsEntry.earned,
+          paid: statsEntry.paid,
+          owed: statsEntry.owed,
+        });
 
-          dataArray.push({
-            text: `Booking`,
-            startDate: new Date("2022-04-15T16:30:00.000Z"),
-            endDate: new Date("2022-04-15T18:30:00.000Z"),
-            allDay: false,
-            recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
-          });
-
-          setStore({ calendarEntries: dataArray });
-        },
-
-        typeFunction: (targetValue) => {
-          setStore({ serviceInput: targetValue.toLowerCase() });
-          console.log(getStore().serviceInput);
-          let filterTargetValue = getStore().accountUser.filter((element) => {
-            return element.services.toLowerCase().includes(targetValue)
-
-          });
-          console.log(filterTargetValue)
-          setStore({ filteredUsers: filterTargetValue });
-        },
-
-        typeNameFunction: (targetValue) => {
-          setStore({ nameInput: targetValue.toLowerCase() });
-          console.log(getStore().nameInput);
-          let filterTargetValue = getStore().accountUser.filter((element) => {
-            return element.name.toLowerCase().includes(targetValue)
-
-          });
-          console.log(filterTargetValue)
-          setStore({ filteredUsers: filterTargetValue });
-        },
-
-        typePriceFunction: (targetValue) => {
-          const store = getStore();
-          let number = parseInt(targetValue)
-          setStore({ priceInput: number });
-          console.log(targetValue.length)
-          let filterTargetValue = store.accountUser.filter((element) => {
-            return element.prices <= number
-          });
-          console.log(filterTargetValue)
-          setStore({ filteredUsers: filterTargetValue });
-        },
-
-
-        typeZipCodeFunction: (targetValue) => {
-          setStore({ zip_codeInput: targetValue });
-          console.log(getStore().zip_codeInput);
-          let filterTargetValue = getStore().accountUser.filter((element) => {
-            return element.zip_code.includes(targetValue)
-
-          });
-          console.log(filterTargetValue)
-          setStore({ filteredUsers: filterTargetValue });
-        },
-
-        clearSearch: () => {
-          setStore({ zip_codeInput: "" });
-          setStore({ priceInput: 0 });
-          setStore({ nameInput: "" });
-          setStore({ serviceInput: "" });
-          setStore({ filteredUsers: [] });
-        },
-
-
-        exampleFunction: () => {
-          getActions().changeColor(0, "green");
-        },
-
-        // getMessage: () => {
-        //   // fetching data from the backend
-        //   fetch(process.env.BACKEND_URL + "/api/hello")
-        //     .then((resp) => resp.json())
-        //     .then((data) => setStore({ message: data.message }))
-        //     .catch((error) =>
-        //       console.log("Error loading message from backend", error)
-        //     );
-        // },
-        // changeColor: (index, color) => {
-        //   //get the store
-        //   const store = getStore();
-        getMessage: () => {
-          // fetching data from the backend
-          fetch(process.env.BACKEND_URL + "/api/hello")
-            .then((resp) => resp.json())
-            .then((data) => setStore({ message: data.message }))
-            .catch((error) => { console.log("Error loading message from backend", error) }
-            );
-        },
-
-
-
-        changeColor: (index, color) => {
-          //get the store
-          const store = getStore();
-
-          //   //we have to loop the entire demo array to look for the respective index
-          //   //and change its color
-          //   const demo = store.demo.map((elm, i) => {
-          //     if (i === index) elm.background = color;
-          //     return elm;
-          //   });
-
-          //   //reset the global store
-          //   setStore({ demo: demo });
-        },
+        setStore({ accountUser: localUser });
       },
+
+      displayTotalScheduled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalScheduled = 0;
+
+        stats.forEach(element => {
+          totalScheduled += parseInt(element.scheduled);
+        });
+
+        return totalScheduled;
+      },
+
+      displayTotalCompleted: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCompleted = 0;
+
+        stats.forEach(element => {
+          totalCompleted += parseInt(element.completed);
+        });
+
+        return totalCompleted;
+      },
+
+      displayTotalCanceled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCanceled = 0;
+
+        stats.forEach(element => {
+          totalCanceled += parseInt(element.canceled);
+        });
+
+        return totalCanceled;
+      },
+
+      // Use getActions to call a function within a fuction
+      addUser: (formData) => {
+        const userArr = getStore().accountUser;
+        userArr.push(formData)
+        setStore({ accountUser: userArr })
+      },
+
+      editUserInfo: (modalInfo) => {
+        const store = getStore();
+        let filterUser = store.accountUser.filter(element => {
+          element.id != modalInfo.id
+        })
+        filterUser.push(modalInfo)
+        setStore({ accountUser: filterUser, modalInfo });
+      },
+
+      addAppt: () => {
+        let dataArray = getStore().calendarEntries;
+
+        dataArray.push({
+          text: `Booking`,
+          startDate: new Date("2022-04-15T16:30:00.000Z"),
+          endDate: new Date("2022-04-15T18:30:00.000Z"),
+          allDay: false,
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        });
+
+        setStore({ calendarEntries: dataArray });
+      },
+
+      typeFunction: (targetValue) => {
+        setStore({ serviceInput: targetValue.toLowerCase() });
+        console.log(getStore().serviceInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.services.toLowerCase().includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      typeNameFunction: (targetValue) => {
+        setStore({ nameInput: targetValue.toLowerCase() });
+        console.log(getStore().nameInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.name.toLowerCase().includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      typePriceFunction: (targetValue) => {
+        const store = getStore();
+        let number = parseInt(targetValue)
+        setStore({ priceInput: number });
+        console.log(targetValue.length)
+        let filterTargetValue = store.accountUser.filter((element) => {
+          return element.prices <= number
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+
+      typeZipCodeFunction: (targetValue) => {
+        setStore({ zip_codeInput: targetValue });
+        console.log(getStore().zip_codeInput);
+        let filterTargetValue = getStore().accountUser.filter((element) => {
+          return element.zip_code.includes(targetValue)
+
+        });
+        console.log(filterTargetValue)
+        setStore({ filteredUsers: filterTargetValue });
+      },
+
+      clearSearch: () => {
+        setStore({ zip_codeInput: "" });
+        setStore({ priceInput: 0 });
+        setStore({ nameInput: "" });
+        setStore({ serviceInput: "" });
+        setStore({ filteredUsers: [] });
+      },
+
+
+      exampleFunction: () => {
+        getActions().changeColor(0, "green");
+      },
+
+      // getMessage: () => {
+      //   // fetching data from the backend
+      //   fetch(process.env.BACKEND_URL + "/api/hello")
+      //     .then((resp) => resp.json())
+      //     .then((data) => setStore({ message: data.message }))
+      //     .catch((error) =>
+      //       console.log("Error loading message from backend", error)
+      //     );
+      // },
+      // changeColor: (index, color) => {
+      //   //get the store
+      //   const store = getStore();
+      getMessage: () => {
+        // fetching data from the backend
+        fetch(process.env.BACKEND_URL + "/api/hello")
+          .then((resp) => resp.json())
+          .then((data) => setStore({ message: data.message }))
+          .catch((error) => { console.log("Error loading message from backend", error) }
+          );
+      },
+
+
+
+      changeColor: (index, color) => {
+        //get the store
+        const store = getStore();
+
+        //   //we have to loop the entire demo array to look for the respective index
+        //   //and change its color
+        //   const demo = store.demo.map((elm, i) => {
+        //     if (i === index) elm.background = color;
+        //     return elm;
+        //   });
+
+        //   //reset the global store
+        //   setStore({ demo: demo });
+      },
+
     }
   };
 }
