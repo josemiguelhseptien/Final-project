@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      calendarEntries: [],
       demo: [],
       user: "username",
       calendarEntries: [
@@ -43,7 +42,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
@@ -67,7 +84,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
@@ -91,13 +126,126 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         }
 
       ],
 
     },
     actions: {
+      // Use getActions to call a function within a fuction
+      addUserIncome: (moneyEntry) => {
+        const localUser = getStore().accountUser;
+
+        localUser[0].moneyData.push({
+          userID: moneyEntry.userID,
+          dateEntered: moneyEntry.dateEntered,
+          earned: moneyEntry.earned,
+          paid: moneyEntry.paid,
+          owed: moneyEntry.owed,
+        });
+
+        setStore({ accountUser: localUser });
+      },
+
+      displayTotalEarned: () => {
+        const money = getStore().accountUser[0].moneyData;
+        let totalEarned = 0;
+
+        money.forEach(element => {
+          totalEarned += parseInt(element.earned);
+        });
+
+        return totalEarned;
+      },
+
+      displayTotalOwed: () => {
+        const money = getStore().accountUser[0].moneyData;
+        let totalOwed = 0;
+
+        money.forEach(element => {
+          totalOwed += parseInt(element.owed);
+        });
+
+        return totalOwed;
+      },
+
+      displayTotalPaid: () => {
+        const money = getStore().accountUser[0].moneyData;
+        let totalPaid = 0;
+
+        money.forEach(element => {
+          totalPaid += parseInt(element.paid);
+        });
+
+        return totalPaid;
+      },
+
+      addUserStats: (statsEntry) => {
+        const localUser = getStore().accountUser;
+
+        localUser[0].statsData.push({
+          userID: statsEntry.userID,
+          dateEntered: statsEntry.dateEntered,
+          earned: statsEntry.earned,
+          paid: statsEntry.paid,
+          owed: statsEntry.owed,
+        });
+
+        setStore({ accountUser: localUser });
+      },
+
+      displayTotalScheduled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalScheduled = 0;
+
+        stats.forEach(element => {
+          totalScheduled += parseInt(element.scheduled);
+        });
+
+        return totalScheduled;
+      },
+
+      displayTotalCompleted: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCompleted = 0;
+
+        stats.forEach(element => {
+          totalCompleted += parseInt(element.completed);
+        });
+
+        return totalCompleted;
+      },
+
+      displayTotalCanceled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCanceled = 0;
+
+        stats.forEach(element => {
+          totalCanceled += parseInt(element.canceled);
+        });
+
+        return totalCanceled;
+      },
+
       // Use getActions to call a function within a fuction
       addUser: (formData) => {
         const userArr = getStore().accountUser;
@@ -187,36 +335,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
+
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
-          .catch((error) =>
-            console.log("Error loading message from backend", error)
+          .catch((error) => { console.log("Error loading message from backend", error) }
           );
       },
 
 
 
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
 
-        //   //we have to loop the entire demo array to look for the respective index
-        //   //and change its color
-        //   const demo = store.demo.map((elm, i) => {
-        //     if (i === index) elm.background = color;
-        //     return elm;
-        //   });
-
-
-
-        //reset the global store
-        setStore({ demo: demo });
-      },
     },
-  };
+
+  }
 };
+
 
 export default getState;
