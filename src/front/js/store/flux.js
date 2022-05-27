@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      filteredCalendar: [],
       paidCalendarEntries: [],
       demo: [],
       user: "username",
@@ -14,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           startDate: new Date("2022-04-15T16:30:00.000Z"),
           endDate: new Date("2022-04-15T18:30:00.000Z"),
           allDay: true,
+          description: "Lorem ipsum fake!",
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
       ],
@@ -108,10 +108,16 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
-      addUser: (formData) => {
-        const userArr = getStore().accountUser;
-        userArr.push(formData)
-        setStore({ accountUser: userArr })
+      addUser: (user, userType) => {
+        if (userType == "client") {
+          const clientArr = getStore().clientUser;
+          clientArr.push(user)
+          setStore({ clientUser: clientArr })
+        } else {
+          const userArr = getStore().accountUser;
+          userArr.push(user)
+          setStore({ accountUser: userArr })
+        }
       },
 
       editUserInfo: (modalInfo) => {

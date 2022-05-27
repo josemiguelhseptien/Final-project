@@ -106,6 +106,9 @@ export const Dashboard = props => {
                             <div>
                                 Appointments
                             </div>
+                            <div>
+                                <CompletedAppointments />
+                            </div>
                         </div>
                     ) : (null)}
                 </div>
