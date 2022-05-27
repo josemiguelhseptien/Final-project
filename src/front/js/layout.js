@@ -15,6 +15,7 @@ import { Account } from "./pages/account";
 import { Login } from "./pages/login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { CompletedAppointments } from "./component/completedAppointments";
 import { Profile } from "./pages/profile";
 
 
@@ -36,6 +37,7 @@ const Layout = () => {
             <Route exact path="/marketplace" component={MarketPlace} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/ca" component={CompletedAppointments} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/demo">
               <Demo />
