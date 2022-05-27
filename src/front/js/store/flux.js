@@ -4,6 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      filteredCalendar: [],
+      paidCalendarEntries: [],
       demo: [],
       user: "username",
       calendarEntries: [
@@ -276,6 +278,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ calendarEntries: dataArray });
       },
 
+      filterCalendarEntries: () => {
+        let store = getStore();
+      },
+
       typeFunction: (targetValue) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
@@ -310,7 +316,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: filterTargetValue });
       },
 
-
       typeZipCodeFunction: (targetValue) => {
         setStore({ zip_codeInput: targetValue });
         console.log(getStore().zip_codeInput);
@@ -330,23 +335,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: [] });
       },
 
-
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-      },
-
-      // getMessage: () => {
-      //   // fetching data from the backend
-      //   fetch(process.env.BACKEND_URL + "/api/hello")
-      //     .then((resp) => resp.json())
-      //     .then((data) => setStore({ message: data.message }))
-      //     .catch((error) =>
-      //       console.log("Error loading message from backend", error)
-      //     );
-      // },
-      // changeColor: (index, color) => {
-      //   //get the store
-      //   const store = getStore();
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
@@ -358,20 +346,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
 
-        //   //we have to loop the entire demo array to look for the respective index
-        //   //and change its color
-        //   const demo = store.demo.map((elm, i) => {
-        //     if (i === index) elm.background = color;
-        //     return elm;
-        //   });
-
-        //   //reset the global store
-        //   setStore({ demo: demo });
-      },
 
     }
   };
