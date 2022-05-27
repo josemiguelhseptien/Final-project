@@ -21,7 +21,8 @@ export const Account = props => {
         about: accountUser.about,
         services: accountUser.services,
         availability: accountUser.availability,
-        userType: accountUser.userType
+        userType: accountUser.userType,
+        prices: accountUser.prices
     })
 
     const userInfo = {
@@ -86,31 +87,31 @@ export const Account = props => {
                                     </div>
                                     <div className="modal-body">
                                         <div>
-                                            {/*<div>
+                                            <div>
                                                 <label htmlFor="exampleFormControlFile1">Profile picture</label>
                                                 <input type="file" className="form-control-file" id="exampleFormControlFile1" accept=".jpg, .jpeg, .png" onChange={e => {
                                                     setModalInfo({ ...modalInfo, profilePicture: e.target.result });
                                                 }} />
-                                            </div>*/}
+                                            </div>
                                             <div>
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
                                                 <input type="text" className="form-control" placeholder={userInfo.name} aria-label="Username" aria-describedby="basic-addon1" value={modalInfo.name} onChange={e => {
                                                     setModalInfo({ ...modalInfo, name: e.target.value });
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Phone</label>
-                                                <input type="text" className="form-control" placeholder={userInfo.phone} aria-label="Phone" aria-describedby="basic-addon1" value={modalInfo.phone ? modalInfo.phone : userInfo.phone} onChange={e => {
+                                                <input type="text" className="form-control" placeholder={userInfo.phone} aria-label="Phone" aria-describedby="basic-addon1" value={modalInfo.phone} onChange={e => {
                                                     setModalInfo({ ...modalInfo, phone: e.target.value });
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                                <input type="text" className="form-control" placeholder={userInfo.email} aria-label="Email" aria-describedby="basic-addon1" value={modalInfo.email ? modalInfo.email : userInfo.email} onChange={e => {
+                                                <input type="text" className="form-control" placeholder={userInfo.email} aria-label="Email" aria-describedby="basic-addon1" value={modalInfo.email} onChange={e => {
                                                     setModalInfo({ ...modalInfo, email: e.target.value });
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">Background</label>
-                                                <input type="text" className="form-control" placeholder={userInfo.background} aria-label="Background" aria-describedby="basic-addon1" value={modalInfo.background ? modalInfo.background : userInfo.background} onChange={e => {
+                                                <input type="text" className="form-control" placeholder={userInfo.background} aria-label="Background" aria-describedby="basic-addon1" value={modalInfo.background} onChange={e => {
                                                     setModalInfo({ ...modalInfo, background: e.target.value });
                                                 }} />
                                                 <label htmlFor="exampleInputEmail1" className="form-label">About</label>
-                                                <input type="text" className="form-control" placeholder={userInfo.about} aria-label="About" aria-describedby="basic-addon1" rows="4" cols="100" value={modalInfo.about ? modalInfo.about : userInfo.about} onChange={e => {
+                                                <input type="text" className="form-control" placeholder={userInfo.about} aria-label="About" aria-describedby="basic-addon1" rows="4" cols="100" value={modalInfo.about} onChange={e => {
                                                     setModalInfo({ ...modalInfo, about: e.target.value });
                                                 }} />
                                             </div>
