@@ -4,9 +4,14 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      clientUser: [],
       paidCalendarEntries: [],
       demo: [],
-      user: "username",
+      loggedUser: {
+        id: "2",
+        password: "123",
+        email: "Someemail@fcac",
+      },
       calendarEntries: [
         {
           text: `Booking`,
@@ -27,8 +32,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "1",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "FIRST",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "123",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -51,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
+          password: "123",
           phone: "4896415154",
           email: "asdasas@fcac",
           background: "",
@@ -75,6 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "3",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Third",
+          password: "123",
           phone: "4896415154",
           email: "asdasas@fcac",
           background: "",
@@ -113,11 +121,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           const clientArr = getStore().clientUser;
           clientArr.push(user)
           setStore({ clientUser: clientArr })
+          setStore({ loggedUser: user })
         } else {
           const userArr = getStore().accountUser;
           userArr.push(user)
           setStore({ accountUser: userArr })
+          setStore({ loggedUser: user })
         }
+      },
+
+      displayTotalScheduled: () => {
+        console.log("hello")
+      },
+      displayTotalCompleted: () => {
+        console.log("hello")
+      },
+      displayTotalCanceled: () => {
+        console.log("hello")
       },
 
       editUserInfo: (modalInfo) => {
@@ -131,10 +151,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(filterUser)
       },
 
+      logout: () => {
+        setStore({
+          loggedUser: {
+            id: "",
+            name: "",
+            password: "",
+            email: "",
+          }
+        })
+      },
+
       addAppt: () => {
         let dataArray = getStore().calendarEntries;
-
-
         dataArray.push({
           userID: moneyEntry.userID,
           dateEntered: moneyEntry.dateEntered,

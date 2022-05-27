@@ -7,7 +7,6 @@ import "../../styles/home.css";
 export const Login = props => {
     const { store, actions } = useContext(Context);
     const [loginInput, setLoginInput] = useState({
-        username: "",
         email: "",
         password: "",
         userType: "client"
@@ -37,13 +36,6 @@ export const Login = props => {
                 <br></br>
                 <form>
                     <div className="mb-3">
-                        <label htmlFor="Username" className="form-label">Username</label>
-                        <input type="text" className="form-control" value={loginInput.username} onChange={e => {
-                            setLoginInput({ ...loginInput, username: e.target.value });
-                        }}
-                            placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-                    </div>
-                    <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input type="email" className="form-control" value={loginInput.email} onChange={e => {
                             setLoginInput({ ...loginInput, email: e.target.value });
@@ -55,7 +47,7 @@ export const Login = props => {
                             setLoginInput({ ...loginInput, password: e.target.value });
                         }} id="exampleInputPassword1" />
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={() => { console.log(loginInput) }}>Submit</button>
+                    <button type="button" className="btn btn-primary" onClick={(e) => { console.log(loginInput) }}>Submit</button>
                 </form>
             </div>
 

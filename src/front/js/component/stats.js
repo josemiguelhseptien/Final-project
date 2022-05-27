@@ -10,9 +10,9 @@ export const Stats = (props) => {
     const [statsEntry, setStatsEntry] = useState({
         userID: store.accountUser.id,
         dateEntered: "",
-        scheduled: null,
-        completed: null,
-        canceled: null,
+        scheduled: 0,
+        completed: 0,
+        canceled: 0,
     })
 
     const [scheduledAppts, setScheduledAppts] = useState(0)

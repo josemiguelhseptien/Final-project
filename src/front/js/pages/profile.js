@@ -82,57 +82,57 @@ export const Profile = props => {
                                             </div>*/}
                                             <div>
                                                 <div
-                                                    class="modal fade"
+                                                    className="modal fade"
                                                     id="exampleModal"
                                                     tabindex="-1"
                                                     aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    <div className="modal-dialog">
+                                                        <div className="modal-content">
+                                                            <div className="modal-header">
+                                                                <h5 className="modal-title" id="exampleModalLabel">
                                                                     Send my contact info
                                                                 </h5>
                                                                 <button
                                                                     type="button"
-                                                                    class="btn-close"
+                                                                    className="btn-close"
                                                                     data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
+                                                            <div className="modal-body">
                                                                 <form>
-                                                                    <div class="mb-3">
+                                                                    <div className="mb-3">
                                                                         <label
                                                                             for="recipient-name"
-                                                                            class="col-form-label">
+                                                                            className="col-form-label">
                                                                             Enter Email:
                                                                         </label>
                                                                         <input
                                                                             type="text"
-                                                                            class="form-control"
+                                                                            className="form-control"
                                                                             id="recipient-name"
                                                                         />
                                                                     </div>
-                                                                    <div class="mb-3">
+                                                                    <div className="mb-3">
                                                                         <label
                                                                             for="message-text"
-                                                                            class="col-form-label">
+                                                                            className="col-form-label">
                                                                             Enter Phone number:
                                                                         </label>
                                                                         <textarea
-                                                                            class="form-control"
+                                                                            className="form-control"
                                                                             id="message-text"></textarea>
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="modal-footer">
+                                                            <div className="modal-footer">
                                                                 <button
                                                                     type="button"
-                                                                    class="btn btn-secondary"
+                                                                    className="btn btn-secondary"
                                                                     data-bs-dismiss="modal">
                                                                     Close
                                                                 </button>
-                                                                <button type="button" class="btn btn-primary">
+                                                                <button type="button" className="btn btn-primary">
                                                                     Send message
                                                                 </button>
                                                             </div>

@@ -5,13 +5,14 @@ import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
 import { Money } from "./../component/money";
 import { Stats } from "./../component/stats";
+import { CompletedAppointments } from "../component/completedAppointments";
 
 
 export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("stats")
+    const [viewType, setViewType] = useState("calendar")
 
 
     return (
@@ -107,7 +108,7 @@ export const Dashboard = props => {
                                 Appointments
                             </div>
                             <div>
-                                <CompletedAppointments />
+                                {<CompletedAppointments />}
                             </div>
                         </div>
                     ) : (null)}

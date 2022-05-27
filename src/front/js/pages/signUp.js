@@ -8,7 +8,7 @@ export const SignUp = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [inputField, setInputField] = useState({
-        id: "2",
+        id: "4",
         name: '',
         email: '',
         password: '',
