@@ -66,8 +66,10 @@ export const Stats = (props) => {
                     </div>
                     <button type="submit" className="btn btn-primary"
                         onClick={(e) => {
-                            actions.addUserStats(statsEntry), setScheduledAppts(actions.displayTotalScheduled()),
-                                setCompletedAppts(actions.displayTotalCompleted()), setCanceledAppts(actions.displayTotalCanceled())
+                            actions.addUserStats(statsEntry);
+                            setScheduledAppts(actions.displayTotalScheduled());
+                            setCompletedAppts(actions.displayTotalCompleted());
+                            setCanceledAppts(actions.displayTotalCanceled())
                         }}
                     >Submit</button>
                 </form>
