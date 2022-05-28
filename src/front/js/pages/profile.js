@@ -59,109 +59,100 @@ export const Profile = props => {
                     <div className="availability">availability</div>
                     <div>M-F 9-5</div>
                 </div>
-                {userType == "professional" ? (
-                    <div>
-                        {/*------------------ Pro user modal-------------------------------- */}
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Edit profile
-                        </button>
-                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div className="modal-body">
-                                        <div>
-                                            {/*<div>
-                                                <label htmlFor="exampleFormControlFile1">Profile picture</label>
+                <div>
+                    {/*------------------ Pro user modal-------------------------------- */}
+                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Contact me
+                    </button>
+                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div>
+                                        {/*<div>
+                                                <label htmlhtmlFor="exampleFormControlFile1">Profile picture</label>
                                                 <input type="file" className="form-control-file" id="exampleFormControlFile1" accept=".jpg, .jpeg, .png" onChange={e => {
                                                     setModalInfo({ ...modalInfo, profilePicture: e.target.result });
                                                 }} />
                                             </div>*/}
-                                            <div>
-                                                <div
-                                                    className="modal fade"
-                                                    id="exampleModal"
-                                                    tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel"
-                                                    aria-hidden="true">
-                                                    <div className="modal-dialog">
-                                                        <div className="modal-content">
-                                                            <div className="modal-header">
-                                                                <h5 className="modal-title" id="exampleModalLabel">
-                                                                    Send my contact info
-                                                                </h5>
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn-close"
-                                                                    data-bs-dismiss="modal"
-                                                                    aria-label="Close"></button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                <form>
-                                                                    <div className="mb-3">
-                                                                        <label
-                                                                            for="recipient-name"
-                                                                            className="col-form-label">
-                                                                            Enter Email:
-                                                                        </label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            id="recipient-name"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="mb-3">
-                                                                        <label
-                                                                            for="message-text"
-                                                                            className="col-form-label">
-                                                                            Enter Phone number:
-                                                                        </label>
-                                                                        <textarea
-                                                                            className="form-control"
-                                                                            id="message-text"></textarea>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                                <button type="button" className="btn btn-primary">
-                                                                    Send message
-                                                                </button>
-                                                            </div>
+                                        <div>
+                                            <div
+                                                className="modal fade"
+                                                id="exampleModal"
+                                                tabIndex="-1"
+                                                aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div className="modal-dialog">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <h5 className="modal-title" id="exampleModalLabel">
+                                                                Send my contact info
+                                                            </h5>
+                                                            <button
+                                                                type="button"
+                                                                className="btn-close"
+                                                                data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            <form>
+                                                                <div className="mb-3">
+                                                                    <label
+                                                                        htmlFor="recipient-name"
+                                                                        className="col-form-label">
+                                                                        Enter Email:
+                                                                    </label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        id="recipient-name"
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3">
+                                                                    <label
+                                                                        htmlFor="message-text"
+                                                                        className="col-form-label">
+                                                                        Enter Phone number:
+                                                                    </label>
+                                                                    <textarea
+                                                                        className="form-control"
+                                                                        id="message-text"></textarea>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div className="modal-footer">
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="button" className="btn btn-primary">
+                                                                Send message
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div>Services</div>
-                                            <div>availability</div>
-                                        </div>
                                     </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
+                                    <div>
+                                        <div>Services</div>
+                                        <div>availability</div>
                                     </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                ) : (
-                    <div>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Contact me
-                        </button>
-                    </div>
-                )}
+                </div>
             </div>
         </div>
     );

@@ -1,16 +1,26 @@
 import { element } from "prop-types";
+import { findDOMNode } from "react-dom";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      clientUser: [],
+      clientUser: [
+        {
+          name: "John Doe",
+          phone: "31545613584",
+          email: "1234",
+          password: "jhjk;jfajoi;",
+          zip_code: "12345",
+        }
+
+      ],
       paidCalendarEntries: [],
       demo: [],
       loggedUser: {
-        id: "2",
-        password: "123",
-        email: "Someemail@fcac",
+        id: "",
+        password: "",
+        email: "",
       },
       calendarEntries: [
         {
@@ -57,9 +67,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
-          password: "123",
+          password: "321",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "321",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -146,7 +156,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let filterUser = store.accountUser.filter(element => {
           return element.id != modalInfo.id
         })
-        filterUser.push(modalInfo)
+        filterUser.push(filterUser)
         setStore({ accountUser: filterUser, modalInfo });
         console.log(filterUser)
       },
@@ -198,7 +208,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         money.forEach(element => {
           totalOwed += parseInt(element.owed);
         });
-
         return totalOwed;
       },
 
@@ -209,9 +218,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         money.forEach(element => {
           totalPaid += parseInt(element.paid);
         });
-
         return totalPaid;
-
       },
 
       filterCalendarEntries: () => {
@@ -222,7 +229,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.services.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -233,7 +239,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().nameInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.name.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -257,7 +262,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().zip_codeInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.zip_code.includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -285,25 +289,44 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
       },
 
-
-
-      changeColor: (index, color) => {
-        //get the store
+      loginUser: (loginInput) => {
         const store = getStore();
+        let arr = [];
+        if (loginInput.userType == "professional") {
+          store.accountUser.filter((element) => {
+            element.email != loginInput.email
+            arr.push(element)
+          })
+        } else {
+          store.clientUser.filter((element) => {
+            element.email != loginInput.email
+            arr.push(element)
+          })
+        }
+        console.log(arr[0])
+        setStore({ loggedUser: arr[0] });
+      }
+    },
 
-        //   //we have to loop the entire demo array to look for the respective index
-        //   //and change its color
-        //   const demo = store.demo.map((elm, i) => {
-        //     if (i === index) elm.background = color;
-        //     return elm;
-        //   });
 
-        //   //reset the global store
-        //   setStore({ demo: demo });
-      },
 
-    }
-  };
-}
+    changeColor: (index, color) => {
+      //get the store
+      const store = getStore();
+
+      //   //we have to loop the entire demo array to look for the respective index
+      //   //and change its color
+      //   const demo = store.demo.map((elm, i) => {
+      //     if (i === index) elm.background = color;
+      //     return elm;
+      //   });
+
+      //   //reset the global store
+      //   setStore({ demo: demo });
+    },
+
+  }
+};
+
 
 export default getState;

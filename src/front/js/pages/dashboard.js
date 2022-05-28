@@ -12,7 +12,7 @@ export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("calendar")
+    const [viewType, setViewType] = useState("appointments")
 
 
     return (
