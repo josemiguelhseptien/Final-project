@@ -8,7 +8,7 @@ export const Account = props => {
     const params = useParams();
 
     let accountUser = store.accountUser.find(element => {
-        return element.id == props.match.params.id;
+        return element.id != store.loggedUser.id;
     });
     const [userType, setuserType] = useState("professional")
 
@@ -73,11 +73,6 @@ export const Account = props => {
                     <div>M-F 9-5</div>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Contact me
-                    </button>
-                </div>
-                <div>
                     {/*------------------ Pro user modal-------------------------------- */}
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Edit profile
@@ -125,10 +120,8 @@ export const Account = props => {
                                         <div>availability</div>
                                     </div>
                                 </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
-                                </div>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                             </div>
                         </div>
                     </div>

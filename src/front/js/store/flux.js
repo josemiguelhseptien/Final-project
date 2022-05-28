@@ -9,19 +9,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           name: "John Doe",
           phone: "31545613584",
-          email: "1234",
+          email: "4@",
           password: "jhjk;jfajoi;",
           zip_code: "12345",
         }
-
       ],
       paidCalendarEntries: [],
+      cancelledCalendarEntries: [],
       demo: [],
-      loggedUser: {
+      loggedUser: [{
         id: "",
         password: "",
         email: "",
-      },
+      }],
       calendarEntries: [
         {
           text: `Booking`,
@@ -67,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
-          password: "321",
+          password: "2@",
           phone: "4896415154",
           email: "321",
           background: "",
@@ -94,7 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: "Third",
           password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "3@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -295,16 +295,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (loginInput.userType == "professional") {
           store.accountUser.filter((element) => {
             element.email != loginInput.email
-            arr.push(element)
+            arr[0] = element
           })
-        } else {
+        } else if (loginInput.userType == "client") {
           store.clientUser.filter((element) => {
             element.email != loginInput.email
-            arr.push(element)
+            arr[0] = element
           })
         }
-        console.log(arr[0])
         setStore({ loggedUser: arr[0] });
+        console.log(store.loggedUser.id)
       }
     },
 

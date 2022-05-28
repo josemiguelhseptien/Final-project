@@ -19,33 +19,26 @@ export const Dashboard = props => {
         <div className="container-fluid">
             {profileType == "professional" ? (
                 <div>
-                    <p>
-                        <button className="btn btn-secondary-outline mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                            Menu
-                        </button>
-                    </p>
                     <div className="d-inline-flex">
-                        <div className="collapse collapse-horizontal" id="collapseWidthExample">
-                            <div className="card card-body justify-content-center" style={{ width: "50px", minHeight: "80vh" }}>
-                                <ul className="nav flex-column">
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("appointments")}>Appointments</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("calendar")}>Calendar</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("money")}>Money</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("stats")}>Stats</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("clients")}>Clients</span>
-                                    </li>
+                        <div className="card card-body justify-content-center" style={{ width: "100px", minHeight: "80vh" }}>
+                            <ul className="nav flex-column">
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("appointments")}>Appointments</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("calendar")}>Calendar</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("money")}>Money</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("stats")}>Stats</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("clients")}>Clients</span>
+                                </li>
 
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                     {viewType == "calendar" ? (

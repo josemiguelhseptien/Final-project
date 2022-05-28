@@ -8,16 +8,15 @@ export const CompletedAppointments = () => {
     const [inputValue, setInputValue] = useState("");
     const [appointments, setAppointment] = useState(store.calendarEntries);
 
-
     let paidAppointments = store.paidCalendarEntries;
+    let cancelledCalendarEntries = store.cancelledCalendarEntries;
 
     function paidAppointmentFunction(appt, index) {
         paidAppointments.push(appt)
-        return console.log(paidAppointments)
     }
-    console.log(typeof (store.calendarEntries[0].startDate.toString()))
-
-
+    function cancelAppointmentFunction(appt, index) {
+        cancelledCalendarEntries.push(appt)
+    }
 
     let mappedAppointments = appointments.map((appt, index) => {
         return (
@@ -28,7 +27,9 @@ export const CompletedAppointments = () => {
                     <div>Start time : {appt.startDate.toString()}</div>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-outline-success" onClick={(e) => { paidAppointmentFunction(appt, index), removeAppt(appt, index) }}><i className="fas fa-check"></i> </button>
+                    <button type="button" className="btn btn-outline-success" onClick={(e) => { paidAppointmentFunction(appt, index), removeAppt(appt, index) }}>paid </button>
+                    <button type="button" className="btn btn-outline-secondary">completed </button>
+                    <button type="button" className="btn btn-outline-danger" onClick={(e) => { cancelAppointmentFunction(appt, index), removeAppt(appt, index) }}>cancelled </button>
                 </div>
             </li>
         );
@@ -43,6 +44,19 @@ export const CompletedAppointments = () => {
                     <div>Start time : {appt.startDate.toString()}</div>
                 </div>
                 <div><button type="button" className="btn btn-success" disabled>Paid!</button></div>
+            </li>
+        );
+    });
+
+    let mappedCancelledAppointments = cancelledCalendarEntries.map((appt, index) => {
+        return (
+            <li className="list-group-item d-flex justify-content-between" key={index}>
+                <div>
+                    <div>{appt.text} </div>
+                    <div>{appt.description} </div>
+                    <div>Start time : {appt.startDate.toString()}</div>
+                </div>
+                <div><button type="button" className="btn btn-danger" disabled>cancelled</button></div>
             </li>
         );
     });
@@ -65,6 +79,8 @@ export const CompletedAppointments = () => {
         setAppointment(filteredArray);
     }
 
+    console.log(store.calendarEntries)
+
     return (
         <div className="container-fluid">
             <br></br>
@@ -75,13 +91,18 @@ export const CompletedAppointments = () => {
                 </div>
                 <br></br>
                 <div className="inputDiv">
-                    <div><h3>Completed appointments</h3></div>
+                    <div><h3>Scheduled appointments</h3></div>
                     <ul className="list-group">{mappedAppointments.length == 0 ? (<div className="list-group-item"><span>There are no pending appointments</span></div>) : mappedAppointments}</ul>
                 </div>
                 <br></br>
                 <div className="inputDiv">
                     <div><h3>Paid appointments</h3></div>
                     <ul className="list-group">{mappedPaidAppointments}</ul>
+                </div>
+                <br></br>
+                <div className="inputDiv">
+                    <div><h3>Cancelled appointments</h3></div>
+                    <ul className="list-group">{mappedCancelledAppointments}</ul>
                 </div>
             </div>
         </div>

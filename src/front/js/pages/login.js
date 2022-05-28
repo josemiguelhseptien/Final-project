@@ -7,6 +7,7 @@ import "../../styles/home.css";
 export const Login = props => {
     const { store, actions } = useContext(Context);
     const [loginInput, setLoginInput] = useState({
+        id: "",
         email: "",
         password: "",
         userType: "client"
