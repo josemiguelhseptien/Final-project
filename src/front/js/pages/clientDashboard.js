@@ -8,19 +8,18 @@ import { Stats } from "./../component/stats";
 import { CompletedAppointments } from "../component/completedAppointments";
 
 
-export const Dashboard = props => {
+export const ClientDashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-    const [profileType, setProfileType] = useState("professional")
+    const [profileType, setProfileType] = useState("client")
     const [viewType, setViewType] = useState("clients")
 
 
     return (
         <div className="container-fluid">
-
             <div className="d-flex">
                 <div className="d-inline-flex">
-                    <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
+                    <div className="card card-body justify-content-center" style={{ width: "100px", minHeight: "80vh" }}>
                         <ul className="nav flex-column">
                             <li className="nav-item py-3">
                                 <span onClick={() => setViewType("appointments")}>Appointments</span>
@@ -29,15 +28,8 @@ export const Dashboard = props => {
                                 <span onClick={() => setViewType("calendar")}>Calendar</span>
                             </li>
                             <li className="nav-item py-3">
-                                <span onClick={() => setViewType("money")}>Money</span>
+                                <span onClick={() => setViewType("Providers")}>Providers</span>
                             </li>
-                            <li className="nav-item py-3">
-                                <span onClick={() => setViewType("stats")}>Stats</span>
-                            </li>
-                            <li className="nav-item py-3">
-                                <span onClick={() => setViewType("clients")}>Clients</span>
-                            </li>
-
                         </ul>
                     </div>
                 </div>
@@ -110,6 +102,6 @@ export const Dashboard = props => {
     )
 }
 
-Dashboard.propTypes = {
+ClientDashboard.propTypes = {
     match: PropTypes.object,
 };

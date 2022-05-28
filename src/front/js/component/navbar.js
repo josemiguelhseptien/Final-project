@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
+  let loggedUserId = store.loggedUser.id
 
   return (
     <nav className="navbar navbar-light bg-light">
@@ -12,25 +13,23 @@ export const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand mb-0 h1">PayMeApp</span>
         </Link>
-        {store.loggedUser.id != "" ? (
-          <div className="ml-auto">
-            <Link to="/dashboard">
-              <button className="btn btn-primary mx-2">Dashboard</button>
-            </Link>
-            <Link to="/marketplace">
-              <button className="btn btn-primary mx-2">Marketplace</button>
-            </Link>
-            <Link to={{ pathname: `/account/${store.loggedUser.id}` }}>
-              <button className="btn btn-primary mx-2">Account</button>
-            </Link>
-          </div>
-        ) : (
+        {loggedUserId == "" ? (
           <div className="ml-auto">
             <Link to="/login">
               <button className="btn btn-primary mx-2">Log In</button>
             </Link>
             <Link to="/signup">
               <button className="btn btn-primary mx-2">Sign Up</button>
+            </Link>
+          </div>
+        ) : (
+          <div className="ml-auto">
+            {store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)}
+            <Link to="/marketplace">
+              <button className="btn btn-primary mx-2">Marketplace</button>
+            </Link>
+            <Link to={{ pathname: `/account/${loggedUserId}` }}>
+              <button className="btn btn-primary mx-2">Account</button>
             </Link>
           </div>
         )}

@@ -16,7 +16,8 @@ export const SignUp = props => {
         zip_code: '',
         services: "",
         prices: 0,
-        format: ""
+        format: "",
+        userType: "client"
     })
 
     const [userType, setUserType] = useState("client");
@@ -43,10 +44,10 @@ export const SignUp = props => {
             <div className="center">
                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className={userType == "client" ? "nav-link active" : "nav-link"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client") }}>Client</button>
+                        <button className={userType == "client" ? "nav-link active" : "nav-link"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client"), clientUser() }}>Client</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className={userType == "professional" ? "nav-link active" : "nav-link"} id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={(e) => { setUserType("professional") }}>Professional</button>
+                        <button className={userType == "professional" ? "nav-link active" : "nav-link"} id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={(e) => { setUserType("professional"), proUser() }}>Professional</button>
                     </li>
                 </ul>
             </div>

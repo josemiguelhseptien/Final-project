@@ -7,43 +7,45 @@ export const Account = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
 
-    let accountUser = store.accountUser.find(element => {
-        return element.id != store.loggedUser.id;
-    });
+
     const [userType, setuserType] = useState("professional")
 
     const [modalInfo, setModalInfo] = useState({
-        id: accountUser.id,
-        name: accountUser.name,
-        phone: accountUser.phone,
-        email: accountUser.email,
-        background: accountUser.background,
-        about: accountUser.about,
-        services: accountUser.services,
-        availability: accountUser.availability,
-        userType: accountUser.userType,
-        prices: accountUser.prices
+        id: store.loggedUser.id,
+        name: store.loggedUser.name,
+        phone: store.loggedUser.phone,
+        email: store.loggedUser.email,
+        background: store.loggedUser.background,
+        about: store.loggedUser.about,
+        services: store.loggedUser.services,
+        availability: store.loggedUser.availability,
+        userType: store.loggedUser.userType,
+        prices: store.loggedUser.prices
     })
 
     const userInfo = {
-        id: accountUser.id,
-        profilePicture: accountUser.profilePicture,
-        name: accountUser.name,
-        phone: accountUser.phone,
-        email: accountUser.email,
-        background: accountUser.background,
-        about: accountUser.about,
-        services: accountUser.services,
-        availability: accountUser.availability,
-        userType: accountUser.userType
+        id: store.loggedUser.id,
+        profilePicture: store.loggedUser.profilePicture,
+        name: store.loggedUser.name,
+        phone: store.loggedUser.phone,
+        email: store.loggedUser.email,
+        background: store.loggedUser.background,
+        about: store.loggedUser.about,
+        services: store.loggedUser.services,
+        availability: store.loggedUser.availability,
+        userType: store.loggedUser.userType
     }
+
+    const [showModal, setShowModal] = useState(false)
+
+
 
     return (
 
         <div className="container">
             {/*------------------ Pro user view-------------------------------- */}
 
-            <div className="container-box">
+            <div className="container-box" >
                 <div className="userInfo">
                     <div className="userCard d-flex">
                         <img className="img-fluid profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
@@ -77,7 +79,7 @@ export const Account = props => {
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Edit profile
                     </button>
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" show={showModal} style={{ display: showModal ? "inline-block" : "none" }} tabIndex="-1" role="dialog">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">

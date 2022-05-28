@@ -6,24 +6,22 @@ import { Context } from "../store/appContext";
 export const Profile = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-
-
-    const [userType, setuserType] = useState("professional")
-    const [accountUser, setAccountUser] = useState(store.accountUser[0])
+    let professionalCard = store.accountUser.find((element) => {
+        return element.id == props.match.params.id
+    })
 
     const userInfo = {
-        id: "1",
-        profilePicture: accountUser.profilePicture,
-        name: accountUser.name,
-        phone: accountUser.phone,
-        email: accountUser.email,
-        background: accountUser.background,
-        about: accountUser.about,
-        services: accountUser.services,
-        availability: accountUser.availability,
-        userType: accountUser.userType
+        id: professionalCard.id,
+        profilePicture: professionalCard.profilePicture,
+        name: professionalCard.name,
+        phone: professionalCard.phone,
+        email: professionalCard.email,
+        background: professionalCard.background,
+        about: professionalCard.about,
+        services: professionalCard.services,
+        availability: professionalCard.availability,
+        userType: professionalCard.userType
     }
-
     return (
 
         <div className="container">

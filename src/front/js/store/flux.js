@@ -7,21 +7,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       message: null,
       clientUser: [
         {
+          id: "4",
           name: "John Doe",
           phone: "31545613584",
           email: "4@",
-          password: "jhjk;jfajoi;",
+          password: "123",
           zip_code: "12345",
         }
       ],
       paidCalendarEntries: [],
       cancelledCalendarEntries: [],
       demo: [],
-      loggedUser: [{
-        id: "",
-        password: "",
-        email: "",
-      }],
+      loggedUser: [{ id: "" }],
       calendarEntries: [
         {
           text: `Booking`,
@@ -44,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: "FIRST",
           password: "123",
           phone: "4896415154",
-          email: "123",
+          email: "1@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -85,9 +82,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
-          password: "2@",
+          password: "123",
           phone: "4896415154",
-          email: "321",
+          email: "2@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -266,8 +263,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       addUser: (formData) => {
         const userArr = getStore().accountUser;
+        let newId = getStore().accountUser.length + 1000000
+        formData.id = newId.toString();
         userArr.push(formData)
         setStore({ accountUser: userArr })
+        console.log(userArr)
+        const store = getStore();
+        let findUser = store.accountUser.find((element) => { return element.email == formData.email })
+        setStore({ loggedUser: findUser });
+        console.log(store.loggedUser)
       },
 
       editUserInfo: (modalInfo) => {
@@ -293,8 +297,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ calendarEntries: dataArray });
       },
 
-      filterCalendarEntries: () => {
-        let store = getStore();
+      filterCalendarEntries: (appt, i) => {
+        const store = getStore();
+        let filteredArray = store.calendarEntries.filter((element, index) => {
+          element[index] != appt[i]
+        });
+        console.log(filteredArray)
       },
 
       typeFunction: (targetValue) => {
@@ -355,25 +363,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) => { console.log("Error loading message from backend", error) }
           );
       },
+      logout: () => {
+        setStore({ loggedUser: { id: "" } });
+      },
 
-      loginUser: (loginInput) => {
+      loginClient: (loginInput) => {
         const store = getStore();
-        let arr = [];
-        if (loginInput.userType == "professional") {
-          store.accountUser.filter((element) => {
-            element.email != loginInput.email
-            arr[0] = element
-          })
-        } else if (loginInput.userType == "client") {
-          store.clientUser.filter((element) => {
-            element.email != loginInput.email
-            arr[0] = element
-          })
-        }
-        setStore({ loggedUser: arr[0] });
-        console.log(store.loggedUser.id)
-      }
+        let findUser = store.clientUser.find((element) => { return element.email == loginInput.email })
+        if (loginInput.password == findUser.password) setStore({ loggedUser: findUser });
+
+      },
+      loginProfessional: (loginInput) => {
+        const store = getStore();
+        let findUser = store.accountUser.find((element) => { return element.email == loginInput.email })
+        if (loginInput.password == findUser.password) setStore({ loggedUser: findUser });
+      },
     },
+
 
   }
 
