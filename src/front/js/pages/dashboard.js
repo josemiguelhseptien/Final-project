@@ -11,7 +11,7 @@ export const Dashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("stats")
+    const [viewType, setViewType] = useState("clients")
 
 
     return (
@@ -24,27 +24,25 @@ export const Dashboard = props => {
                         </button>
                     </p>
                     <div className="d-inline-flex">
-                        <div className="collapse collapse-horizontal" id="collapseWidthExample">
-                            <div className="card card-body justify-content-center" style={{ width: "50px", minHeight: "80vh" }}>
-                                <ul className="nav flex-column">
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("appointments")}>Appointments</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("calendar")}>Calendar</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("money")}>Money</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("stats")}>Stats</span>
-                                    </li>
-                                    <li className="nav-item py-3">
-                                        <span onClick={() => setViewType("clients")}>Clients</span>
-                                    </li>
+                        <div className="card card-body justify-content-center" style={{ width: "50px", minHeight: "80vh" }}>
+                            <ul className="nav flex-column">
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("appointments")}>Appointments</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("calendar")}>Calendar</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("money")}>Money</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("stats")}>Stats</span>
+                                </li>
+                                <li className="nav-item py-3">
+                                    <span onClick={() => setViewType("clients")}>Clients</span>
+                                </li>
 
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                     {viewType == "calendar" ? (
