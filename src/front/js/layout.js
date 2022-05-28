@@ -33,12 +33,12 @@ const Layout = () => {
           <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/account/:id" component={Account} />
+            <Route exact path="/account/1" component={Account} />
             <Route exact path="/marketplace" component={MarketPlace} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/ca" component={CompletedAppointments} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/demo">
               <Demo />
             </Route>

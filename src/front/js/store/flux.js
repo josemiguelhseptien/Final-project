@@ -1,19 +1,34 @@
 import { element } from "prop-types";
+import { findDOMNode } from "react-dom";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      filteredCalendar: [],
+      clientUser: [
+        {
+          name: "John Doe",
+          phone: "31545613584",
+          email: "4@",
+          password: "jhjk;jfajoi;",
+          zip_code: "12345",
+        }
+      ],
       paidCalendarEntries: [],
+      cancelledCalendarEntries: [],
       demo: [],
-      user: "username",
+      loggedUser: [{
+        id: "",
+        password: "",
+        email: "",
+      }],
       calendarEntries: [
         {
           text: `Booking`,
           startDate: new Date("2022-04-15T16:30:00.000Z"),
           endDate: new Date("2022-04-15T18:30:00.000Z"),
           allDay: true,
+          description: "Lorem ipsum fake!",
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
       ],
@@ -27,8 +42,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "1",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "FIRST",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "123",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -69,8 +85,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
+          password: "2@",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "321",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -111,8 +128,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "3",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Third",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "3@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -164,7 +182,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           paid: moneyEntry.paid,
           owed: moneyEntry.owed,
         });
-
         setStore({ accountUser: localUser });
       },
 
@@ -186,7 +203,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         money.forEach(element => {
           totalOwed += parseInt(element.owed);
         });
-
         return totalOwed;
       },
 
@@ -197,7 +213,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         money.forEach(element => {
           totalPaid += parseInt(element.paid);
         });
-
         return totalPaid;
       },
 
@@ -287,7 +302,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.services.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -298,7 +312,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().nameInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.name.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -321,7 +334,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().zip_codeInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.zip_code.includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -344,13 +356,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
       },
 
+      loginUser: (loginInput) => {
+        const store = getStore();
+        let arr = [];
+        if (loginInput.userType == "professional") {
+          store.accountUser.filter((element) => {
+            element.email != loginInput.email
+            arr[0] = element
+          })
+        } else if (loginInput.userType == "client") {
+          store.clientUser.filter((element) => {
+            element.email != loginInput.email
+            arr[0] = element
+          })
+        }
+        setStore({ loggedUser: arr[0] });
+        console.log(store.loggedUser.id)
+      }
+    },
 
+  }
 
-
-
-    }
-  };
 }
 
 export default getState;
-

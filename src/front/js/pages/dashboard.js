@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
 import { Money } from "./../component/money";
 import { Stats } from "./../component/stats";
+import { CompletedAppointments } from "../component/completedAppointments";
 
 export const Dashboard = (props) => {
   const { store, actions } = useContext(Context);
