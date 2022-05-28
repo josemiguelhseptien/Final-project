@@ -28,6 +28,9 @@ export const Dashboard = props => {
                             <div className="card card-body justify-content-center" style={{ width: "50px", minHeight: "80vh" }}>
                                 <ul className="nav flex-column">
                                     <li className="nav-item py-3">
+                                        <span onClick={() => setViewType("appointments")}>Appointments</span>
+                                    </li>
+                                    <li className="nav-item py-3">
                                         <span onClick={() => setViewType("calendar")}>Calendar</span>
                                     </li>
                                     <li className="nav-item py-3">
@@ -39,6 +42,7 @@ export const Dashboard = props => {
                                     <li className="nav-item py-3">
                                         <span onClick={() => setViewType("clients")}>Clients</span>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -77,7 +81,7 @@ export const Dashboard = props => {
                             </div>
                             <div>
                                 <h3>API Chart</h3>
-                                <div>bar and line graph: scheduled-bar, completed & canceled line for the last 30 days</div>
+                                <div>bar and line graph: scheduled-bar, completed and canceled line for the last 30 days</div>
                             </div>
                         </div>
                     ) : (null)}
@@ -94,6 +98,13 @@ export const Dashboard = props => {
                             <div>
                                 <h3>Clients</h3>
                                 <div>Card Row</div>
+                            </div>
+                        </div>
+                    ) : (null)}
+                    {viewType == "appointments" ? (
+                        <div className="d-inline-block mx-5">
+                            <div>
+                                Appointments
                             </div>
                         </div>
                     ) : (null)}
@@ -114,6 +125,7 @@ export const Dashboard = props => {
                     </div>
                 </div>
             )}
+
         </div>
     )
 }

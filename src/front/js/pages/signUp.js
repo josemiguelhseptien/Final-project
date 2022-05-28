@@ -15,7 +15,7 @@ export const SignUp = props => {
         phone: '',
         zip_code: '',
         services: "",
-        price: 0,
+        prices: 0,
         userType: "client",
         format: ""
     })
@@ -97,8 +97,8 @@ export const SignUp = props => {
                     </div>
                     <br></br>
                     <div className="mb-3 d-flex">
-                        <input type="text" placeholder="Services" className="form-control" name="services" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.service} />
-                        <input type="number" placeholder="Price" className="form-control" name="price" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.price} />
+                        <input type="text" placeholder="Services" className="form-control" name="services" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.services} />
+                        <input type="number" placeholder="Prices" className="form-control" name="prices" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.prices} />
                     </div>
                 </div>
                 <div className="center">

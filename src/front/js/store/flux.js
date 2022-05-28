@@ -4,6 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      filteredCalendar: [],
+      paidCalendarEntries: [],
       demo: [],
       user: "username",
       calendarEntries: [
@@ -42,25 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          },
-          moneyData: [
-            {
-              userID: 1,
-              dateEntered: "",
-              earned: 1,
-              paid: 2,
-              owed: 3,
-            },
-          ],
-          statsData: [
-            {
-              userID: 1,
-              dateEntered: "",
-              scheduled: 3,
-              completed: 2,
-              canceled: 1,
-            }
-          ]
+          }
         },
 
         {
@@ -84,25 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          },
-          moneyData: [
-            {
-              userID: 2,
-              dateEntered: "",
-              earned: 1,
-              paid: 2,
-              owed: 3,
-            },
-          ],
-          statsData: [
-            {
-              userID: 2,
-              dateEntered: "",
-              scheduled: 3,
-              completed: 2,
-              canceled: 1,
-            }
-          ]
+          }
         },
 
         {
@@ -126,36 +92,44 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          },
-          moneyData: [
-            {
-              userID: 3,
-              dateEntered: "",
-              earned: 1,
-              paid: 2,
-              owed: 3,
-            },
-          ],
-          statsData: [
-            {
-              userID: 3,
-              dateEntered: "",
-              scheduled: 3,
-              completed: 2,
-              canceled: 1,
-            }
-          ]
+          }
         }
 
       ],
-
+      moneyData: [
+        {
+          userID: "",
+          dateEntered: "",
+          earned: 1,
+          paid: 2,
+          owed: 3,
+        }
+      ]
     },
     actions: {
       // Use getActions to call a function within a fuction
-      addUserIncome: (moneyEntry) => {
-        const localUser = getStore().accountUser;
+      addUser: (formData) => {
+        const userArr = getStore().accountUser;
+        userArr.push(formData)
+        setStore({ accountUser: userArr })
+      },
 
-        localUser[0].moneyData.push({
+      editUserInfo: (modalInfo) => {
+        const store = getStore();
+        console.log(modalInfo)
+        let filterUser = store.accountUser.filter(element => {
+          return element.id != modalInfo.id
+        })
+        filterUser.push(modalInfo)
+        setStore({ accountUser: filterUser, modalInfo });
+        console.log(filterUser)
+      },
+
+      addAppt: () => {
+        let dataArray = getStore().calendarEntries;
+
+
+        dataArray.push({
           userID: moneyEntry.userID,
           dateEntered: moneyEntry.dateEntered,
           earned: moneyEntry.earned,
@@ -163,11 +137,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           owed: moneyEntry.owed,
         });
 
-        setStore({ accountUser: localUser });
+        setStore({ calendarEntries: dataArray });
       },
 
+      addUserIncome: (moneyEntry) => {
+        let dataArray = getStore().moneyData;
+      },
+
+
       displayTotalEarned: () => {
-        const money = getStore().accountUser[0].moneyData;
+        const money = getStore().moneyData;
         let totalEarned = 0;
 
         money.forEach(element => {
@@ -178,7 +157,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       displayTotalOwed: () => {
-        const money = getStore().accountUser[0].moneyData;
+        const money = getStore().moneyData;
         let totalOwed = 0;
 
         money.forEach(element => {
@@ -189,7 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       displayTotalPaid: () => {
-        const money = getStore().accountUser[0].moneyData;
+        const money = getStore().moneyData;
         let totalPaid = 0;
 
         money.forEach(element => {
@@ -197,85 +176,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
 
         return totalPaid;
+
       },
 
-      addUserStats: (statsEntry) => {
-        const localUser = getStore().accountUser;
-
-        localUser[0].statsData.push({
-          userID: statsEntry.userID,
-          dateEntered: statsEntry.dateEntered,
-          earned: statsEntry.earned,
-          paid: statsEntry.paid,
-          owed: statsEntry.owed,
-        });
-
-        setStore({ accountUser: localUser });
+      filterCalendarEntries: () => {
+        let store = getStore();
       },
-
-      displayTotalScheduled: () => {
-        const stats = getStore().accountUser[0].statsData;
-        let totalScheduled = 0;
-
-        stats.forEach(element => {
-          totalScheduled += parseInt(element.scheduled);
-        });
-
-        return totalScheduled;
-      },
-
-      displayTotalCompleted: () => {
-        const stats = getStore().accountUser[0].statsData;
-        let totalCompleted = 0;
-
-        stats.forEach(element => {
-          totalCompleted += parseInt(element.completed);
-        });
-
-        return totalCompleted;
-      },
-
-      displayTotalCanceled: () => {
-        const stats = getStore().accountUser[0].statsData;
-        let totalCanceled = 0;
-
-        stats.forEach(element => {
-          totalCanceled += parseInt(element.canceled);
-        });
-
-        return totalCanceled;
-      },
-
-      // Use getActions to call a function within a fuction
-      addUser: (formData) => {
-        const userArr = getStore().accountUser;
-        userArr.push(formData)
-        setStore({ accountUser: userArr })
-      },
-
-      editUserInfo: (modalInfo) => {
-        const store = getStore();
-        let filterUser = store.accountUser.filter(element => {
-          element.id != modalInfo.id
-        })
-        filterUser.push(modalInfo)
-        setStore({ accountUser: filterUser, modalInfo });
-      },
-
-      addAppt: () => {
-        let dataArray = getStore().calendarEntries;
-
-        dataArray.push({
-          text: `Booking`,
-          startDate: new Date("2022-04-15T16:30:00.000Z"),
-          endDate: new Date("2022-04-15T18:30:00.000Z"),
-          allDay: false,
-          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
-        });
-
-        setStore({ calendarEntries: dataArray });
-      },
-
       typeFunction: (targetValue) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
@@ -335,7 +241,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
-
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
@@ -347,11 +252,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+      changeColor: (index, color) => {
+        //get the store
+        const store = getStore();
 
-    },
+        //   //we have to loop the entire demo array to look for the respective index
+        //   //and change its color
+        //   const demo = store.demo.map((elm, i) => {
+        //     if (i === index) elm.background = color;
+        //     return elm;
+        //   });
 
-  }
-};
+        //   //reset the global store
+        //   setStore({ demo: demo });
+      },
 
+    }
+  };
+}
 
 export default getState;
