@@ -9,7 +9,6 @@ import { CompletedAppointments } from "../component/completedAppointments";
 
 export const Dashboard = (props) => {
   const { store, actions } = useContext(Context);
-  const params = useParams();
   const [profileType, setProfileType] = useState("professional");
   const [viewType, setViewType] = useState("clients");
 
@@ -17,18 +16,6 @@ export const Dashboard = (props) => {
     <div className="container-fluid">
       {profileType == "professional" ? (
         <div>
-          <p>
-            <button
-              className="btn btn-secondary-outline mt-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWidthExample"
-              aria-expanded="false"
-              aria-controls="collapseWidthExample"
-            >
-              Menu
-            </button>
-          </p>
           <div className="d-flex">
             <div id="leftSidebar" className="d-inline-flex">
               <div
@@ -112,7 +99,8 @@ export const Dashboard = (props) => {
               ) : null}
               {viewType == "appointments" ? (
                 <div className="d-inline-block mx-5">
-                  <div>Appointments</div>
+                  <h3>Appointments</h3>
+                  <div>{<CompletedAppointments />}</div>
                 </div>
               ) : null}
             </div>
