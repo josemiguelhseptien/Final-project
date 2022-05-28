@@ -293,8 +293,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ calendarEntries: dataArray });
       },
 
-      filterCalendarEntries: () => {
-        let store = getStore();
+      filterCalendarEntries: (appt, i) => {
+        const store = getStore();
+        console.log(appt[i])
+        let filteredArray = store.calendarEntries.filter((element) => {
+          element != appt
+          console.log(element)
+        })
+        console.log(filteredArray)
       },
 
       typeFunction: (targetValue) => {

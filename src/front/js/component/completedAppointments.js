@@ -27,9 +27,9 @@ export const CompletedAppointments = () => {
                     <div>Start time : {appt.startDate.toString()}</div>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-outline-success" onClick={(e) => { paidAppointmentFunction(appt, index), removeAppt(appt, index) }}>paid </button>
+                    <button type="button" className="btn btn-outline-success" onClick={(e) => { paidAppointmentFunction(appt, index), actions.filterCalendarEntries(appt, index), removeAppt(appt, index) }}>Paid </button>
                     <button type="button" className="btn btn-outline-secondary">completed </button>
-                    <button type="button" className="btn btn-outline-danger" onClick={(e) => { cancelAppointmentFunction(appt, index), removeAppt(appt, index) }}>cancelled </button>
+                    <button type="button" className="btn btn-outline-danger" onClick={(e) => { cancelAppointmentFunction(appt, index), actions.filterCalendarEntries(appt, index), removeAppt(appt, index) }}>cancelled </button>
                 </div>
             </li>
         );
