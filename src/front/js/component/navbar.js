@@ -7,10 +7,10 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbarb ">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">PayMeApp</span>
+          <img className="cropped" src="https://i.pinimg.com/originals/dd/64/da/dd64da585bc57cb05e5fd4d8ce873f57.png" alt="Italian Trulli" />
         </Link>
         {store.loggedUser.id != "" ? (
           <div className="ml-auto">

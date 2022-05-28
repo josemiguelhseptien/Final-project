@@ -9,11 +9,11 @@ export const LandingPage = props => {
     const [profileType, setProfileType] = useState("professional")
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid backgroundTheme">
             {/* ----------------------------Header w/image---------------------------- */}
             <header>
                 <div className="container my-5">
-                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg colorblue">
                         <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                             <h1 className="display-4 fw-bold lh-1">Book like a pro with Bookt.io</h1>
                             <p className="lead">Book appointments with ease, bookt.io makes booking a breeze.</p>
@@ -30,7 +30,7 @@ export const LandingPage = props => {
                 </div>
             </header>
             {/* ----------------------------About info---------------------------- */}
-            <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center colorred">
                 <div className="col-md-5 p-lg-5 mx-auto my-1">
                     <h1 className="display-4 fw-normal">Make Appointment Setting Easy</h1>
                     <p className="lead fw-normal">If you're tired of the constant back and forth in setting appointments, you need bookt.io.</p>
@@ -52,7 +52,7 @@ export const LandingPage = props => {
                 <div>
                     <hr className="featurette-divider" />
 
-                    <div className="row featurette">
+                    <div className="row featurette colorblue">
                         <div className="col-md-7">
                             <h2 className="featurette-heading fw-normal lh-1">Join the modern age. <span className="text-muted">Using paper is old school.</span></h2>
                             <p className="lead">Nobody wants to look unprofessional flipping through pages of a calendar. Or worse, missing an appointment cause you lost the scrap of paper it was written on.</p>
@@ -65,7 +65,7 @@ export const LandingPage = props => {
 
                     <hr className="featurette-divider" />
                     {/* -------2nd Feature w/ image left--------- */}
-                    <div className="row featurette">
+                    <div className="row featurette colorred">
                         <div className="col-md-7 order-md-2">
                             <h2 className="featurette-heading fw-normal lh-1">Track what's important. <span className="text-muted">Your time & money.</span></h2>
                             <p className="lead">And of course your clients. You can even rate them to keep track.</p>
@@ -78,7 +78,7 @@ export const LandingPage = props => {
 
                     <hr className="featurette-divider" />
                     {/* -------3rd Feature w/ image right--------- */}
-                    <div className="row featurette">
+                    <div className="row featurette colorblue">
                         <div className="col-md-7">
                             <h2 className="featurette-heading fw-normal lh-1">And lastly, get more $. <span className="text-muted">Join the marketplace.</span></h2>
                             <p className="lead">Let clients easily find & book appointments with you.</p>
@@ -136,7 +136,7 @@ export const LandingPage = props => {
                 </div>
             )}
             {/* ----------------------------Call to action---------------------------- */}
-            <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center navbarb">
                 <div className="col-md-5 p-lg-5 mx-auto my-3">
                     <h1 className="display-4 fw-normal">Ready to get started?</h1>
                     <p className="lead fw-normal">Register an account with Bookt today. Who knows, you could be bookt up very soon.</p>
