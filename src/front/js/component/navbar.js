@@ -12,7 +12,7 @@ export const Navbar = () => {
         <Link to="/">
           <img className="cropped" src="https://i.pinimg.com/originals/dd/64/da/dd64da585bc57cb05e5fd4d8ce873f57.png" alt="Italian Trulli" />
         </Link>
-        {store.user ? (
+        {store.loggedUser.id != "" ? (
           <div className="ml-auto">
             <Link to="/dashboard">
               <button className="btn btn-primary mx-2">Dashboard</button>
@@ -20,16 +20,16 @@ export const Navbar = () => {
             <Link to="/marketplace">
               <button className="btn btn-primary mx-2">Marketplace</button>
             </Link>
-            <Link to="/account">
+            <Link to={{ pathname: `/account/${store.loggedUser.id}` }}>
               <button className="btn btn-primary mx-2">Account</button>
             </Link>
           </div>
         ) : (
           <div className="ml-auto">
-            <Link to="/demo">
+            <Link to="/login">
               <button className="btn btn-primary mx-2">Log In</button>
             </Link>
-            <Link to="/demo">
+            <Link to="/signup">
               <button className="btn btn-primary mx-2">Sign Up</button>
             </Link>
           </div>

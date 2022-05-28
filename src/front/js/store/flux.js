@@ -1,19 +1,34 @@
 import { element } from "prop-types";
+import { findDOMNode } from "react-dom";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      filteredCalendar: [],
+      clientUser: [
+        {
+          name: "John Doe",
+          phone: "31545613584",
+          email: "4@",
+          password: "jhjk;jfajoi;",
+          zip_code: "12345",
+        }
+      ],
       paidCalendarEntries: [],
+      cancelledCalendarEntries: [],
       demo: [],
-      user: "username",
+      loggedUser: [{
+        id: "",
+        password: "",
+        email: "",
+      }],
       calendarEntries: [
         {
           text: `Booking`,
           startDate: new Date("2022-04-15T16:30:00.000Z"),
           endDate: new Date("2022-04-15T18:30:00.000Z"),
           allDay: true,
+          description: "Lorem ipsum fake!",
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
       ],
@@ -27,8 +42,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "1",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "FIRST",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "123",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -44,15 +60,34 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 1,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
           id: "2",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
+          password: "2@",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "321",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -68,15 +103,34 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 2,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         },
 
         {
           id: "3",
           profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Third",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "3@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -92,61 +146,47 @@ const getState = ({ getStore, getActions, setStore }) => {
             Friday: "",
             Saturday: "",
             Sunday: "",
-          }
+          },
+          moneyData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              earned: 1,
+              paid: 2,
+              owed: 3,
+            },
+          ],
+          statsData: [
+            {
+              userID: 3,
+              dateEntered: "",
+              scheduled: 3,
+              completed: 2,
+              canceled: 1,
+            }
+          ]
         }
 
       ],
-      moneyData: [
-        {
-          userID: "",
-          dateEntered: "",
-          earned: 1,
-          paid: 2,
-          owed: 3,
-        }
-      ]
+
     },
     actions: {
       // Use getActions to call a function within a fuction
-      addUser: (formData) => {
-        const userArr = getStore().accountUser;
-        userArr.push(formData)
-        setStore({ accountUser: userArr })
-      },
+      addUserIncome: (moneyEntry) => {
+        const localUser = getStore().accountUser;
 
-      editUserInfo: (modalInfo) => {
-        const store = getStore();
-        console.log(modalInfo)
-        let filterUser = store.accountUser.filter(element => {
-          return element.id != modalInfo.id
-        })
-        filterUser.push(modalInfo)
-        setStore({ accountUser: filterUser, modalInfo });
-        console.log(filterUser)
-      },
-
-      addAppt: () => {
-        let dataArray = getStore().calendarEntries;
-
-
-        dataArray.push({
+        localUser[0].moneyData.push({
           userID: moneyEntry.userID,
           dateEntered: moneyEntry.dateEntered,
           earned: moneyEntry.earned,
           paid: moneyEntry.paid,
           owed: moneyEntry.owed,
         });
-
-        setStore({ calendarEntries: dataArray });
+        setStore({ accountUser: localUser });
       },
-
-      addUserIncome: (moneyEntry) => {
-        let dataArray = getStore().moneyData;
-      },
-
 
       displayTotalEarned: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalEarned = 0;
 
         money.forEach(element => {
@@ -157,37 +197,117 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       displayTotalOwed: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalOwed = 0;
 
         money.forEach(element => {
           totalOwed += parseInt(element.owed);
         });
-
         return totalOwed;
       },
 
       displayTotalPaid: () => {
-        const money = getStore().moneyData;
+        const money = getStore().accountUser[0].moneyData;
         let totalPaid = 0;
 
         money.forEach(element => {
           totalPaid += parseInt(element.paid);
         });
-
         return totalPaid;
-
       },
 
-      filterCalendarEntries: () => {
-        let store = getStore();
+      addUserStats: (statsEntry) => {
+        const localUser = getStore().accountUser;
+
+        localUser[0].statsData.push({
+          userID: statsEntry.userID,
+          dateEntered: statsEntry.dateEntered,
+          earned: statsEntry.earned,
+          paid: statsEntry.paid,
+          owed: statsEntry.owed,
+        });
+
+        setStore({ accountUser: localUser });
       },
+
+      displayTotalScheduled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalScheduled = 0;
+
+        stats.forEach(element => {
+          totalScheduled += parseInt(element.scheduled);
+        });
+
+        return totalScheduled;
+      },
+
+      displayTotalCompleted: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCompleted = 0;
+
+        stats.forEach(element => {
+          totalCompleted += parseInt(element.completed);
+        });
+
+        return totalCompleted;
+      },
+
+      displayTotalCanceled: () => {
+        const stats = getStore().accountUser[0].statsData;
+        let totalCanceled = 0;
+
+        stats.forEach(element => {
+          totalCanceled += parseInt(element.canceled);
+        });
+
+        return totalCanceled;
+      },
+
+      // Use getActions to call a function within a fuction
+      addUser: (formData) => {
+        const userArr = getStore().accountUser;
+        userArr.push(formData)
+        setStore({ accountUser: userArr })
+      },
+
+      editUserInfo: (modalInfo) => {
+        const store = getStore();
+        let filterUser = store.accountUser.filter(element => {
+          element.id != modalInfo.id
+        })
+        filterUser.push(modalInfo)
+        setStore({ accountUser: filterUser, modalInfo });
+      },
+
+      addAppt: () => {
+        let dataArray = getStore().calendarEntries;
+
+        dataArray.push({
+          text: `Booking`,
+          startDate: new Date("2022-04-15T16:30:00.000Z"),
+          endDate: new Date("2022-04-15T18:30:00.000Z"),
+          allDay: false,
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        });
+
+        setStore({ calendarEntries: dataArray });
+      },
+
+      filterCalendarEntries: (appt, i) => {
+        const store = getStore();
+        console.log(appt[i])
+        let filteredArray = store.calendarEntries.filter((element) => {
+          element != appt
+          console.log(element)
+        })
+        console.log(filteredArray)
+      },
+
       typeFunction: (targetValue) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.services.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -198,7 +318,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(getStore().nameInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.name.toLowerCase().includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -216,13 +335,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: filterTargetValue });
       },
 
-
       typeZipCodeFunction: (targetValue) => {
         setStore({ zip_codeInput: targetValue });
         console.log(getStore().zip_codeInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
           return element.zip_code.includes(targetValue)
-
         });
         console.log(filterTargetValue)
         setStore({ filteredUsers: filterTargetValue });
@@ -236,11 +353,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ filteredUsers: [] });
       },
 
-
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-      },
-
       getMessage: () => {
         // fetching data from the backend
         fetch(process.env.BACKEND_URL + "/api/hello")
@@ -250,25 +362,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
       },
 
-
-
-      changeColor: (index, color) => {
-        //get the store
+      loginUser: (loginInput) => {
         const store = getStore();
+        let arr = [];
+        if (loginInput.userType == "professional") {
+          store.accountUser.filter((element) => {
+            element.email != loginInput.email
+            arr[0] = element
+          })
+        } else if (loginInput.userType == "client") {
+          store.clientUser.filter((element) => {
+            element.email != loginInput.email
+            arr[0] = element
+          })
+        }
+        setStore({ loggedUser: arr[0] });
+        console.log(store.loggedUser.id)
+      }
+    },
 
-        //   //we have to loop the entire demo array to look for the respective index
-        //   //and change its color
-        //   const demo = store.demo.map((elm, i) => {
-        //     if (i === index) elm.background = color;
-        //     return elm;
-        //   });
+  }
 
-        //   //reset the global store
-        //   setStore({ demo: demo });
-      },
-
-    }
-  };
 }
 
 export default getState;

@@ -10,9 +10,9 @@ export const Stats = (props) => {
     const [statsEntry, setStatsEntry] = useState({
         userID: store.accountUser.id,
         dateEntered: "",
-        scheduled: null,
-        completed: null,
-        canceled: null,
+        scheduled: 0,
+        completed: 0,
+        canceled: 0,
     })
 
     const [scheduledAppts, setScheduledAppts] = useState(0)
@@ -66,8 +66,10 @@ export const Stats = (props) => {
                     </div>
                     <button type="submit" className="btn btn-primary"
                         onClick={(e) => {
-                            actions.addUserStats(statsEntry), setScheduledAppts(actions.displayTotalScheduled()),
-                                setCompletedAppts(actions.displayTotalCompleted()), setCanceledAppts(actions.displayTotalCanceled())
+                            actions.addUserStats(statsEntry);
+                            setScheduledAppts(actions.displayTotalScheduled());
+                            setCompletedAppts(actions.displayTotalCompleted());
+                            setCanceledAppts(actions.displayTotalCanceled())
                         }}
                     >Submit</button>
                 </form>
