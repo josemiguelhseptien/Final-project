@@ -14,7 +14,7 @@ export const MarketPlaceCard = (props) => {
         <div className="container-fluid">
             <div className="userCard">
                 <Link className="list-group-item list-group-item-action" to={{
-                    pathname: `/account/:id`,
+                    pathname: `/profile`,
                     state: props.user,
                 }}>
                     <div className="d-flex justify-content-between">
