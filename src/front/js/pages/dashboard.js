@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
 import { Money } from "./../component/money";
 import { Stats } from "./../component/stats";
+import { ViewClients } from "./../component/viewClients";
 
 
 export const Dashboard = props => {
@@ -85,18 +86,7 @@ export const Dashboard = props => {
                     ) : (null)}
                     {viewType == "clients" ? (
                         <div className="d-inline-block mx-5">
-                            <div>
-                                <h3>Prospective Clients</h3>
-                                <div>Card Row</div>
-                            </div>
-                            <div>
-                                <h3>Find Client</h3>
-                                <div>Search box</div>
-                            </div>
-                            <div>
-                                <h3>Clients</h3>
-                                <div>Card Row</div>
-                            </div>
+                            {< ViewClients />}
                         </div>
                     ) : (null)}
                     {viewType == "appointments" ? (

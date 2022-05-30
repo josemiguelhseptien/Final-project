@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           moneyData: [
             {
-              userID: 1,
+              userID: "1",
               dateEntered: "",
               earned: 1,
               paid: 2,
@@ -56,13 +56,37 @@ const getState = ({ getStore, getActions, setStore }) => {
           ],
           statsData: [
             {
-              userID: 1,
+              userID: "1",
               dateEntered: "",
               scheduled: 3,
               completed: 2,
               canceled: 1,
             }
-          ]
+          ],
+          prospect: [
+            {
+              name: "Prospect One",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+            {
+              name: "Prospect Two",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+          ],
+          client: [
+            {
+              name: "Client One",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+            {
+              name: "Client Two",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+          ],
         },
 
         {
