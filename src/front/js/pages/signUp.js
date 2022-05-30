@@ -8,7 +8,7 @@ export const SignUp = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [inputField, setInputField] = useState({
-        id: "2",
+        id: "4",
         name: '',
         email: '',
         password: '',
@@ -16,9 +16,10 @@ export const SignUp = props => {
         zip_code: '',
         services: "",
         prices: 0,
-        userType: "client",
         format: ""
     })
+
+    const [userType, setUserType] = useState("client");
 
 
 
@@ -36,20 +37,24 @@ export const SignUp = props => {
     };
 
     return (
+
+
         <div className="container-fluid size">
             <div className="center">
                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { clientUser() }}>Client</button>
+                        <button className={userType == "client" ? "nav-link active" : "nav-link"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client") }}>Client</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={(e) => { proUser() }}>Professional</button>
+                        <button className={userType == "professional" ? "nav-link active" : "nav-link"} id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={(e) => { setUserType("professional") }}>Professional</button>
                     </li>
                 </ul>
             </div>
-            <div className="tab-content" id="pills-tabContent">
-                <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
+            {userType == "client" ? (
+
+                <div className="show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
                     <div className="center"><span>SIGN UP</span></div>
+
                     <div className="input-group mb-3">
                         <input type="text" name="name" className="form-control" placeholder="Name" onChange={handleChange} value={inputField.name} />
 
@@ -67,7 +72,9 @@ export const SignUp = props => {
                         <input type="text" className="form-control" name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
                     </div>
                 </div>
-                <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
+            ) : (
+
+                <div className="show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
                     <div className="center"><span>SIGN UP</span></div>
                     <div className="input-group mb-3">
                         <input type="text" aria-label="Name" className="form-control" name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
@@ -101,12 +108,14 @@ export const SignUp = props => {
                         <input type="number" placeholder="Prices" className="form-control" name="prices" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.prices} />
                     </div>
                 </div>
-                <div className="center">
-                    <Link to="/dashboard">
-                        <button type="text" className="btn btn-primary" onClick={(e) => { actions.addUser(inputField), console.log(inputField) }}>Sign up</button>
-                    </Link>
-                </div>
+            )}
+
+            <div className="center">
+                <Link to="/dashboard">
+                    <button type="text" className="btn btn-primary" onClick={(e) => { actions.addUser(inputField, userType), console.log(inputField) }}>Sign up</button>
+                </Link>
             </div>
+
         </div>
     );
 };

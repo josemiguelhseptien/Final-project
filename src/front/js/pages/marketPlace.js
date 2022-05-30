@@ -13,15 +13,6 @@ export const MarketPlace = (props) => {
   const params = useParams();
   const [user, setUser] = useState(props.location.state)
 
-  const [marketPlaceInput, setMarketPlaceInput] = useState({
-    services: "",
-    name: "",
-    price: "",
-    rating: "",
-    zip_code: "",
-  })
-
-
 
   function mapAccountUser() {
     let mappedArr = store.accountUser.map((accountUser, index) => {
@@ -54,7 +45,7 @@ export const MarketPlace = (props) => {
               value={store.nameInput} onChange={(e) => { actions.typeNameFunction(e.target.value) }} />
           </div>
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
+            <input type="number" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
               value={store.priceInput} onChange={(e) => { actions.typePriceFunction(e.target.value) }} />
           </div>
           <div className="d-flex">
@@ -67,11 +58,8 @@ export const MarketPlace = (props) => {
           <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button>
         </div>
 
-        <div className="d-flex">
-          <input type="text" className="form-control" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1"
-            value={store.zip_codeInput} onChange={(e) => { actions.typeZipCodeFunction(e.target.value) }} />
-        </div>
-        <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button>
+
+
       </div>
       <br></br>
       <div className="list-group">

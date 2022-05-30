@@ -1,19 +1,33 @@
-import { element } from "prop-types";
-
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      filteredCalendar: [],
+      clientUser: [
+        {
+          name: "John Doe",
+          phone: "31545613584",
+          email: "4@",
+          password: "jhjk;jfajoi;",
+          zip_code: "12345",
+        },
+      ],
       paidCalendarEntries: [],
+      cancelledCalendarEntries: [],
       demo: [],
-      user: "username",
+      loggedUser: [
+        {
+          id: "",
+          password: "",
+          email: "",
+        },
+      ],
       calendarEntries: [
         {
           text: `Booking`,
           startDate: new Date("2022-04-15T16:30:00.000Z"),
           endDate: new Date("2022-04-15T18:30:00.000Z"),
           allDay: true,
+          description: "done",
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
       ],
@@ -25,10 +39,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       accountUser: [
         {
           id: "1",
-          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+          profilePicture:
+            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "FIRST",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "123",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -49,17 +65,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             {
               userID: "1",
               dateEntered: "",
-              earned: 1,
-              paid: 2,
-              owed: 3,
+              earned: 100,
+              paid: 100,
+              owed: 0,
             },
           ],
           statsData: [
             {
               userID: "1",
               dateEntered: "",
-              scheduled: 3,
-              completed: 2,
+              scheduled: 1,
+              completed: 1,
               canceled: 1,
             }
           ],
@@ -91,10 +107,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         {
           id: "2",
-          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+          profilePicture:
+            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Second",
+          password: "2@",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "321",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -127,16 +145,18 @@ const getState = ({ getStore, getActions, setStore }) => {
               scheduled: 3,
               completed: 2,
               canceled: 1,
-            }
-          ]
+            },
+          ],
         },
 
         {
           id: "3",
-          profilePicture: "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+          profilePicture:
+            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
           name: "Third",
+          password: "123",
           phone: "4896415154",
-          email: "asdasas@fcac",
+          email: "3@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
@@ -169,12 +189,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               scheduled: 3,
               completed: 2,
               canceled: 1,
-            }
-          ]
-        }
-
+            },
+          ],
+        },
       ],
-
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -188,15 +206,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           paid: moneyEntry.paid,
           owed: moneyEntry.owed,
         });
-
         setStore({ accountUser: localUser });
+      },
+
+      addPaidCalendarEntry: (entry) => {
+        let paidEntries = getStore().paidCalendarEntries;
+        paidEntries.push(entry);
+        setStore({ paidCalendarEntries: paidEntries });
       },
 
       displayTotalEarned: () => {
         const money = getStore().accountUser[0].moneyData;
         let totalEarned = 0;
 
-        money.forEach(element => {
+        money.forEach((element) => {
           totalEarned += parseInt(element.earned);
         });
 
@@ -207,10 +230,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         const money = getStore().accountUser[0].moneyData;
         let totalOwed = 0;
 
-        money.forEach(element => {
+        money.forEach((element) => {
           totalOwed += parseInt(element.owed);
         });
-
         return totalOwed;
       },
 
@@ -218,34 +240,47 @@ const getState = ({ getStore, getActions, setStore }) => {
         const money = getStore().accountUser[0].moneyData;
         let totalPaid = 0;
 
-        money.forEach(element => {
+        money.forEach((element) => {
           totalPaid += parseInt(element.paid);
         });
-
         return totalPaid;
       },
 
-      addUserStats: (statsEntry) => {
-        const localUser = getStore().accountUser;
+      editUserStats: (date, category) => {
+        let newStatsData;
 
-        localUser[0].statsData.push({
-          userID: statsEntry.userID,
-          dateEntered: statsEntry.dateEntered,
-          earned: statsEntry.earned,
-          paid: statsEntry.paid,
-          owed: statsEntry.owed,
-        });
+        if (
+          getStore().accountUser[0].statsData.find(
+            (elm) => elm.dateEntered == date
+          )
+        ) {
+          newStatsData = getStore().accountUser[0].statsData.map(
+            (elm, indx) => {
+              if (elm.dateEntered == date) {
+                elm[category] += 1;
+                return elm;
+              } else return elm;
+            }
+          );
+        } else {
+          newStatsData = getStore().accountUser[0].statsData;
+          let newStat = {
+            userID: "1",
+            dateEntered: date,
+            scheduled: 0,
+            completed: 0,
+            canceled: 0,
+          };
+          newStat[category] = 1;
 
-        setStore({ accountUser: localUser });
+          newStatsData.push(newStat);
+        }
+
+        setStore({ accountUser: { ...accountUser, statsData: newStatsData } });
       },
 
       displayTotalScheduled: () => {
-        const stats = getStore().accountUser[0].statsData;
-        let totalScheduled = 0;
-
-        stats.forEach(element => {
-          totalScheduled += parseInt(element.scheduled);
-        });
+        let totalScheduled = getStore().calendarEntries.length;
 
         return totalScheduled;
       },
@@ -254,7 +289,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const stats = getStore().accountUser[0].statsData;
         let totalCompleted = 0;
 
-        stats.forEach(element => {
+        stats.forEach((element) => {
           totalCompleted += parseInt(element.completed);
         });
 
@@ -265,7 +300,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const stats = getStore().accountUser[0].statsData;
         let totalCanceled = 0;
 
-        stats.forEach(element => {
+        stats.forEach((element) => {
           totalCanceled += parseInt(element.canceled);
         });
 
@@ -275,16 +310,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       addUser: (formData) => {
         const userArr = getStore().accountUser;
-        userArr.push(formData)
-        setStore({ accountUser: userArr })
+        userArr.push(formData);
+        setStore({ accountUser: userArr });
       },
 
       editUserInfo: (modalInfo) => {
         const store = getStore();
-        let filterUser = store.accountUser.filter(element => {
-          element.id != modalInfo.id
-        })
-        filterUser.push(modalInfo)
+        let filterUser = store.accountUser.filter((element) => {
+          element.id != modalInfo.id;
+        });
+        filterUser.push(modalInfo);
         setStore({ accountUser: filterUser, modalInfo });
       },
 
@@ -302,18 +337,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ calendarEntries: dataArray });
       },
 
-      filterCalendarEntries: () => {
-        let store = getStore();
+      filterCalendarEntries: (appt, i) => {
+        const store = getStore();
+        console.log(appt[i]);
+        let filteredArray = store.calendarEntries.filter((element) => {
+          element != appt;
+          console.log(element);
+        });
+        console.log(filteredArray);
       },
 
       typeFunction: (targetValue) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.services.toLowerCase().includes(targetValue)
-
+          return element.services.toLowerCase().includes(targetValue);
         });
-        console.log(filterTargetValue)
+        console.log(filterTargetValue);
         setStore({ filteredUsers: filterTargetValue });
       },
 
@@ -321,22 +361,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ nameInput: targetValue.toLowerCase() });
         console.log(getStore().nameInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.name.toLowerCase().includes(targetValue)
-
+          return element.name.toLowerCase().includes(targetValue);
         });
-        console.log(filterTargetValue)
+        console.log(filterTargetValue);
         setStore({ filteredUsers: filterTargetValue });
       },
 
       typePriceFunction: (targetValue) => {
         const store = getStore();
-        let number = parseInt(targetValue)
+        let number = parseInt(targetValue);
         setStore({ priceInput: number });
-        console.log(targetValue.length)
+        console.log(targetValue.length);
         let filterTargetValue = store.accountUser.filter((element) => {
-          return element.prices <= number
+          return element.prices <= number;
         });
-        console.log(filterTargetValue)
+        console.log(filterTargetValue);
         setStore({ filteredUsers: filterTargetValue });
       },
 
@@ -344,10 +383,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ zip_codeInput: targetValue });
         console.log(getStore().zip_codeInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.zip_code.includes(targetValue)
-
+          return element.zip_code.includes(targetValue);
         });
-        console.log(filterTargetValue)
+        console.log(filterTargetValue);
         setStore({ filteredUsers: filterTargetValue });
       },
 
@@ -364,17 +402,30 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/api/hello")
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
-          .catch((error) => { console.log("Error loading message from backend", error) }
-          );
+          .catch((error) => {
+            console.log("Error loading message from backend", error);
+          });
       },
 
-
-
-
-
-    }
+      loginUser: (loginInput) => {
+        const store = getStore();
+        let arr = [];
+        if (loginInput.userType == "professional") {
+          store.accountUser.filter((element) => {
+            element.email != loginInput.email;
+            arr[0] = element;
+          });
+        } else if (loginInput.userType == "client") {
+          store.clientUser.filter((element) => {
+            element.email != loginInput.email;
+            arr[0] = element;
+          });
+        }
+        setStore({ loggedUser: arr[0] });
+        console.log(store.loggedUser.id);
+      },
+    },
   };
-}
+};
 
 export default getState;
-
