@@ -4,107 +4,125 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Stats = (props) => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [dates, setDates] = useState({
+    startDate: 0,
+    endDate: 0,
+    startMonth: 0,
+    endMonth: 0,
+  });
 
+  const [totals, setTotals] = useState(store.calendarEntries);
+  useEffect(() => {}, []);
 
-    const [statsEntry, setStatsEntry] = useState({
-        userID: store.accountUser.id,
-        dateEntered: "",
-        scheduled: 0,
-        completed: 0,
-        canceled: 0,
-    })
-
-    const [scheduledAppts, setScheduledAppts] = useState(0)
-    useEffect(() => setScheduledAppts(actions.displayTotalScheduled()), []);
-
-    const [completedAppts, setCompletedAppts] = useState(0)
-    useEffect(() => setCompletedAppts(actions.displayTotalCompleted()), []);
-
-    const [canceledAppts, setCanceledAppts] = useState(0)
-    useEffect(() => setCanceledAppts(actions.displayTotalCanceled()), []);
-
-
-
-    return (
-        <div className="container-fluid">
-            {/* Form to enter Stats info */}
-            <div>
-                <form className="d-inline-flex">
-                    <div className="mb-3 mx-2">
-                        <label className="form-label">Date</label>
-                        <input type="date" className="form-control" id="dateEntered"
-                            onChange={e => { setStatsEntry({ ...statsEntry, dateEntered: e.target.value }); }}
-                        />
-                    </div>
-                    <div>
-                        <label className="form-label">Scheduled</label>
-                        <div className="input-group mb-3">
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={statsEntry.scheduled}
-                                onChange={e => { setStatsEntry({ ...statsEntry, scheduled: e.target.value }); }}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <label className="form-label">Completed</label>
-                        <div className="input-group mb-3">
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={statsEntry.completed}
-                                onChange={e => { setStatsEntry({ ...statsEntry, completed: e.target.value }); }}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <label className="form-label">Canceled</label>
-                        <div className="input-group mb-3">
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={statsEntry.canceled}
-                                onChange={e => { setStatsEntry({ ...statsEntry, canceled: e.target.value }); }}
-                            />
-                        </div>
-                    </div>
-                    <button type="submit" className="btn btn-primary"
-                        onClick={(e) => {
-                            actions.addUserStats(statsEntry);
-                            setScheduledAppts(actions.displayTotalScheduled());
-                            setCompletedAppts(actions.displayTotalCompleted());
-                            setCanceledAppts(actions.displayTotalCanceled())
-                        }}
-                    >Submit</button>
-                </form>
+  return (
+    <div className="container-fluid">
+      {/* Form to enter Stats info */}
+      <div>
+        <h3>Filter By Dates:</h3>
+        <form className="d-inline-flex">
+          <div className="mb-3 mx-2">
+            <label className="form-label">Start Day:</label>
+            <input
+              type="number"
+              className="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              value={dates.startDate}
+              onChange={(e) => {
+                setDates({ ...dates, startDate: e.target.value });
+              }}
+            />
+          </div>
+          <div>
+            <label className="form-label">Start Month:</label>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control"
+                aria-label="Amount (to the nearest dollar)"
+                value={dates.startMonth}
+                onChange={(e) => {
+                  setDates({ ...dates, startMonth: e.target.value });
+                }}
+              />
             </div>
-            {/* Boxes to display Stats overview */}
-            <div className="d-inline-flex">
-                <div className="col-4 mx-5">
-                    <h3>Total Scheduled</h3>
-                    <div className="card">
-                        <div className="card-body">
-                            {scheduledAppts}
-                        </div>
-                    </div>
-                </div>
-                <div className="col-4 mx-5">
-                    <h3>Total Completed</h3>
-                    <div className="card">
-                        <div className="card-body">
-                            {completedAppts}
-                        </div>
-                    </div>
-                </div>
-                <div className="col-4 mx-5">
-                    <h3>Total Canceled</h3>
-                    <div className="card">
-                        <div className="card-body">
-                            {canceledAppts}
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div>
+            <label className="form-label">End Day:</label>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control"
+                aria-label="Amount (to the nearest dollar)"
+                value={dates.endDate}
+                onChange={(e) => {
+                  setDates({ ...dates, endDate: e.target.value });
+                }}
+              />
             </div>
+          </div>
+          <div>
+            <label className="form-label">End Month:</label>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control"
+                aria-label="Amount (to the nearest dollar)"
+                value={dates.endMonth}
+                onChange={(e) => {
+                  setDates({ ...dates, endMonth: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+        </form>
+        <button
+          type="text"
+          className="btn btn-primary"
+          onClick={(e) => {
+            setTotals(actions.displayTotalScheduled(dates));
+          }}
+        >
+          Filter
+        </button>
+      </div>
+      {/* Boxes to display Stats overview */}
+      <div className="d-flex justify-content-between my-5 py-3 border rounded">
+        <div className="mx-2">
+          <h4>Total Scheduled</h4>
+          <div className="">
+            <div className="text-center">{totals.length}</div>
+          </div>
         </div>
-    );
+        <div className="mx-2">
+          <h4>Total Completed</h4>
+          <div className="">
+            <div className="text-center">
+              {totals.filter((elm) => elm.completed).length}
+            </div>
+          </div>
+        </div>
+        <div className="mx-2">
+          <h4>Total Paid</h4>
+          <div className="">
+            <div className="text-center">
+              {totals.filter((elm) => elm.paid).length}
+            </div>
+          </div>
+        </div>
+        <div className="mx-2">
+          <h4>Total Canceled</h4>
+          <div className="">
+            <div className="text-center">
+              {totals.filter((elm) => elm.cancelled).length}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 Stats.propTypes = {
-    match: PropTypes.object,
+  match: PropTypes.object,
 };
