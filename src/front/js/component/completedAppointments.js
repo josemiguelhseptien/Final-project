@@ -7,7 +7,7 @@ export const CompletedAppointments = () => {
   const { store, actions } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
   const [appointments, setAppointment] = useState(
-    store.modifiedCalendarEntries.filter((appt) => appt.id == store.loggedUser[0].id)
+    store.calendarEntries.filter((appt) => appt.description == "done")
   );
 
   let paidAppointments = store.paidCalendarEntries;
@@ -181,3 +181,4 @@ export const CompletedAppointments = () => {
     </div>
   );
 };
+

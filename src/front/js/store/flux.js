@@ -149,6 +149,30 @@ const getState = ({ getStore, getActions, setStore }) => {
               canceled: 1,
             },
           ],
+          prospect: [
+            {
+              name: "Prospect One",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+            {
+              name: "Prospect Two",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+          ],
+          client: [
+            {
+              name: "Client One",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+            {
+              name: "Client Two",
+              phone: "123-123-1234",
+              email: "email@email.com",
+            },
+          ],
         },
 
         {
@@ -295,22 +319,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserStats: (date, category) => {
         let newStatsData;
+        let localUsers = getStore().accountUser;
 
-        if (
-          getStore().accountUser[0].statsData.find(
-            (elm) => elm.dateEntered == date
-          )
-        ) {
-          newStatsData = getStore().accountUser[0].statsData.map(
-            (elm, indx) => {
-              if (elm.dateEntered == date) {
-                elm[category] += 1;
-                return elm;
-              } else return elm;
-            }
-          );
+        if (localUsers[0].statsData.find((elm) => elm.dateEntered == date)) {
+          newStatsData = localUsers[0].statsData.map((elm, indx) => {
+            if (elm.dateEntered == date) {
+              elm[category] += 1;
+              return elm;
+            } else return elm;
+          });
         } else {
-          newStatsData = getStore().accountUser[0].statsData;
+          newStatsData = localUsers[0].statsData;
           let newStat = {
             userID: "1",
             dateEntered: date,
@@ -323,7 +342,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           newStatsData.push(newStat);
         }
 
-        setStore({ accountUser: { ...accountUser, statsData: newStatsData } });
+        localUsers[0].statsData = newStatsData;
+
+        setStore({ accountUser: localUsers });
       },
 
       displayTotalScheduled: () => {
@@ -385,6 +406,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           endDate: new Date("2022-04-15T18:30:00.000Z"),
           allDay: false,
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        }),
+          setStore({ calendarEntries: dataArray });
+      },
+      editCalendarEntry: (title, category) => {
+        let dataArray = getStore().calendarEntries.map((elm, indx) => {
+          if (elm.text == title) {
+            elm[category] = true;
+            return elm;
+          } else return elm;
         });
         setStore({ calendarEntries: dataArray });
       },
