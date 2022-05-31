@@ -42,6 +42,9 @@ export const SignUp = props => {
 
         <div className="container-fluid size">
             <div className="center">
+                <br></br>
+                <br></br>
+                <div className="center"><h3>SIGN UP</h3></div>
                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
                         <button className={userType == "client" ? "nav-link active" : "nav-link"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client"), clientUser() }}>Client</button>
@@ -54,7 +57,6 @@ export const SignUp = props => {
             {userType == "client" ? (
 
                 <div className="show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
-                    <div className="center"><span>SIGN UP</span></div>
 
                     <div className="input-group mb-3">
                         <input type="text" name="name" className="form-control" placeholder="Name" onChange={handleChange} value={inputField.name} />
@@ -76,7 +78,6 @@ export const SignUp = props => {
             ) : (
 
                 <div className="show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-                    <div className="center"><span>SIGN UP</span></div>
                     <div className="input-group mb-3">
                         <input type="text" aria-label="Name" className="form-control" name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
                     </div>

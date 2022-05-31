@@ -19,7 +19,7 @@ export const Calendar = (props) => {
         defaultCurrentView="week"
         defaultCurrentDate={currentDate}
         height={600}
-        startDayHour={9}
+        startDayHour={8}
       >
         {/* Configuration goes here */}
       </Scheduler>

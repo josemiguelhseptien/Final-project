@@ -7,17 +7,14 @@ import { Money } from "./../component/money";
 import { Stats } from "./../component/stats";
 import { CompletedAppointments } from "../component/completedAppointments";
 
-
-export const Dashboard = props => {
+export const Dashboard = (props) => {
     const { store, actions } = useContext(Context);
-    const params = useParams();
-    const [profileType, setProfileType] = useState("professional")
-    const [viewType, setViewType] = useState("clients")
-
+    const [viewType, setViewType] = useState("appointments");
 
     return (
         <div className="container-fluid">
-
+            <br></br>
+            {actions.modifyAppt()}
             <div className="d-flex">
                 <div className="d-inline-flex">
                     <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
@@ -108,8 +105,7 @@ export const Dashboard = props => {
             </div>
         </div>
     )
-}
-
+};
 Dashboard.propTypes = {
     match: PropTypes.object,
-};
+}

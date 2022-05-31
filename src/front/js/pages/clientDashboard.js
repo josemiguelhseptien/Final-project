@@ -11,21 +11,18 @@ import { CompletedAppointments } from "../component/completedAppointments";
 export const ClientDashboard = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-    const [profileType, setProfileType] = useState("client")
-    const [viewType, setViewType] = useState("clients")
+    const [viewType, setViewType] = useState("appointments")
 
 
     return (
         <div className="container-fluid">
+            <br></br>
             <div className="d-flex">
                 <div className="d-inline-flex">
-                    <div className="card card-body justify-content-center" style={{ width: "100px", minHeight: "80vh" }}>
+                    <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
                         <ul className="nav flex-column">
                             <li className="nav-item py-3">
                                 <span onClick={() => setViewType("appointments")}>Appointments</span>
-                            </li>
-                            <li className="nav-item py-3">
-                                <span onClick={() => setViewType("calendar")}>Calendar</span>
                             </li>
                             <li className="nav-item py-3">
                                 <span onClick={() => setViewType("Providers")}>Providers</span>
@@ -33,45 +30,7 @@ export const ClientDashboard = props => {
                         </ul>
                     </div>
                 </div>
-                {viewType == "calendar" ? (
-                    <div className="d-inline-block mx-5">
-                        <div>
-                            <h3>Calendar</h3>
-                        </div>
-                        <div>
-                            {< Calendar />}
-                        </div>
-                    </div>
-                ) : (null)}
-                {viewType == "money" ? (
-                    <div className="d-inline-block mx-5">
-                        <div>
-                            <h3>Your Money</h3>
-                        </div>
-                        <div>
-                            {< Money />}
-                        </div>
-                        <div>
-                            <h3>Income Chart</h3>
-                            <div>bar graph for the last 30 days</div>
-                        </div>
-                    </div>
-                ) : (null)}
-                {viewType == "stats" ? (
-                    <div className="d-inline-block mx-5">
-                        <div>
-                            <h3>Appointment Stats</h3>
-                            <div>
-                                {< Stats />}
-                            </div>
-                        </div>
-                        <div>
-                            <h3>API Chart</h3>
-                            <div>bar and line graph: scheduled-bar, completed and canceled line for the last 30 days</div>
-                        </div>
-                    </div>
-                ) : (null)}
-                {viewType == "clients" ? (
+                {viewType == "Providers" ? (
                     <div className="d-inline-block mx-5">
                         <div>
                             <h3>Prospective Clients</h3>
@@ -89,9 +48,6 @@ export const ClientDashboard = props => {
                 ) : (null)}
                 {viewType == "appointments" ? (
                     <div className="d-inline-block mx-5">
-                        <div>
-                            Appointments
-                        </div>
                         <div>
                             {<CompletedAppointments />}
                         </div>

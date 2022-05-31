@@ -8,10 +8,10 @@ export const Navbar = () => {
   let loggedUserId = store.loggedUser.id
 
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbarb ">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">PayMeApp</span>
+          <img className="cropped" src="https://i.pinimg.com/originals/dd/64/da/dd64da585bc57cb05e5fd4d8ce873f57.png" alt="Italian Trulli" />
         </Link>
         {loggedUserId == "" ? (
           <div className="ml-auto">
@@ -24,7 +24,9 @@ export const Navbar = () => {
           </div>
         ) : (
           <div className="ml-auto">
-            {store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)}
+            (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>)
+            (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)
+            {/*store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)*/}
             <Link to="/marketplace">
               <button className="btn btn-primary mx-2">Marketplace</button>
             </Link>

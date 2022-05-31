@@ -25,5 +25,23 @@ button {
   color: #ccc;
 }
 .backgroundTheme {
-  background-image: url("https://rubenstein-tutoring.com/images/banner-bg.jpg");
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/k-p-159-kung-132329-lyj3828-4-education.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=da222ad81caffb47a51c273ed79ab67b");
+}
+.cropped {
+  width: 60px;
+  height: 60px;
+  border: none;
+}
+
+.navbarb {
+  background-color: rgb(25, 25, 39);
+}
+.colorblue {
+  background-color: #3a86ff;
+}
+.colorred {
+  background-color: rgb(247, 113, 20);
+}
+.textcolor {
+  color: #ff006e;
 }
