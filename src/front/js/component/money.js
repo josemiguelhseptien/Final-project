@@ -24,6 +24,8 @@ export const Money = (props) => {
     const [paidMoney, setPaidMoney] = useState(0)
     useEffect(() => setPaidMoney(actions.displayTotalPaid()), []);
 
+    const [chartImg, setChartImg] = useState("")
+    useEffect(() => setChartImg(actions.displayMoneyChart()), []);
 
 
     return (
@@ -104,6 +106,12 @@ export const Money = (props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h3>Income Chart</h3>
+            </div>
+            <div>
+                {store.chartURL ? <img src={store.chartURL} alt="June money data" /> : ""}
             </div>
         </div>
     );
