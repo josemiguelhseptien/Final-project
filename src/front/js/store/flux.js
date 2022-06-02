@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               scheduled: 1,
               completed: 1,
               canceled: 1,
-            }
+            },
           ],
           prospect: [
             {
@@ -248,22 +248,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserStats: (date, category) => {
         let newStatsData;
+        let localUsers = getStore().accountUser;
 
-        if (
-          getStore().accountUser[0].statsData.find(
-            (elm) => elm.dateEntered == date
-          )
-        ) {
-          newStatsData = getStore().accountUser[0].statsData.map(
-            (elm, indx) => {
-              if (elm.dateEntered == date) {
-                elm[category] += 1;
-                return elm;
-              } else return elm;
-            }
-          );
+        if (localUsers[0].statsData.find((elm) => elm.dateEntered == date)) {
+          newStatsData = localUsers[0].statsData.map((elm, indx) => {
+            if (elm.dateEntered == date) {
+              elm[category] += 1;
+              return elm;
+            } else return elm;
+          });
         } else {
-          newStatsData = getStore().accountUser[0].statsData;
+          newStatsData = localUsers[0].statsData;
           let newStat = {
             userID: "1",
             dateEntered: date,
@@ -276,7 +271,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           newStatsData.push(newStat);
         }
 
-        setStore({ accountUser: { ...accountUser, statsData: newStatsData } });
+        localUsers[0].statsData = newStatsData;
+
+        setStore({ accountUser: localUsers });
       },
 
       displayTotalScheduled: () => {
@@ -323,15 +320,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ accountUser: filterUser, modalInfo });
       },
 
-      addAppt: () => {
-        let dataArray = getStore().calendarEntries;
-
-        dataArray.push({
-          text: `Booking`,
-          startDate: new Date("2022-04-15T16:30:00.000Z"),
-          endDate: new Date("2022-04-15T18:30:00.000Z"),
-          allDay: false,
-          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+      editCalendarEntry: (title, category) => {
+        let dataArray = getStore().calendarEntries.map((elm, indx) => {
+          if (elm.text == title) {
+            elm[category] = true;
+            return elm;
+          } else return elm;
         });
 
         setStore({ calendarEntries: dataArray });

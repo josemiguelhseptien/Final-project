@@ -6,12 +6,14 @@ import { Context } from "../store/appContext";
 export const CompletedAppointments = () => {
   const { store, actions } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
-  const [appointments, setAppointment] = useState(
-    store.calendarEntries.filter((appt) => appt.description == "done")
-  );
 
-  let paidAppointments = store.paidCalendarEntries;
-  let cancelledCalendarEntries = store.cancelledCalendarEntries;
+  let appointments = store.calendarEntries.filter(
+    (elm) => !(elm.paid || elm.cancelled)
+  );
+  let paidAppointments = store.calendarEntries.filter((elm) => elm.paid);
+  let cancelledCalendarEntries = store.calendarEntries.filter(
+    (elm) => elm.cancelled
+  );
 
   function paidAppointmentFunction(appt, index) {
     paidAppointments.push(appt);
@@ -32,35 +34,58 @@ export const CompletedAppointments = () => {
           <div>Start time : {appt.startDate.toString()}</div>
         </div>
         <div>
-          <button
-            type="button"
-            className="btn btn-outline-success"
-            onClick={(e) => {
-              actions.addUserIncome({
-                userID: 1,
-                paidFor: appt.text,
-                dateEntered: new Date(),
-                earned: 100,
-                paid: 100,
-                owed: 0,
-              });
-              actions.addPaidCalendarEntry(appt);
-              actions.editUserStats(appt.startDate, "completed");
-            }}
-          >
-            Paid{" "}
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-danger"
-            onClick={(e) => {
-              cancelAppointmentFunction(appt, index),
-                actions.filterCalendarEntries(appt, index),
-                removeAppt(appt, index);
-            }}
-          >
-            cancelled{" "}
-          </button>
+          {appt.completed ? (
+            <>
+              <button
+                type="button"
+                className="btn btn-success mx-1"
+                onClick={(e) => {
+                  actions.editCalendarEntry(appt.text, "completed");
+                }}
+              >
+                Completed
+              </button>
+              <button
+                type="button"
+                className="btn btn-outline-warning mx-1"
+                onClick={(e) => {
+                  actions.addUserIncome({
+                    userID: 1,
+                    paidFor: appt.text,
+                    dateEntered: new Date(),
+                    earned: 100,
+                    paid: 100,
+                    owed: 0,
+                  });
+                  actions.editCalendarEntry(appt.text, "paid");
+                  actions.editUserStats(appt.startDate, "completed");
+                }}
+              >
+                Pay
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="btn btn-outline-warning mx-1"
+                onClick={(e) => {
+                  actions.editCalendarEntry(appt.text, "completed");
+                }}
+              >
+                Complete
+              </button>
+              <button
+                type="button"
+                className="btn btn-outline-danger mx-1"
+                onClick={(e) => {
+                  actions.editCalendarEntry(appt.text, "cancelled");
+                }}
+              >
+                Cancel
+              </button>
+            </>
+          )}
         </div>
       </li>
     );
@@ -100,7 +125,7 @@ export const CompletedAppointments = () => {
           </div>
           <div>
             <button type="button" className="btn btn-danger" disabled>
-              cancelled
+              Cancelled
             </button>
           </div>
         </li>
