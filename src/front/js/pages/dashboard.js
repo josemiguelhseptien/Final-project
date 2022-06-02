@@ -69,13 +69,6 @@ export const Dashboard = (props) => {
                     <h3>Appointment Stats</h3>
                     <div>{<Stats />}</div>
                   </div>
-                  <div>
-                    <h3>API Chart</h3>
-                    <div>
-                      bar and line graph: scheduled-bar, completed and canceled
-                      line for the last 30 days
-                    </div>
-                  </div>
                 </div>
               ) : null}
               {viewType == "clients" ? (

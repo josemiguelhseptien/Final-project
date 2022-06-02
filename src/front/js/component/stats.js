@@ -24,6 +24,8 @@ export const Stats = (props) => {
     const [canceledAppts, setCanceledAppts] = useState(0)
     useEffect(() => setCanceledAppts(actions.displayTotalCanceled()), []);
 
+    const [chartImg, setChartImg] = useState("")
+    useEffect(() => setChartImg(actions.displayChart("statsDataSet")), []);
 
 
     return (
@@ -100,6 +102,12 @@ export const Stats = (props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h3>Appointment Chart</h3>
+            </div>
+            <div>
+                {store.chartURL ? <img src={store.chartURL} alt="June appt stats" /> : ""}
             </div>
         </div>
     );

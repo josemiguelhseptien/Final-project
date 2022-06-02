@@ -25,7 +25,7 @@ export const Money = (props) => {
     useEffect(() => setPaidMoney(actions.displayTotalPaid()), []);
 
     const [chartImg, setChartImg] = useState("")
-    useEffect(() => setChartImg(actions.displayMoneyChart()), []);
+    useEffect(() => setChartImg(actions.displayChart("moneyDataSet")), []);
 
 
     return (
