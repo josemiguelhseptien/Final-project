@@ -14,6 +14,35 @@ const getState = ({ getStore, getActions, setStore }) => {
           zip_code: "12345",
         },
       ],
+      clientAppointments: [{
+        id: "2",
+        text: `1@`,
+        startDate: new Date("2022-04-15T16:30:00.000Z"),
+        endDate: new Date("2022-04-15T18:30:00.000Z"),
+        allDay: true,
+        description: "done",
+        recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+      },
+      {
+        id: "2",
+        text: `1@`,
+        startDate: new Date("2022-05-15T16:30:00.000Z"),
+        endDate: new Date("2022-05-15T18:30:00.000Z"),
+        allDay: true,
+        description: "done",
+        recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+      },
+      {
+        id: "1",
+        text: `3@`,
+        startDate: new Date("2022-05-15T16:30:00.000Z"),
+        endDate: new Date("2022-05-15T18:30:00.000Z"),
+        allDay: true,
+        description: "done",
+        recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+      },
+
+      ],
       paidCalendarEntries: [],
       cancelledCalendarEntries: [],
       demo: [],
@@ -409,6 +438,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }),
           setStore({ calendarEntries: dataArray });
       },
+
       editCalendarEntry: (title, category) => {
         let dataArray = getStore().calendarEntries.map((elm, indx) => {
           if (elm.text == title) {

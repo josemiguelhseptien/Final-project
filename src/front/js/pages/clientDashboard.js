@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import { Calendar } from "./../component/calendar";
 import { Money } from "./../component/money";
 import { Stats } from "./../component/stats";
-import { CompletedAppointments } from "../component/completedAppointments";
+import { ClientAppointments } from "../component/clientAppointments";
 
 
 export const ClientDashboard = props => {
@@ -49,7 +49,7 @@ export const ClientDashboard = props => {
                 {viewType == "appointments" ? (
                     <div className="d-inline-block mx-5">
                         <div>
-                            {<CompletedAppointments />}
+                            {<ClientAppointments />}
                         </div>
                     </div>
                 ) : (null)}
