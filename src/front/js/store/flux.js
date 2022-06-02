@@ -424,6 +424,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ loggedUser: arr[0] });
         console.log(store.loggedUser.id);
       },
+
     },
   };
 };

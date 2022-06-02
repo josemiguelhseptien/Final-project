@@ -9,6 +9,7 @@ import { RatingStar } from "./ratingStar";
 
 export const ClientCard = (props) => {
     const { store, actions } = useContext(Context);
+    let client = props.user.name
 
     return (
         <div className="card">
@@ -17,7 +18,13 @@ export const ClientCard = (props) => {
                     <h5 className="card-title">{props.user.name}</h5>
                     <p className="card-text">{props.user.phone} </p>
                     <p className="card-text">{props.user.email} </p>
-                    <button className="btn btn-danger">Remove</button>
+                    <button
+                        className="btn btn-danger"
+                        title="Delete, this can't be undone!"
+                        onClick={() => actions.deleteClient(client)}
+                    >
+                        <span>&#10005;</span>
+                    </button>
                 </div>
             </div>
         </div>

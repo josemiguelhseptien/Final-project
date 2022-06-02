@@ -17,9 +17,8 @@ export const ProspectCard = (props) => {
                     <h5 className="card-title">{props.user.name}</h5>
                     <p className="card-text">{props.user.phone} </p>
                     <p className="card-text">{props.user.email} </p>
-                    <button className="btn btn-primary">Contacted</button>
-                    <button className="btn btn-primary">Add to Clients</button>
-                    <button className="btn btn-danger">Remove</button>
+                    <button className="btn btn-primary" title="Add to clients">Add to Clients</button>
+                    <button className="btn btn-danger" title="Delete, this can't be undone!"><span>&#10005;</span></button>
                 </div>
             </div>
         </div>
