@@ -116,6 +116,16 @@ export const Stats = (props) => {
             <div className="text-center">
               {totals.filter((elm) => elm.cancelled).length}
             </div>
+            <div>
+              <h3>Appointment Chart</h3>
+            </div>
+            <div>
+              {store.chartURL ? (
+                <img src={store.chartURL} alt="June appt stats" />
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </div>

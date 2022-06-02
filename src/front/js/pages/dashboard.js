@@ -11,7 +11,7 @@ import { CompletedAppointments } from "../component/completedAppointments";
 export const Dashboard = (props) => {
   const { store, actions } = useContext(Context);
   const [profileType, setProfileType] = useState("professional");
-  const [viewType, setViewType] = useState("clients");
+  const [viewType, setViewType] = useState("appointments");
 
   return (
     <div className="container-fluid">
@@ -61,10 +61,6 @@ export const Dashboard = (props) => {
                     <h3>Your Money</h3>
                   </div>
                   <div>{<Money />}</div>
-                  <div>
-                    <h3>Income Chart</h3>
-                    <div>bar graph for the last 30 days</div>
-                  </div>
                 </div>
               ) : null}
               {viewType == "stats" ? (
@@ -72,13 +68,6 @@ export const Dashboard = (props) => {
                   <div>
                     <h3>Appointment Stats</h3>
                     <div>{<Stats />}</div>
-                  </div>
-                  <div>
-                    <h3>API Chart</h3>
-                    <div>
-                      bar and line graph: scheduled-bar, completed and canceled
-                      line for the last 30 days
-                    </div>
                   </div>
                 </div>
               ) : null}

@@ -24,24 +24,6 @@ export const ViewClients = () => {
         return mappedClient
     })
 
-
-    // function mapAccountUser() {
-    //     let mappedArr = store.accountUser.map((accountUser, index) => {
-    //         let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
-    //         if (accountUser.userType == "professional") return componentCard
-    //     })
-    //     return mappedArr
-    // }
-
-    // function mapFilteredUsers() {
-    //     let mappedArr = store.filteredUsers.map((accountUser, index) => {
-    //         let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
-    //         if (accountUser.userType == "professional") return componentCard
-    //     })
-    //     return mappedArr
-    // }
-
-
     return (
         <div className="container-fluid">
             <div>
