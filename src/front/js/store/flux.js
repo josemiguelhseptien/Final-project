@@ -12,9 +12,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           zip_code: "12345",
         },
       ],
-      paidCalendarEntries: [],
-      cancelledCalendarEntries: [],
-      demo: [],
       loggedUser: [
         {
           id: "",
@@ -24,10 +21,26 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       calendarEntries: [
         {
-          text: `Booking`,
-          startDate: new Date("2022-04-15T16:30:00.000Z"),
-          endDate: new Date("2022-04-15T18:30:00.000Z"),
-          allDay: true,
+          text: `Appt 1`,
+          startDate: new Date("2022-06-22T16:30:00.000Z"),
+          endDate: new Date("2022-06-22T18:30:00.000Z"),
+          allDay: false,
+          description: "done",
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        },
+        {
+          text: `Appt 2`,
+          startDate: new Date("2022-06-05T16:30:00.000Z"),
+          endDate: new Date("2022-06-05T18:30:00.000Z"),
+          allDay: false,
+          description: "done",
+          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
+        },
+        {
+          text: `Appt 3`,
+          startDate: new Date("2022-06-10T16:30:00.000Z"),
+          endDate: new Date("2022-06-10T18:30:00.000Z"),
+          allDay: false,
           description: "done",
           recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
         },
@@ -74,7 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           statsData: [
             {
               userID: "1",
-              dateEntered: "",
+              dateEntered: new Date(),
               scheduled: 1,
               completed: 1,
               canceled: 1,
@@ -305,10 +318,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ accountUser: localUsers });
       },
 
-      displayTotalScheduled: () => {
-        let totalScheduled = getStore().calendarEntries.length;
+      displayTotalScheduled: (dates) => {
+        let totalScheduled = getStore().calendarEntries;
+        console.log(dates);
+        let relevant = totalScheduled.filter((elm) => {
+          return (
+            elm.startDate.getDate() >= parseInt(dates.startDate) &&
+            elm.startDate.getDate() <= parseInt(dates.endDate) &&
+            elm.startDate.getMonth() + 1 >= parseInt(dates.startMonth) &&
+            elm.startDate.getMonth() + 1 <= parseInt(dates.endMonth)
+          );
+        });
 
-        return totalScheduled;
+        console.log(relevant);
+
+        return relevant;
       },
 
       displayTotalCompleted: () => {
