@@ -210,16 +210,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       statsDataSet: [
         {
-          "label": "Earned",
-          "data": [100, 500, 200, 300, 400, 600, 0, 100, 500]
+          "label": "Scheduled",
+          "data": [3, 5, 2, 4, 4, 6, 1, 1, 6]
         },
         {
-          "label": "Paid",
-          "data": [100, 400, 200, 200, 400, 400, 0, 100, 400]
+          "label": "Completed",
+          "data": [1, 5, 2, 3, 4, 6, 0, 1, 6]
         },
         {
-          "label": "Owed",
-          "data": [0, 100, 0, 100, 0, 200, 0, 0, 100]
+          "label": "Canceled",
+          "data": [2, 0, 0, 1, 0, 0, 1, 0, 0]
         }
       ],
     },
