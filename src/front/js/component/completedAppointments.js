@@ -53,9 +53,9 @@ export const CompletedAppointments = () => {
                     userID: 1,
                     paidFor: appt.text,
                     dateEntered: new Date(),
-                    earned: 100,
+                    earned: 0,
                     paid: 100,
-                    owed: 0,
+                    owed: -100,
                   });
                   actions.editCalendarEntry(appt.text, "paid");
                   actions.editUserStats(appt.startDate, "completed");
@@ -71,6 +71,14 @@ export const CompletedAppointments = () => {
                 className="btn btn-outline-warning mx-1"
                 onClick={(e) => {
                   actions.editCalendarEntry(appt.text, "completed");
+                  actions.addUserIncome({
+                    userID: 1,
+                    paidFor: appt.text,
+                    dateEntered: new Date(),
+                    earned: 100,
+                    paid: 0,
+                    owed: 100,
+                  });
                 }}
               >
                 Complete
