@@ -13,7 +13,11 @@ export const Stats = (props) => {
   });
 
   const [totals, setTotals] = useState(store.calendarEntries);
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
+
+  const [chartImg, setChartImg] = useState("")
+  useEffect(() => setChartImg(actions.displayChart("statsDataSet")), []);
+
 
   return (
     <div className="container-fluid">
@@ -116,18 +120,18 @@ export const Stats = (props) => {
             <div className="text-center">
               {totals.filter((elm) => elm.cancelled).length}
             </div>
-            <div>
-              <h3>Appointment Chart</h3>
-            </div>
-            <div>
-              {store.chartURL ? (
-                <img src={store.chartURL} alt="June appt stats" />
-              ) : (
-                ""
-              )}
-            </div>
           </div>
         </div>
+      </div>
+      <div>
+        <h3>Appointment Chart</h3>
+      </div>
+      <div>
+        {store.chartURL ? (
+          <img src={store.chartURL} alt="June appt stats" />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

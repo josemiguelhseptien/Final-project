@@ -5,7 +5,15 @@ import { Context } from "../store/appContext";
 
 export const Money = (props) => {
     const { store, actions } = useContext(Context);
+    const [dates, setDates] = useState({
+        startDate: 0,
+        endDate: 0,
+        startMonth: 0,
+        endMonth: 0,
+    });
 
+    const [totals, setTotals] = useState(store.calendarEntries);
+    useEffect(() => { }, []);
 
     const [moneyEntry, setMoneyEntry] = useState({
         userID: store.accountUser.id,
