@@ -134,16 +134,6 @@ export const CompletedAppointments = () => {
   );
 
 
-
-  function removeAppt(appt, index) {
-    let filteredArray = appointments.filter((appt, i) => {
-      return i != index;
-    });
-    setAppointment(filteredArray);
-  }
-
-  console.log(store.calendarEntries);
-
   return (
     <div className="container-fluid">
       <br></br>

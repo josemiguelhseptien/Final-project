@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import Scheduler, { Resource } from "devextreme-react/scheduler";
+import Scheduler from "devextreme-react/scheduler";
 import "devextreme/dist/css/dx.light.css";
 
 export const Calendar = (props) => {
@@ -13,7 +13,7 @@ export const Calendar = (props) => {
   return (
     <div className="container-fluid">
       <Scheduler
-        timeZone="America/Los_Angeles"
+        timeZone="America/New_York"
         dataSource={store.calendarEntries}
         views={views}
         defaultCurrentView="week"

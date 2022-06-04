@@ -164,7 +164,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           statsData: [
             {
               userID: "1",
-              dateEntered: "",
+              dateEntered: new Date(),
               scheduled: 1,
               completed: 1,
               canceled: 1,
@@ -285,6 +285,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
 
       ],
+      moneyDataSet: [
+        {
+          "label": "Earned",
+          "data": [100, 500, 200, 300, 400, 600, 0, 100, 500]
+        },
+        {
+          "label": "Paid",
+          "data": [100, 400, 200, 200, 400, 400, 0, 100, 400]
+        },
+        {
+          "label": "Owed",
+          "data": [0, 100, 0, 100, 0, 200, 0, 0, 100]
+        }
+      ],
+      statsDataSet: [
+        {
+          "label": "Scheduled",
+          "data": [3, 5, 2, 4, 4, 6, 1, 1, 6]
+        },
+        {
+          "label": "Completed",
+          "data": [1, 5, 2, 3, 4, 6, 0, 1, 6]
+        },
+        {
+          "label": "Canceled",
+          "data": [2, 0, 0, 1, 0, 0, 1, 0, 0]
+        }
+      ],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -368,10 +396,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ accountUser: localUsers });
       },
 
-      displayTotalScheduled: () => {
-        let totalScheduled = getStore().calendarEntries.length;
+      displayTotalScheduled: (dates) => {
+        let totalScheduled = getStore().calendarEntries;
+        console.log(dates);
+        let relevant = totalScheduled.filter((elm) => {
+          return (
+            elm.startDate.getDate() >= parseInt(dates.startDate) &&
+            elm.startDate.getDate() <= parseInt(dates.endDate) &&
+            elm.startDate.getMonth() + 1 >= parseInt(dates.startMonth) &&
+            elm.startDate.getMonth() + 1 <= parseInt(dates.endMonth)
+          );
+        });
 
-        return totalScheduled;
+        console.log(relevant);
+
+        return relevant;
       },
 
       displayTotalCompleted: () => {
@@ -534,9 +573,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (loginInput.password == findUser.password) setStore({ loggedUser: findUser });
       },
 
-
-
-      displayMoneyChart: () => {
+      displayChart: (chartName) => {
+        const info = getStore()[chartName]
+        console.log(info)
         fetch('https://quickchart.io/chart/create', {
           method: 'POST',
           body: JSON.stringify(
@@ -549,20 +588,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 "type": "bar",
                 "data": {
                   "labels": ["6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28", "6/29", "6/30"],
-                  "datasets": [
-                    {
-                      "label": "Earned",
-                      "data": [100, 500, 200, 300, 400, 600, 0, 100, 500]
-                    },
-                    {
-                      "label": "Paid",
-                      "data": [100, 400, 200, 200, 400, 400, 0, 100, 400]
-                    },
-                    {
-                      "label": "Owed",
-                      "data": [0, 100, 0, 100, 0, 200, 0, 0, 100]
-                    }
-                  ]
+                  "datasets": info,
                 }
               }
             },

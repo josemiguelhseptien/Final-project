@@ -49,34 +49,24 @@ export const Dashboard = (props) => {
             </div>
           </div>
         ) : (null)}
-        {viewType == "money" ? (
-          <div className="d-inline-block mx-5">
-            <div>
-              <h3>Your Money</h3>
-            </div>
-            <div>
-              {< Money />}
-            </div>
-            <div>
-              <h3>Income Chart</h3>
-              <div>bar graph for the last 30 days</div>
-            </div>
-          </div>
-        ) : (null)}
-        {viewType == "stats" ? (
-          <div className="d-inline-block mx-5">
-            <div>
-              <h3>Appointment Stats</h3>
+        <div id="rightSection">
+          {viewType == "money" ? (
+            <div className="d-inline-block mx-5">
               <div>
-                {< Stats />}
+                <h3>Your Money</h3>
+              </div>
+              <div>{<Money />}</div>
+            </div>
+          ) : null}
+          {viewType == "stats" ? (
+            <div className="d-inline-block mx-5">
+              <div>
+                <h3>Appointment Stats</h3>
+                <div>{<Stats />}</div>
               </div>
             </div>
-            <div>
-              <h3>API Chart</h3>
-              <div>bar and line graph: scheduled-bar, completed and canceled line for the last 30 days</div>
-            </div>
-          </div>
-        ) : (null)}
+          ) : null}
+        </div>
         {viewType == "clients" ? (
           <div className="d-inline-block mx-5">
             <div>
