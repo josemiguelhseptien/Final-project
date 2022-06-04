@@ -34,14 +34,34 @@ button {
 }
 
 .navbarb {
-  background-color: rgb(25, 25, 39);
+  background-color: #708d81;
 }
 .colorblue {
-  background-color: #3a86ff;
+  background-color: #f3d37a;
 }
 .colorred {
-  background-color: rgb(247, 113, 20);
+  color: #8d0801;
 }
 .textcolor {
   color: #ff006e;
+}
+.mpBgTheme {
+  background-image: url("https://www.thebalancecareers.com/thmb/KmRO-iCFkq0YwHLa3Sxf0Zt3cpU=/1885x1414/smart/filters:no_upscale()/GettyImages-1249813332-7dfdb71dee16453685db47753f7fac2a.jpg");
+}
+.lightblue {
+  background-color: #bde0fe;
+}
+.profileBg {
+  background-image: url("https://remoteco.s3.amazonaws.com/wp-content/uploads/2018/06/6-Entry-Level-Remote-Teaching-and-Tutoring-Jobs.jpg");
+}
+.double {
+  border-style: ridge;
+  color: #8d0801;
+  border-color: #f3d37a;
+}
+.margin {
+  margin-left: 100px;
+}
+.onlineColor {
+  color: #38b000;
 }
