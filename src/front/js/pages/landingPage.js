@@ -25,7 +25,7 @@ export const LandingPage = props => {
                             </div>
                         </div>
                         <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                            <img className="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720" />
+                            <img className="rounded-lg-3" src="https://images.pexels.com/photos/1569076/pexels-photo-1569076.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1" alt="" width="720" />
                         </div>
                     </div>
                 </div>
