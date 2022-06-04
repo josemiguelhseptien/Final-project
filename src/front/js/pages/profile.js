@@ -22,6 +22,18 @@ export const Profile = props => {
         availability: professionalCard.availability,
         userType: professionalCard.userType
     }
+
+
+
+    const contactUser = () => {
+        console.log(userInfo.email)
+        console.log(store.accountUser[0].email)
+        let findUser = store.accountUser.filter((element) => {
+            element.email == userInfo.email
+        })
+        console.log(findUser)
+    }
+
     return (
 
         <div className="container">
@@ -94,7 +106,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className="btn btn-primary" onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>

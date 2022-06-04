@@ -76,10 +76,20 @@ export const Account = props => {
                 </div>
                 <div>
                     {/*------------------ Pro user modal-------------------------------- */}
-                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Edit profile
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        data-bs-whatever="@getbootstrap">
+                        edit contact
                     </button>
-                    <div className="modal fade" show={showModal} style={{ display: showModal ? "inline-block" : "none" }} tabIndex="-1" role="dialog">
+                    <div
+                        className="modal fade"
+                        id="exampleModal"
+                        tabIndex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
@@ -121,9 +131,12 @@ export const Account = props => {
                                         <div>Services</div>
                                         <div>availability</div>
                                     </div>
+                                </div><div>
+
+
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                                 </div>
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                             </div>
                         </div>
                     </div>

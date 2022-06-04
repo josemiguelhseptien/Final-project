@@ -15,12 +15,6 @@ export const ClientAppointments = () => {
         (elm) => elm.cancelled
     );
 
-    function paidAppointmentFunction(appt, index) {
-        paidAppointments.push(appt);
-    }
-    function cancelAppointmentFunction(appt, index) {
-        cancelledCalendarEntries.push(appt);
-    }
 
     let mappedAppointments = appointments.map((appt, index) => {
         return (
@@ -34,6 +28,9 @@ export const ClientAppointments = () => {
                     <div>Start time : {appt.startDate.toString()}</div>
                 </div>
                 <div>
+                    <div className="d-flex">
+                        <h4>status: </h4> <h4>payment due</h4>
+                    </div>
                     {appt.completed ? (
                         <>
                             <button
@@ -49,14 +46,6 @@ export const ClientAppointments = () => {
                                 type="button"
                                 className="btn btn-outline-warning mx-1"
                                 onClick={(e) => {
-                                    actions.addUserIncome({
-                                        userID: 1,
-                                        paidFor: appt.text,
-                                        dateEntered: new Date(),
-                                        earned: 100,
-                                        paid: 100,
-                                        owed: 0,
-                                    });
                                     actions.editCalendarEntry(appt.text, "paid");
                                     actions.editUserStats(appt.startDate, "completed");
                                 }}
@@ -66,24 +55,17 @@ export const ClientAppointments = () => {
                         </>
                     ) : (
                         <>
-                            <button
+                            {appt.toConfirm ? <button className="btn btn-success mx-1" disabled >pending confirmation</button> : <button
                                 type="button"
+                                onClick={(e) => {
+                                    actions.editCalendarEntry(appt.text, "completed"),
+                                        appt.toConfirm = "completed"
+                                }}
                                 className="btn btn-outline-warning mx-1"
-                                onClick={(e) => {
-                                    actions.editCalendarEntry(appt.text, "completed");
-                                }}
                             >
-                                Complete
-                            </button>
-                            <button
-                                type="button"
-                                className="btn btn-outline-danger mx-1"
-                                onClick={(e) => {
-                                    actions.editCalendarEntry(appt.text, "cancelled");
-                                }}
-                            >
-                                Cancel
-                            </button>
+                                Pay appointment
+                            </button>}
+
                         </>
                     )}
                 </div>
@@ -115,7 +97,8 @@ export const ClientAppointments = () => {
         (appt, index) => {
             return (
                 <li
-                    className="list-group-item d-flex justify-content-between"
+                    className={appt.completed ? "btn btn-success mx-1" : "btn btn-outline-warning mx-1"}
+
                     key={index}
                 >
                     <div>
@@ -133,47 +116,12 @@ export const ClientAppointments = () => {
         }
     );
 
-    let appointmentsPendingConfirmation = (
-        <li className="list-group-item d-flex justify-content-between">
-            <div>
-                <div>Marco Polo </div>
-                <div>Math tutoring </div>
-                <div>Start time : saturday April 22nd at 2:00pm</div>
-            </div>
-            <div>
-                <button type="button" className="btn btn-secondary">
-                    Resolved
-                </button>
-            </div>
-        </li>
-    );
-
-    function removeAppt(appt, index) {
-        let filteredArray = appointments.filter((appt, i) => {
-            return i != index;
-        });
-        setAppointment(filteredArray);
-    }
-
-    console.log(store.calendarEntries);
 
     return (
         <div className="container-fluid">
-            <br></br>
             <div className="mainBox">
                 <div className="inputDiv">
-                    <div>
-                        <h3>Pending confirmation</h3>
-                    </div>
-                    <ul className="list-group">
-                        {mappedAppointments.length == 0 ? (
-                            <div className="list-group-item">
-                                <span>There are no pending appointments</span>
-                            </div>
-                        ) : (
-                            appointmentsPendingConfirmation
-                        )}
-                    </ul>
+                    <h3>Appointments</h3>
                 </div>
                 <br></br>
                 <div className="inputDiv">
@@ -193,16 +141,9 @@ export const ClientAppointments = () => {
                 <br></br>
                 <div className="inputDiv">
                     <div>
-                        <h3>Paid appointments</h3>
+                        <h3>Confirmed appointments</h3>
                     </div>
                     <ul className="list-group">{mappedPaidAppointments}</ul>
-                </div>
-                <br></br>
-                <div className="inputDiv">
-                    <div>
-                        <h3>Cancelled appointments</h3>
-                    </div>
-                    <ul className="list-group">{mappedCancelledAppointments}</ul>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      chartURL: "",
       clientUser: [
         {
           id: "4",
@@ -52,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           id: "1",
           profilePicture:
             "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
-          name: "FIRST",
+          name: "Jaime",
           password: "123",
           phone: "4896415154",
           email: "1@",
@@ -93,15 +94,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       ],
       calendarEntries: [
-        {
-          id: "2",
-          text: `1@`,
-          startDate: new Date("2022-04-15T16:30:00.000Z"),
-          endDate: new Date("2022-04-15T18:30:00.000Z"),
-          allDay: true,
-          description: "done",
-          recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2",
-        },
         {
           id: "2",
           text: `2@`,
@@ -447,6 +439,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           } else return elm;
         });
         setStore({ calendarEntries: dataArray });
+        console.log(category)
       },
 
       modifyAppt: () => {
@@ -540,6 +533,59 @@ const getState = ({ getStore, getActions, setStore }) => {
         let findUser = store.accountUser.find((element) => { return element.email == loginInput.email })
         if (loginInput.password == findUser.password) setStore({ loggedUser: findUser });
       },
+
+
+
+      displayMoneyChart: () => {
+        fetch('https://quickchart.io/chart/create', {
+          method: 'POST',
+          body: JSON.stringify(
+            {
+              "backgroundColor": "#fff",
+              "width": 500,
+              "height": 300,
+              "devicePixelRatio": 1.0,
+              "chart": {
+                "type": "bar",
+                "data": {
+                  "labels": ["6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28", "6/29", "6/30"],
+                  "datasets": [
+                    {
+                      "label": "Earned",
+                      "data": [100, 500, 200, 300, 400, 600, 0, 100, 500]
+                    },
+                    {
+                      "label": "Paid",
+                      "data": [100, 400, 200, 200, 400, 400, 0, 100, 400]
+                    },
+                    {
+                      "label": "Owed",
+                      "data": [0, 100, 0, 100, 0, 200, 0, 0, 100]
+                    }
+                  ]
+                }
+              }
+            },
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then((response) => {
+            if (response.status != 200) {
+              throw new Error(response.statusText);
+            }
+            console.log(response)
+            return response.json();
+          })
+          .then(response => {
+            console.log('Success:', response);
+            setStore({ chartURL: response.url });
+          })
+          .catch(error => console.error(error))
+
+      },
+
     },
   };
 };

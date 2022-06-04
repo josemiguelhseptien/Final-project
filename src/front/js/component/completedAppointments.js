@@ -133,20 +133,7 @@ export const CompletedAppointments = () => {
     }
   );
 
-  let appointmentsPendingConfirmation = (
-    <li className="list-group-item d-flex justify-content-between">
-      <div>
-        <div>Marco Polo </div>
-        <div>Math tutoring </div>
-        <div>Start time : saturday April 22nd at 2:00pm</div>
-      </div>
-      <div>
-        <button type="button" className="btn btn-secondary">
-          Resolved
-        </button>
-      </div>
-    </li>
-  );
+
 
   function removeAppt(appt, index) {
     let filteredArray = appointments.filter((appt, i) => {
@@ -161,20 +148,6 @@ export const CompletedAppointments = () => {
     <div className="container-fluid">
       <br></br>
       <div className="mainBox">
-        <div className="inputDiv">
-          <div>
-            <h3>Pending confirmation</h3>
-          </div>
-          <ul className="list-group">
-            {mappedAppointments.length == 0 ? (
-              <div className="list-group-item">
-                <span>There are no pending appointments</span>
-              </div>
-            ) : (
-              appointmentsPendingConfirmation
-            )}
-          </ul>
-        </div>
         <br></br>
         <div className="inputDiv">
           <div>
