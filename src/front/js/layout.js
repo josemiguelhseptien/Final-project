@@ -6,8 +6,6 @@ import { App } from "./pages/App";
 import { SignUp } from "./pages/signUp";
 import { LandingPage } from "./pages/landingPage";
 import { Dashboard } from "./pages/dashboard";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { MarketPlace } from "./pages/marketPlace";
 
@@ -17,7 +15,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { CompletedAppointments } from "./component/completedAppointments";
 import { Profile } from "./pages/profile";
-
+import { ClientDashboard } from "./pages/clientDashboard";
 
 //create your first component
 const Layout = () => {
@@ -33,19 +31,15 @@ const Layout = () => {
           <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/account/1" component={Account} />
+            <Route exact path="/account/:id" component={Account} />
             <Route exact path="/marketplace" component={MarketPlace} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/client_dashboard" component={ClientDashboard} />
+
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/ca" component={CompletedAppointments} />
             <Route exact path="/profile/:id" component={Profile} />
-            <Route exact path="/demo">
-              <Demo />
-            </Route>
 
-            <Route exact path="/single/:theid">
-              <Single />
-            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>

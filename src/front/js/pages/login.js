@@ -48,7 +48,8 @@ export const Login = props => {
                             setLoginInput({ ...loginInput, password: e.target.value });
                         }} id="exampleInputPassword1" />
                     </div>
-                    <Link to={{ pathname: "/dashboard" }}> <button type="button" className="btn btn-primary" onClick={(e) => { actions.loginUser(loginInput) }}>Submit</button></Link>
+                    {loginInput.userType == "client" ? (<Link to={{ pathname: "/" }}> <button type="button" className="btn btn-primary" onClick={(e) => { actions.loginClient(loginInput) }}>Submit</button></Link>) : (<Link to={{ pathname: "/" }}> <button type="button" className="btn btn-primary" onClick={(e) => { actions.loginProfessional(loginInput) }}>Submit</button></Link>)}
+
 
 
 

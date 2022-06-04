@@ -1,33 +1,32 @@
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .size {
-    width: 700px;
+  width: 700px;
 }
 .checked {
   color: orange;
 }
 .loginCard {
-    width: 40%;
-    margin: 0 auto;
-    padding-top: 3rem;
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 3rem;
 }
 
 .loginBar {
-    text-align: center;
+  text-align: center;
 }
 
 .profilePicture {
-    width: 30%;
-    padding-top: 100%;
-    background-color: black;
-    padding: 0.000001rem;
-    margin-right: 5%;
-    margin-left: 3%;
-    clip-path: circle();
-    object-fit: contain;
-
+  width: 30%;
+  padding-top: 100%;
+  background-color: black;
+  padding: 0.000001rem;
+  margin-right: 5%;
+  margin-left: 3%;
+  clip-path: circle();
+  object-fit: contain;
 }
 button {
   background-color: transparent;
@@ -43,56 +42,62 @@ button {
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .signupbtn {
-    text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 }
 
 ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .professionalCard {
-
-    margin: 5vh;
-    font-size: x-large;
-    align-items: center;
-    vertical-align: middle;
-
+  margin: 5vh;
+  font-size: x-large;
+  align-items: center;
+  vertical-align: middle;
 }
 
 .userCard {
-    background-color: gray;
+  background-color: gray;
 }
 
 .marketPlaceImgDiv {
-    width: 10%;
+  width: 10%;
 }
 
 .marketPlacePics {
-    width: 100%;
-    padding-top: 100%;
-    background-color: black;
-    padding: 0.000001rem;
-    margin-right: 5%;
-    margin-left: 3%;
-    clip-path: circle();
-    object-fit: contain;
+  width: 100%;
+  padding-top: 100%;
+  background-color: black;
+  padding: 0.000001rem;
+  margin-right: 5%;
+  margin-left: 3%;
+  clip-path: circle();
+  object-fit: contain;
 }
 
 .marketPlaceCardInfo {
-    width: 70%;
-    padding: 1%;
+  width: 70%;
+  padding: 1%;
 }
 
 .rating {
-    height: 80%;
+  height: 80%;
 }
 
 .services {
-    width: 40%;
+  width: 40%;
+}
+
+.card {
+  display: inline-block;
+}
+.cardRow {
+  overflow-x: auto;
+  white-space: nowrap;
 }

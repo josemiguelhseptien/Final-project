@@ -32,7 +32,7 @@ export const MarketPlace = (props) => {
 
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid ">
       <div>
         <br></br>
         <div className="d-flex justify-content-between">

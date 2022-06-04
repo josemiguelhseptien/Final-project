@@ -6,36 +6,46 @@ import { Context } from "../store/appContext";
 export const Profile = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-
-
-    const [userType, setuserType] = useState("professional")
-    const [accountUser, setAccountUser] = useState(store.accountUser[0])
+    let professionalCard = store.accountUser.find((element) => {
+        return element.id == props.match.params.id
+    })
 
     const userInfo = {
-        id: "1",
-        profilePicture: accountUser.profilePicture,
-        name: accountUser.name,
-        phone: accountUser.phone,
-        email: accountUser.email,
-        background: accountUser.background,
-        about: accountUser.about,
-        services: accountUser.services,
-        availability: accountUser.availability,
-        userType: accountUser.userType
+        id: professionalCard.id,
+        profilePicture: professionalCard.profilePicture,
+        name: professionalCard.name,
+        phone: professionalCard.phone,
+        email: professionalCard.email,
+        background: professionalCard.background,
+        about: professionalCard.about,
+        services: professionalCard.services,
+        availability: professionalCard.availability,
+        userType: professionalCard.userType
+    }
+
+
+
+    const contactUser = () => {
+        console.log(userInfo.email)
+        console.log(store.accountUser[0].email)
+        let findUser = store.accountUser.filter((element) => {
+            element.email == userInfo.email
+        })
+        console.log(findUser)
     }
 
     return (
 
-        <div className="container">
+        <div className="container profileBg">
             {/*------------------ Pro user view-------------------------------- */}
 
-            <div className="container-box">
+            <div className="container-box ">
                 <div className="userInfo">
-                    <div className=" d-flex double">
-                        <img className="img-fluid profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
+                    <div className="d-flex colorblue">
+                        <img className="img-fluid profilePicture" src={userInfo.profilePicture} />
                         <div className="professionalCard">
-                            <div className="userInfo d-flex">
-                                <div>
+                            <div className="userInfo d-flex colorred">
+                                <div className="n">
                                     <div className="Name">{userInfo.name}</div>
                                     <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
                                     <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
@@ -96,7 +106,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="btn btn-info">
+                                <button type="button" className="btn btn-primary" onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>
