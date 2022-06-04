@@ -5,7 +5,12 @@ import { Context } from "../store/appContext";
 
 export const Money = (props) => {
     const { store, actions } = useContext(Context);
-
+    const [dates, setDates] = useState({
+        startDate: 0,
+        endDate: 0,
+        startMonth: 0,
+        endMonth: 0,
+    });
 
     const [moneyEntry, setMoneyEntry] = useState({
         userID: store.accountUser.id,
@@ -24,59 +29,80 @@ export const Money = (props) => {
     const [paidMoney, setPaidMoney] = useState(0)
     useEffect(() => setPaidMoney(actions.displayTotalPaid()), []);
 
+    const [chartImg, setChartImg] = useState("")
+    useEffect(() => setChartImg(actions.displayChart("moneyDataSet")), []);
 
 
     return (
         <div className="container-fluid">
             {/* Form to enter money info */}
             <div>
+                <h3>Filter By Dates:</h3>
                 <form className="d-inline-flex">
                     <div className="mb-3 mx-2">
-                        <label className="form-label">Date</label>
-                        <input type="date" className="form-control" id="dateEntered"
-                            onChange={e => { setMoneyEntry({ ...moneyEntry, dateEntered: e.target.value }); }}
+                        <label className="form-label">Start Day:</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            aria-label="Amount (to the nearest dollar)"
+                            value={dates.startDate}
+                            onChange={(e) => {
+                                setDates({ ...dates, startDate: e.target.value });
+                            }}
                         />
                     </div>
                     <div>
-                        <label className="form-label">Earned</label>
+                        <label className="form-label">Start Month:</label>
                         <div className="input-group mb-3">
-                            <span className="input-group-text">$</span>
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={moneyEntry.earned}
-                                onChange={e => { setMoneyEntry({ ...moneyEntry, earned: e.target.value }); }}
+                            <input
+                                type="number"
+                                className="form-control"
+                                aria-label="Amount (to the nearest dollar)"
+                                value={dates.startMonth}
+                                onChange={(e) => {
+                                    setDates({ ...dates, startMonth: e.target.value });
+                                }}
                             />
-                            <span className="input-group-text">.00</span>
                         </div>
                     </div>
                     <div>
-                        <label className="form-label">Paid</label>
+                        <label className="form-label">End Day:</label>
                         <div className="input-group mb-3">
-                            <span className="input-group-text">$</span>
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={moneyEntry.paid}
-                                onChange={e => { setMoneyEntry({ ...moneyEntry, paid: e.target.value }); }}
+                            <input
+                                type="number"
+                                className="form-control"
+                                aria-label="Amount (to the nearest dollar)"
+                                value={dates.endDate}
+                                onChange={(e) => {
+                                    setDates({ ...dates, endDate: e.target.value });
+                                }}
                             />
-                            <span className="input-group-text">.00</span>
                         </div>
                     </div>
                     <div>
-                        <label className="form-label">Owed</label>
+                        <label className="form-label">End Month:</label>
                         <div className="input-group mb-3">
-                            <span className="input-group-text">$</span>
-                            <input type="number" className="form-control" aria-label="Amount (to the nearest dollar)"
-                                value={moneyEntry.owed}
-                                onChange={e => { setMoneyEntry({ ...moneyEntry, owed: e.target.value }); }}
+                            <input
+                                type="number"
+                                className="form-control"
+                                aria-label="Amount (to the nearest dollar)"
+                                value={dates.endMonth}
+                                onChange={(e) => {
+                                    setDates({ ...dates, endMonth: e.target.value });
+                                }}
                             />
-                            <span className="input-group-text">.00</span>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary"
-                        onClick={(e) => {
-                            actions.addUserIncome(moneyEntry), setEarnedMoney(actions.displayTotalEarned()),
-                                setOwedMoney(actions.displayTotalOwed()), setPaidMoney(actions.displayTotalPaid())
-                        }}
-                    >Submit</button>
                 </form>
+                <button
+                    type="text"
+                    className="btn btn-primary"
+                    onClick={(e) => {
+                        setTotals(actions.displayTotalScheduled(dates));
+                    }}
+                >
+                    Filter
+                </button>
             </div>
             {/* Boxes to display money overview */}
             <div className="d-inline-flex">
@@ -104,6 +130,12 @@ export const Money = (props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h3>Income Chart</h3>
+            </div>
+            <div>
+                {store.chartURL ? <img src={store.chartURL} alt="June money data" /> : ""}
             </div>
         </div>
     );
