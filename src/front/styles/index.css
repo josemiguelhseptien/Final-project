@@ -45,3 +45,16 @@ button {
 .textcolor {
   color: #ff006e;
 }
+.mpBgTheme {
+  background-image: url("https://www.thebalancecareers.com/thmb/KmRO-iCFkq0YwHLa3Sxf0Zt3cpU=/1885x1414/smart/filters:no_upscale()/GettyImages-1249813332-7dfdb71dee16453685db47753f7fac2a.jpg");
+}
+.lightblue {
+  background-color: #bde0fe;
+}
+.profileBg {
+  background-image: url("https://remoteco.s3.amazonaws.com/wp-content/uploads/2018/06/6-Entry-Level-Remote-Teaching-and-Tutoring-Jobs.jpg");
+}
+.double {
+  border-style: ridge;
+  color: #3b85ff;
+}

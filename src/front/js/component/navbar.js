@@ -15,13 +15,13 @@ export const Navbar = () => {
         {store.loggedUser.id != "" ? (
           <div className="ml-auto">
             <Link to="/dashboard">
-              <button className="btn btn-primary mx-2">Dashboard</button>
+              <button className="btn btn-info mx-2">Dashboard</button>
             </Link>
             <Link to="/marketplace">
-              <button className="btn btn-primary mx-2">Marketplace</button>
+              <button className="btn btn-info mx-2">Marketplace</button>
             </Link>
             <Link to={{ pathname: `/account/${store.loggedUser.id}` }}>
-              <button className="btn btn-primary mx-2">Account</button>
+              <button className="btn btn-info mx-2">Account</button>
             </Link>
           </div>
         ) : (

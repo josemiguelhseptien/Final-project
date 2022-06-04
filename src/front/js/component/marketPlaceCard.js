@@ -11,13 +11,13 @@ export const MarketPlaceCard = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="container-fluid">
-            <div className="userCard">
+        <div className="container-fluid colorblue">
+            <div className="userCard ">
                 <Link className="list-group-item list-group-item-action" to={{
                     pathname: `/profile/${props.user.id}`,
                     state: props.user,
                 }}>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between ">
                         <div className="marketPlaceImgDiv">
                             <img className="img-fluid marketPlacePics" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
                         </div>
