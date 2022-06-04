@@ -69,22 +69,6 @@ export const Dashboard = (props) => {
         </div>
         {viewType == "clients" ? (
           <div className="d-inline-block mx-5">
-            <div>
-              <h3>Prospective Clients</h3>
-              <div>Card Row</div>
-            </div>
-            <div>
-              <h3>Find Client</h3>
-              <div>Search box</div>
-            </div>
-            <div>
-              <h3>Clients</h3>
-              <div>Card Row</div>
-            </div>
-          </div>
-        ) : (null)}
-        {viewType == "clients" ? (
-          <div className="d-inline-block mx-5">
             {< ViewClients />}
           </div>
         ) : (null)}

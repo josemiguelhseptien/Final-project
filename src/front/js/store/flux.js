@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       clientAppointments: [{
         id: "2",
-        text: `1@`,
+        text: `Justin Stevens`,
         startDate: new Date("2022-04-15T16:30:00.000Z"),
         endDate: new Date("2022-04-15T18:30:00.000Z"),
         allDay: true,
@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       {
         id: "2",
-        text: `1@`,
+        text: `Justin Stevens`,
         startDate: new Date("2022-05-15T16:30:00.000Z"),
         endDate: new Date("2022-05-15T18:30:00.000Z"),
         allDay: true,
@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       {
         id: "1",
-        text: `3@`,
+        text: `Maggie Smith`,
         startDate: new Date("2022-05-15T16:30:00.000Z"),
         endDate: new Date("2022-05-15T18:30:00.000Z"),
         allDay: true,
@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           id: "1",
           profilePicture:
-            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
+            "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
           name: "Jaime",
           password: "123",
           phone: "4896415154",
@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       calendarEntries: [
         {
           id: "2",
-          text: `2@`,
+          text: `Anna Jones`,
           startDate: new Date("2022-06-15T16:30:00.000Z"),
           endDate: new Date("2022-06-15T18:30:00.000Z"),
           allDay: true,
@@ -105,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         {
           id: "2",
-          text: `1@`,
+          text: `Anna Jones`,
           startDate: new Date("2022-05-15T16:30:00.000Z"),
           endDate: new Date("2022-05-15T18:30:00.000Z"),
           allDay: true,
@@ -114,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         {
           id: "1",
-          text: `3@`,
+          text: `Mike Peterson`,
           startDate: new Date("2022-05-15T16:30:00.000Z"),
           endDate: new Date("2022-05-15T18:30:00.000Z"),
           allDay: true,
@@ -131,16 +131,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           id: "1",
           profilePicture:
-            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
-          name: "FIRST",
+            "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
+          name: "Justin Stevens",
           password: "123",
           phone: "4896415154",
           email: "1@",
           background: "",
           userType: "professional",
-          about: " Lorem ipsum dolor sit amet",
-          services: "Math tutoring",
-          prices: 30,
+          about: "Teacher for 5 years, K-12 grades",
+          services: "Science & English tutoring",
+          prices: 100,
           zip_code: "33156",
           format: "Online only",
           availability: {
@@ -172,24 +172,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           ],
           prospect: [
             {
-              name: "Prospect One",
+              name: "Alan Jacobs",
               phone: "123-123-1234",
               email: "email@email.com",
             },
             {
-              name: "Prospect Two",
+              name: "Jamie Sanchez",
               phone: "123-123-1234",
               email: "email@email.com",
             },
           ],
           client: [
             {
-              name: "Client One",
+              name: "Anna Jones",
               phone: "123-123-1234",
               email: "email@email.com",
             },
             {
-              name: "Client Two",
+              name: "Mike Peterson",
               phone: "123-123-1234",
               email: "email@email.com",
             },
@@ -199,15 +199,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           id: "2",
           profilePicture:
-            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
-          name: "Second",
+            "https://images.pexels.com/photos/5905625/pexels-photo-5905625.jpeg?cs=srgb&dl=pexels-katerina-holmes-5905625.jpg&fm=jpg",
+          name: "Maggie Smith",
           password: "123",
           phone: "4896415154",
           email: "2@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: "Math tutoring",
+          services: "Math & Science tutoring",
           prices: 50,
           zip_code: "33014",
           format: "Online only",
@@ -243,16 +243,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           id: "3",
           profilePicture:
-            "https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg",
-          name: "Third",
+            "https://images.pexels.com/photos/8190777/pexels-photo-8190777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          name: "Sara Jones",
           password: "123",
           phone: "4896415154",
           email: "3@",
           background: "",
           userType: "professional",
           about: " Lorem ipsum dolor sit amet",
-          services: "English tutoring",
-          prices: 40,
+          services: "Music & Art tutoring",
+          prices: 50,
           zip_code: "33156",
           format: "Online only",
           availability: {

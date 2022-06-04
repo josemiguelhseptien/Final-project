@@ -18,8 +18,9 @@ export const LandingPage = props => {
                             <h1 className="display-4 fw-bold lh-1">Book like a pro with Bookt.io</h1>
                             <p className="lead">Book appointments with ease, bookt.io makes booking a breeze.</p>
                             <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <button type="button" className="btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started as a Provider</button>
-                                <button type="button" className="btn btn-outline-info btn-lg px-4">Get started as a Client</button>
+                                <Link to={{ pathname: `/signup/` }}>
+                                    <button type="button" className="btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started now</button>
+                                </Link>
                                 {/* link to registration page */}
                             </div>
                         </div>
@@ -58,8 +59,7 @@ export const LandingPage = props => {
                             <p className="lead">Nobody wants to look unprofessional flipping through pages of a calendar. Or worse, missing an appointment cause you lost the scrap of paper it was written on.</p>
                         </div>
                         <div className="col-md-5">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/196650/pexels-photo-196650.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ export const LandingPage = props => {
                             <p className="lead">And of course your clients. You can even rate them to keep track.</p>
                         </div>
                         <div className="col-md-5 order-md-1">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/4386235/pexels-photo-4386235.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
 
                         </div>
                     </div>
@@ -84,8 +84,7 @@ export const LandingPage = props => {
                             <p className="lead">Let clients easily find & book appointments with you.</p>
                         </div>
                         <div className="col-md-5">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
                         </div>
                     </div>
 
@@ -98,11 +97,10 @@ export const LandingPage = props => {
                     <div className="row featurette">
                         <div className="col-md-7">
                             <h2 className="featurette-heading fw-normal lh-1">Easy as 1, 2, 3. <span className="text-muted">It’ll blow your mind.</span></h2>
-                            <p className="lead">Register for an account, find a professional and book your appointment. It really is that simple.</p>
+                            <p className="lead">Register for an account, find a professional and contact them to book your appointment. It really is that simple.</p>
                         </div>
                         <div className="col-md-5">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/367273/pexels-photo-367273.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
                         </div>
                     </div>
 
@@ -111,11 +109,10 @@ export const LandingPage = props => {
                     <div className="row featurette">
                         <div className="col-md-7 order-md-2">
                             <h2 className="featurette-heading fw-normal lh-1">Track your appointments. <span className="text-muted">And never forget to pay again.</span></h2>
-                            <p className="lead">In your dashboard you can see your appointments. And they're color coded for you to see if you've paid upfront.</p>
+                            <p className="lead">In your dashboard you can see your appointments. And easily see if you've paid for it.</p>
                         </div>
                         <div className="col-md-5 order-md-1">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/6694866/pexels-photo-6694866.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
                         </div>
                     </div>
 
@@ -127,8 +124,7 @@ export const LandingPage = props => {
                             <p className="lead">Search for more professionals by name, location or area of specialty.</p>
                         </div>
                         <div className="col-md-5">
-                            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                            <img className="featurette-image img-fluid mx-auto" width="500" height="500" src="https://images.pexels.com/photos/8197544/pexels-photo-8197544.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=1"></img>
                         </div>
                     </div>
 
@@ -141,8 +137,9 @@ export const LandingPage = props => {
                     <h1 className="display-4 fw-normal">Ready to get started?</h1>
                     <p className="lead fw-normal">Register an account with Bookt today. Who knows, you could be bookt up very soon.</p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                        <button type="button" className="btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started as a Provider</button>
-                        <button type="button" className="btn btn-outline-info btn-lg px-4">Get started as a Client</button>
+                        <Link to={{ pathname: `/signup/` }}>
+                            <button type="button" className="btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started now</button>
+                        </Link>
                         {/* link to registration page */}
                     </div>
                 </div>
