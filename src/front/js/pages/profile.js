@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { RatingStar } from "../component/ratingStar";
 
 export const Profile = props => {
     const { store, actions } = useContext(Context);
@@ -36,12 +37,12 @@ export const Profile = props => {
 
     return (
 
-        <div className="container profileBg">
+        <div className="container">
             {/*------------------ Pro user view-------------------------------- */}
 
             <div className="container-box ">
                 <div className="userInfo">
-                    <div className="d-flex colorblue">
+                    <div className="d-flex double">
                         <img className="img-fluid profilePicture" src={userInfo.profilePicture} />
                         <div className="professionalCard">
                             <div className="userInfo d-flex colorred">
@@ -51,10 +52,10 @@ export const Profile = props => {
                                     <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
                                     <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
                                 </div>
-                                <div className="userRating">*****</div>
+                                <div className="userRating"><RatingStar /></div>
                             </div>
                             <div className="aboutCard">
-                                <div className="aboutTitle">about Title</div>
+                                <div className="aboutTitle">About Me:</div>
                                 <div className="aboutText">{userInfo.about}</div>
                             </div>
                         </div>
@@ -106,7 +107,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="btn btn-primary" onClick={(e) => { contactUser() }}>
+                                <button type="button" className="btn btn-info" onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>

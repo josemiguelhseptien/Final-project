@@ -16,7 +16,7 @@ export const Dashboard = (props) => {
     <div className="container-fluid">
       <br></br>
       {actions.modifyAppt()}
-      <div className="d-flex">
+      <div className="d-flex double">
         <div className="d-inline-flex">
           <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
             <ul className="nav flex-column">

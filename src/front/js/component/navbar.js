@@ -16,34 +16,23 @@ export const Navbar = () => {
         </Link>
         {loggedUserId == "" ? (
           <div className="ml-auto">
-<<<<<<< HEAD
-            <Link to="/dashboard">
-              <button className="btn btn-info mx-2">Dashboard</button>
-            </Link>
-            <Link to="/marketplace">
-              <button className="btn btn-info mx-2">Marketplace</button>
-            </Link>
-            <Link to={{ pathname: `/account/${store.loggedUser.id}` }}>
-              <button className="btn btn-info mx-2">Account</button>
-=======
             <Link to="/login">
-              <button className="btn btn-primary mx-2">Log In</button>
+              <button className="btn btn-info mx-2">Log In</button>
             </Link>
             <Link to="/signup">
-              <button className="btn btn-primary mx-2">Sign Up</button>
->>>>>>> 65fe58eab1fdecb499276d491e532aa2dc886da3
+              <button className="btn btn-info mx-2">Sign Up</button>
             </Link>
           </div>
         ) : (
           <div className="ml-auto">
-            (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>)
-            (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)
+            <Link to="/dashboard"><button className="btn btn-info mx-2">Pro Dashboard</button></Link>
+            <Link to="/client_dashboard"><button className="btn btn-info mx-2">Client Dashboard</button></Link>
             {/*store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)*/}
             <Link to="/marketplace">
-              <button className="btn btn-primary mx-2">Marketplace</button>
+              <button className="btn btn-info mx-2">Marketplace</button>
             </Link>
             <Link to={{ pathname: `/account/${loggedUserId}` }}>
-              <button className="btn btn-primary mx-2">Account</button>
+              <button className="btn btn-info mx-2">Account</button>
             </Link>
           </div>
         )}
