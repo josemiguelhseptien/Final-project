@@ -27,11 +27,6 @@ export const ViewClients = () => {
     return (
         <div className="container-fluid">
             <br></br>
-            {/* <div>
-                <div>
-                    {store.filteredUsers.length == 0 ? mapAccountUser() : mapFilteredUsers()}
-                </div>
-            </div> */}
             <div>
                 <h3>Prospective Clients</h3>
                 <div className="cardRow mb-5">
