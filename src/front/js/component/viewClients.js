@@ -26,16 +26,6 @@ export const ViewClients = () => {
 
     return (
         <div className="container-fluid">
-            <div>
-                <br></br>
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex">
-                        <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"
-                            value={store.nameInput} onChange={(e) => { actions.typeNameFunction(e.target.value) }} />
-                    </div>
-                    <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button>
-                </div>
-            </div>
             <br></br>
             {/* <div>
                 <div>

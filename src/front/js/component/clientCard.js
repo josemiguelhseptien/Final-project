@@ -9,7 +9,11 @@ import { RatingStar } from "./ratingStar";
 
 export const ClientCard = (props) => {
     const { store, actions } = useContext(Context);
-    let client = props.user.name
+    let client = {
+        name: props.user.name,
+        phone: props.user.phone,
+        email: props.user.email,
+    }
 
     return (
         <div className="card">
