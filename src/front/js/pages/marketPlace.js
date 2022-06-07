@@ -12,10 +12,12 @@ export const MarketPlace = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   const [user, setUser] = useState(props.location.state)
+  const [results, setResults] = useState(store.accountUser);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   function mapAccountUser() {
-    let mappedArr = store.accountUser.map((accountUser, index) => {
+    let mappedArr = results.map((accountUser, index) => {
       let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
       if (accountUser.userType == "professional") return componentCard
     })
@@ -23,11 +25,20 @@ export const MarketPlace = (props) => {
   }
 
   function mapFilteredUsers() {
-    let mappedArr = store.filteredUsers.map((accountUser, index) => {
+    let mappedArr = results.map((accountUser, index) => {
       let componentCard = (<MarketPlaceCard key={index} user={accountUser} />)
       if (accountUser.userType == "professional") return componentCard
     })
     return mappedArr
+  }
+
+  const search = () => {
+
+    let filterTargetValue = results.filter((element) => {
+      console.log(element.zip_code.includes(searchTerm));
+      return (element.services.toLowerCase().includes(searchTerm) || element.name.toLowerCase().includes(searchTerm) || element.zip_code.includes(searchTerm) || element.prices <= searchTerm);
+    })
+    setResults(filterTargetValue);
   }
 
 
@@ -37,25 +48,48 @@ export const MarketPlace = (props) => {
         <br></br>
         <div className="d-flex justify-content-between">
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="service" aria-label="service" aria-describedby="basic-addon1"
-              value={store.serviceInput} onChange={(e) => { actions.typeFunction(e.target.value) }} />
+            <input
+              type="text"
+              className=""
+              placeholder="service"
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
+              onKeyDown={(e) => {
+                if (e.keyCode == 13) search();
+              }} />
           </div>
           <div className="d-flex">
             <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"
-              value={store.nameInput} onChange={(e) => { actions.typeNameFunction(e.target.value) }} />
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
+              onKeyDown={(e) => {
+                if (e.keyCode == 13) search();
+              }} />
           </div>
           <div className="d-flex">
             <input type="number" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
-              value={store.priceInput} onChange={(e) => { actions.typePriceFunction(e.target.value) }} />
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
+              onKeyDown={(e) => {
+                if (e.keyCode == 13) search();
+              }} />
           </div>
           <div className="d-flex">
             <input type="text" className="form-control" placeholder="rating" aria-label="rating" aria-describedby="basic-addon1" />
           </div>
           <div className="d-flex">
             <input type="text" className="form-control" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1"
-              value={store.zip_codeInput} onChange={(e) => { actions.typeZipCodeFunction(e.target.value) }} />
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
+              onKeyDown={(e) => {
+                if (e.keyCode == 13) search();
+              }} />
           </div>
-          <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button>
+          {/* <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button> */}
         </div>
 
 
@@ -64,7 +98,7 @@ export const MarketPlace = (props) => {
       <br></br>
       <div className="list-group">
         <div>
-          {store.filteredUsers.length == 0 ? mapAccountUser() : mapFilteredUsers()}
+          {results.length == 0 ? mapAccountUser() : mapFilteredUsers()}
         </div>
       </div>
     </div>

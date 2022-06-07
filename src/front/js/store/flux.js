@@ -478,7 +478,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           } else return elm;
         });
         setStore({ calendarEntries: dataArray });
-        console.log(category)
+        console.log(dataArray)
       },
 
       modifyAppt: () => {
@@ -502,43 +502,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ serviceInput: targetValue.toLowerCase() });
         console.log(getStore().serviceInput);
         let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.services.toLowerCase().includes(targetValue);
+          return element.services.toLowerCase().includes(targetValue) || element.name.toLowerCase().includes(targetValue) || element.prices <= targetValue || element.zip_code.includes(targetValue);
+
         });
         console.log(filterTargetValue);
         setStore({ filteredUsers: filterTargetValue });
       },
 
-      typeNameFunction: (targetValue) => {
-        setStore({ nameInput: targetValue.toLowerCase() });
-        console.log(getStore().nameInput);
-        let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.name.toLowerCase().includes(targetValue);
-        });
-        console.log(filterTargetValue);
-        setStore({ filteredUsers: filterTargetValue });
-      },
 
-      typePriceFunction: (targetValue) => {
-        const store = getStore();
-        let number = parseInt(targetValue);
-        setStore({ priceInput: number });
-        console.log(targetValue.length);
-        let filterTargetValue = store.accountUser.filter((element) => {
-          return element.prices <= number;
-        });
-        console.log(filterTargetValue);
-        setStore({ filteredUsers: filterTargetValue });
-      },
-
-      typeZipCodeFunction: (targetValue) => {
-        setStore({ zip_codeInput: targetValue });
-        console.log(getStore().zip_codeInput);
-        let filterTargetValue = getStore().accountUser.filter((element) => {
-          return element.zip_code.includes(targetValue);
-        });
-        console.log(filterTargetValue);
-        setStore({ filteredUsers: filterTargetValue });
-      },
 
       clearSearch: () => {
         setStore({ zip_codeInput: "" });

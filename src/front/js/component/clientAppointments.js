@@ -10,13 +10,21 @@ export const ClientAppointments = () => {
     let appointments = store.clientAppointments.filter(
         (elm) => !(elm.paid || elm.cancelled)
     );
+
+
+
     let paidAppointments = store.calendarEntries.filter((elm) => elm.paid);
     let cancelledCalendarEntries = store.calendarEntries.filter(
         (elm) => elm.cancelled
     );
 
 
+
     let mappedAppointments = appointments.map((appt, index) => {
+        paidAppointments.find((element) => {
+            if (element.startDate == appt.startDate) appt.remove()
+        })
+
         return (
             <li
                 className="list-group-item d-flex justify-content-between"
@@ -28,9 +36,6 @@ export const ClientAppointments = () => {
                     <div>Start time : {appt.startDate.toString()}</div>
                 </div>
                 <div>
-                    <div className="d-flex">
-                        <h4>status: </h4> <h4>payment due</h4>
-                    </div>
                     {appt.completed ? (
                         <>
                             <button
@@ -59,13 +64,13 @@ export const ClientAppointments = () => {
                                 type="button"
                                 onClick={(e) => {
                                     actions.editCalendarEntry(appt.text, "completed"),
-                                        appt.toConfirm = "completed"
+                                        appt.toConfirm = "completed",
+                                        console.log(appt)
                                 }}
                                 className="btn btn-outline-warning mx-1"
                             >
                                 Pay appointment
                             </button>}
-
                         </>
                     )}
                 </div>
@@ -133,9 +138,7 @@ export const ClientAppointments = () => {
                             <div className="list-group-item">
                                 <span>There are no pending appointments</span>
                             </div>
-                        ) : (
-                            mappedAppointments
-                        )}
+                        ) : (mappedAppointments)}
                     </ul>
                 </div>
                 <br></br>
@@ -143,7 +146,22 @@ export const ClientAppointments = () => {
                     <div>
                         <h3>Confirmed appointments</h3>
                     </div>
-                    <ul className="list-group">{mappedPaidAppointments}</ul>
+                    <ul className="list-group">
+                        <li
+                            className="list-group-item d-flex justify-content-between"
+                        >
+                            <div>
+                                <div>Appt 123 </div>
+                                <div>some text </div>
+                                <div>Start time : 12:10 pm</div>
+                            </div>
+                            <div>
+                                <button type="button" className="btn btn-success" disabled>
+                                    Paid!
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
