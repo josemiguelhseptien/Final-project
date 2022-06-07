@@ -583,6 +583,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       },
 
+      deleteClient: (clientInfo) => {
+        const localUser = getStore().accountUser;
+        localUser[0].client = localUser[0].client.filter((element) => element.name != clientInfo.name);
+        setStore({ accountUser: localUser });
+      },
+
+      deleteProspect: (prospectInfo) => {
+        const localUser = getStore().accountUser;
+        localUser[0].prospect = localUser[0].prospect.filter((element) => element.name != prospectInfo.name);
+        setStore({ accountUser: localUser });
+      },
+
+      addToClientList: (prospectInfo) => {
+        const localUser = getStore().accountUser;
+        localUser[0].prospect = localUser[0].prospect.filter((element) => element.name != prospectInfo.name);
+        localUser[0].client.push({
+          name: prospectInfo.name,
+          phone: prospectInfo.phone,
+          email: prospectInfo.email,
+        })
+        setStore({ accountUser: localUser });
+      },
+
     },
   };
 };
