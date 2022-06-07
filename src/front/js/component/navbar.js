@@ -17,22 +17,20 @@ export const Navbar = () => {
         {loggedUserId == "" ? (
           <div className="ml-auto">
             <Link to="/login">
-              <button className="btn btn-info mx-2">Log In</button>
+              <button className="nav-btn btn btn-info mx-2">Log In</button>
             </Link>
             <Link to="/signup">
-              <button className="btn btn-info mx-2">Sign Up</button>
+              <button className="nav-btn btn btn-info mx-2">Sign Up</button>
             </Link>
           </div>
         ) : (
           <div className="ml-auto">
-            <Link to="/dashboard"><button className="btn btn-info mx-2">Pro Dashboard</button></Link>
-            <Link to="/client_dashboard"><button className="btn btn-info mx-2">Client Dashboard</button></Link>
-            {/*store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="btn btn-primary mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="btn btn-primary mx-2">Client Dashboard</button></Link>)*/}
+            {store.loggedUser.userType == "professional" ? (<Link to="/dashboard"><button className="nav-btn btn btn-info mx-2">Pro Dashboard</button></Link>) : (<Link to="/client_dashboard"><button className="nav-btn btn btn-info mx-2">Client Dashboard</button></Link>)}
             <Link to="/marketplace">
-              <button className="btn btn-info mx-2">Marketplace</button>
+              <button className="nav-btn btn btn-info mx-2">Marketplace</button>
             </Link>
             <Link to={{ pathname: `/account/${loggedUserId}` }}>
-              <button className="btn btn-info mx-2">Account</button>
+              <button className="nav-btn btn btn-info mx-2">Account</button>
             </Link>
           </div>
         )}

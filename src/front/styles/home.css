@@ -5,9 +5,11 @@
 .size {
   width: 700px;
 }
+
 .checked {
   color: orange;
 }
+
 .loginCard {
   width: 40%;
   margin: 0 auto;
@@ -28,15 +30,18 @@
   clip-path: circle();
   object-fit: contain;
 }
+
 button {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
 }
+
 .on {
   color: #000;
 }
+
 .off {
   color: #ccc;
 }
@@ -97,7 +102,27 @@ ul {
 .card {
   display: inline-block;
 }
+
 .cardRow {
   overflow-x: auto;
   white-space: nowrap;
+}
+
+.nav-btn {
+  background-color: rgba(105, 44, 175, 0.856);
+  color: white;
+  border-color: rgba(105, 44, 175, 0.856);
+
+}
+
+button.nav-btn:active {
+  background-color: rgba(123, 74, 180, 0.856) !important;
+  color: white;
+  border-color: rgba(139, 95, 189, 0.856) !important;
+
+}
+
+.boxType1 {
+  width: 70%;
+  box-shadow: 10px 20px 30px 2px #888888;
 }
