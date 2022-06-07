@@ -16,7 +16,7 @@ export const Dashboard = (props) => {
     <div className="container-fluid">
       <br></br>
       {actions.modifyAppt()}
-      <div className="d-flex">
+      <div className="d-flex double">
         <div className="d-inline-flex">
           <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
             <ul className="nav flex-column">
@@ -67,22 +67,6 @@ export const Dashboard = (props) => {
             </div>
           ) : null}
         </div>
-        {viewType == "clients" ? (
-          <div className="d-inline-block mx-5">
-            <div>
-              <h3>Prospective Clients</h3>
-              <div>Card Row</div>
-            </div>
-            <div>
-              <h3>Find Client</h3>
-              <div>Search box</div>
-            </div>
-            <div>
-              <h3>Clients</h3>
-              <div>Card Row</div>
-            </div>
-          </div>
-        ) : (null)}
         {viewType == "clients" ? (
           <div className="d-inline-block mx-5">
             {< ViewClients />}

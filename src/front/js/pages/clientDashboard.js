@@ -17,7 +17,7 @@ export const ClientDashboard = props => {
     return (
         <div className="container-fluid">
             <br></br>
-            <div className="d-flex">
+            <div className="d-flex double">
                 <div className="d-inline-flex">
                     <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
                         <ul className="nav flex-column">

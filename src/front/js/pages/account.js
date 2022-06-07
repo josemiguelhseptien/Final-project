@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { RatingStar } from "../component/ratingStar";
 
 export const Account = props => {
     const { store, actions } = useContext(Context);
@@ -47,7 +48,7 @@ export const Account = props => {
 
             <div className="container-box" >
                 <div className="userInfo">
-                    <div className="userCard d-flex">
+                    <div className="d-flex double">
                         <img className="img-fluid profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
                         <div className="professionalCard">
                             <div className="userInfo d-flex">
@@ -57,7 +58,7 @@ export const Account = props => {
                                     <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
                                     <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
                                 </div>
-                                <div className="userRating">*****</div>
+                                <div className="userRating"><RatingStar /></div>
                             </div>
                             <div className="aboutCard">
                                 <div className="aboutTitle">about Title</div>
@@ -78,7 +79,7 @@ export const Account = props => {
                     {/*------------------ Pro user modal-------------------------------- */}
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-info"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         data-bs-whatever="@getbootstrap">
@@ -93,7 +94,7 @@ export const Account = props => {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">Update account information</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
@@ -135,7 +136,7 @@ export const Account = props => {
 
 
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
+                                    <button type="button" className="btn btn-info" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                                 </div>
                             </div>
                         </div>
