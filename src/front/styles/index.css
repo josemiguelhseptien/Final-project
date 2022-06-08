@@ -70,3 +70,7 @@ button {
   background-color: #ffffff;
   color: rgb(117, 34, 132);
 }
+.padding {
+  margin: auto;
+  width: 900px;
+}

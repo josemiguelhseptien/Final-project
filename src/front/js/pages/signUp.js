@@ -41,11 +41,11 @@ export const SignUp = props => {
 
         <div className="paddingUp">
             <div className="container-fluid size double center">
-                <div className="center">
+                <div>
                     <br></br>
                     <br></br>
                     <div className="center"><h3>SIGN UP</h3></div>
-                    <ul className="nav nav-pills d-flex mb-3" id="pills-tab" role="tablist">
+                    <ul className="nav nav-pills d-flex d-flex justify-content-between" id="pills-tab" role="tablist">
                         <li className="b" role="presentation">
                             <button className={userType == "client" ? "btn button2 buttonColor active" : "btn buttonColor2"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client"), clientUser() }}>Client</button>
                         </li>
