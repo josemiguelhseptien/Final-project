@@ -22,7 +22,7 @@ export const LandingPage = props => {
                                 <p className="lead">Book appointments with ease, bookt.io makes booking a breeze.</p>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                                     <Link to={{ pathname: `/signup/` }}>
-                                        <button type="button" className="nav-btn btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started now</button>
+                                        <button type="button" className="nav-btn btn button2 btn-lg px-4 me-md-2 fw-bold">Get started now</button>
                                     </Link>
                                     {/* link to registration page */}
                                 </div>
@@ -47,8 +47,8 @@ export const LandingPage = props => {
                         {/* ----------------------------Toggle provider or client---------------------------- */}
                         <div className="d-grid gap-2 d-md-flex justify-content-md-center mb-4 mb-lg-3">
                             <p className="lead fw-normal">Tell me more:</p>
-                            <button type="button" className="nav-btn btn btn-info btn-lg active" data-bs-toggle="button" aria-pressed="true" onClick={() => setProfileType("professional")}>I'm a professional</button>
-                            <button type="button" className="nav-btn btn btn-outline-info btn-lg" data-bs-toggle="button" onClick={() => setProfileType("client")}>I'm a client</button>
+                            <button type="button" className="nav-btn btn button2 btn-lg active" data-bs-toggle="button" aria-pressed="true" onClick={() => setProfileType("professional")}>I'm a professional</button>
+                            <button type="button" className="nav-btn btn button2  btn-lg" data-bs-toggle="button" onClick={() => setProfileType("client")}>I'm a client</button>
                         </div>
                         <div className="product-device shadow-sm d-none d-md-block"></div>
                         <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -151,7 +151,7 @@ export const LandingPage = props => {
                             <p className="lead fw-normal">Register an account with Bookt today. Who knows, you could be bookt up very soon.</p>
                             <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                                 <Link to={{ pathname: `/signup/` }}>
-                                    <button type="button" className="nav-btn btn btn-info btn-lg px-4 me-md-2 fw-bold">Get started now</button>
+                                    <button type="button" className="nav-btn btn button2 btn-lg px-4 me-md-2 fw-bold">Get started now</button>
                                 </Link>
                                 {/* link to registration page */}
                             </div>
