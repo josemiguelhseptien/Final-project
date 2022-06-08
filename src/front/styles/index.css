@@ -24,9 +24,7 @@ button {
 .off {
   color: #ccc;
 }
-.backgroundTheme {
-  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/k-p-159-kung-132329-lyj3828-4-education.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=da222ad81caffb47a51c273ed79ab67b");
-}
+
 .cropped {
   width: 60px;
   height: 60px;
@@ -42,18 +40,7 @@ button {
 .colorred {
   color: #8d0801;
 }
-.textcolor {
-  color: #ff006e;
-}
-.mpBgTheme {
-  background-image: url("https://www.thebalancecareers.com/thmb/KmRO-iCFkq0YwHLa3Sxf0Zt3cpU=/1885x1414/smart/filters:no_upscale()/GettyImages-1249813332-7dfdb71dee16453685db47753f7fac2a.jpg");
-}
-.lightblue {
-  background-color: #bde0fe;
-}
-.profileBg {
-  background-image: url("https://remoteco.s3.amazonaws.com/wp-content/uploads/2018/06/6-Entry-Level-Remote-Teaching-and-Tutoring-Jobs.jpg");
-}
+
 .double {
   border-style: ridge;
   color: #8d0801;
@@ -65,4 +52,21 @@ button {
 .onlineColor {
   color: #38b000;
   color: #3b85ff;
+}
+.paddingUp {
+  padding-top: 20px;
+}
+
+.button2:hover {
+  box-shadow: 0 10px 14px 0 rgb(242, 211, 121),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: rgb(242, 211, 121);
+}
+.buttonColor {
+  background-color: #6a3aa9;
+  color: white;
+}
+.buttonColor2 {
+  background-color: #ffffff;
+  color: rgb(117, 34, 132);
 }
