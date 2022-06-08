@@ -15,7 +15,7 @@ class AccountUser(db.Model):
     phone = db.Column(db.Integer, nullable=False)
     background = db.Column(db.String(80), unique=False, nullable=False)
     user_type = db.Column(db.String(80), unique=False, nullable=False)
-    about = (db.Text(), nullable=False)
+    about = db.Column(db.String(200), unique=False, nullable=False)
     services = db.Column(db.String(80), unique=False, nullable=False)
     prices = db.Column(db.Integer, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
