@@ -13,6 +13,7 @@ export const Profile = props => {
 
     const userInfo = {
         id: professionalCard.id,
+        zip_code: professionalCard.zip_code,
         profilePicture: professionalCard.profilePicture,
         name: professionalCard.name,
         phone: professionalCard.phone,
@@ -21,7 +22,8 @@ export const Profile = props => {
         about: professionalCard.about,
         services: professionalCard.services,
         availability: professionalCard.availability,
-        userType: professionalCard.userType
+        userType: professionalCard.userType,
+        prices: professionalCard.prices,
     }
 
 
@@ -42,7 +44,7 @@ export const Profile = props => {
 
             <div className="container-box ">
                 <div className="userInfo">
-                    <div className="d-flex double">
+                    <div className="d-flex userInfo double">
                         <img className="img-fluid profilePicture" src={userInfo.profilePicture} />
                         <div className="professionalCard">
                             <div className="userInfo d-flex colorred">
@@ -50,31 +52,37 @@ export const Profile = props => {
                                     <div className="Name">{userInfo.name}</div>
                                     <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
                                     <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
-                                    <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
+                                    <div className="background"><i className="fas fa-map-marker-alt"></i>{userInfo.zip_code}</div>
                                 </div>
                                 <div className="userRating"><RatingStar /></div>
                             </div>
-                            <div className="aboutCard">
-                                <div className="aboutTitle">About Me:</div>
+                            <div className="aboutCard d-flex">
+                                <div className="aboutTitle">About Me: </div>
                                 <div className="aboutText">{userInfo.about}</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="servicesCard colorred">
-                    <div className="services">Services</div>
-                    <div>Math</div>
-                </div>
-                <div className="availabilityCard colorred">
-                    <div className="availability">availability</div>
-                    <div>M-F 9-5</div>
-                </div>
 
+
+                            <div className="servicesCard colorred d-flex">
+                                <div className="services">Services:</div>
+                                <div className="colorred"> {userInfo.services}</div>
+                            </div>
+                            <div className="servicesCard colorred d-flex">
+                                <div className="services">Prices:</div>
+                                <div className="colorred"> ${userInfo.prices}</div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
             </div>
             <div>
                 <button
                     type="button"
-                    className="btn btn-info"
+                    className="nav-btn btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     data-bs-whatever="@getbootstrap">
@@ -107,7 +115,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="btn btn-info" onClick={(e) => { contactUser() }}>
+                                <button type="button" className="nav-btn btn btn-info" onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>
