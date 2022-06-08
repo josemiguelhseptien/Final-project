@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import "../../styles/home.css";
 
 export const Footer = () => {
 	const { store, actions } = useContext(Context);

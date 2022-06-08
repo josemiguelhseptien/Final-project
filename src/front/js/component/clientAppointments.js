@@ -151,9 +151,9 @@ export const ClientAppointments = () => {
                             className="list-group-item d-flex justify-content-between"
                         >
                             <div>
-                                <div>Appt 123 </div>
-                                <div>some text </div>
-                                <div>Start time : 12:10 pm</div>
+                                <div>Justin Stevens </div>
+                                <div>done </div>
+                                <div>Start time : Tue May 10 2022 12:30:00 GMT-0400 (Eastern Daylight Time)</div>
                             </div>
                             <div>
                                 <button type="button" className="btn btn-success" disabled>

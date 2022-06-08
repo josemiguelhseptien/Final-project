@@ -50,7 +50,7 @@ export const MarketPlace = (props) => {
           <div className="d-flex">
             <input
               type="text"
-              className=""
+              className="form-control"
               placeholder="service"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
@@ -88,6 +88,7 @@ export const MarketPlace = (props) => {
               onKeyDown={(e) => {
                 if (e.keyCode == 13) search();
               }} />
+            <button className="btn btn-light" onClick={(e) => { setSearchTerm(""), setResults(store.accountUser) }}><i className="fas fa-sync-alt"></i></button>
           </div>
           {/* <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button> */}
         </div>

@@ -122,7 +122,13 @@ button.nav-btn:active {
 
 }
 
-.boxType1 {
-  width: 70%;
-  box-shadow: 10px 20px 30px 2px #888888;
+.landing {
+  width: 100%;
+  position: absolute;
+  background-image: url("https://www.johnson-tiles.com/media/product/images/bia/bianco_BIA01F_white_marble_matt_600x600mm.jpg.1200x1200_q85_crop_upscale.jpg");
+  background-attachment: fixed;
+}
+
+.footer {
+  height: 10vh;
 }
