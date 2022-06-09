@@ -18,22 +18,37 @@ export const Dashboard = (props) => {
       {actions.modifyAppt()}
       <div className="d-flex double">
         <div className="d-inline-flex">
-          <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
+          <div className="card card-body justify-content-center" style={{ width: "150px", minHeight: "80vh" }}>
             <ul className="nav flex-column">
-              <li className="nav-item py-3">
-                <span onClick={() => setViewType("appointments")}>Appointments</span>
+              <li className="nav-item my-3 py-3 ">
+                <span onClick={() => setViewType("appointments")}>
+                  <i className="far fa-calendar-check fa-4x"></i>
+                  <h5>Appointments</h5>
+                </span>
               </li>
-              <li className="nav-item py-3">
-                <span onClick={() => setViewType("calendar")}>Calendar</span>
+              <li className="nav-item my-3 py-3">
+                <span onClick={() => setViewType("calendar")}>
+                  <i className="far fa-calendar-alt fa-4x"></i>
+                  <h5>Calendar</h5>
+                </span>
               </li>
-              <li className="nav-item py-3">
-                <span onClick={() => setViewType("money")}>Money</span>
+              <li className="nav-item my-3 py-3">
+                <span onClick={() => setViewType("money")}>
+                  <i className="far fa-money-bill-alt fa-3x"></i>
+                  <h5>Money</h5>
+                </span>
               </li>
-              <li className="nav-item py-3">
-                <span onClick={() => setViewType("stats")}>Stats</span>
+              <li className="nav-item my-3 py-3">
+                <span onClick={() => setViewType("stats")}>
+                  <i className="fas fa-chart-line fa-3x"></i>
+                  <h5>Stats</h5>
+                </span>
               </li>
-              <li className="nav-item py-3">
-                <span onClick={() => setViewType("clients")}>Clients</span>
+              <li className="nav-item my-3 py-3">
+                <span onClick={() => setViewType("clients")}>
+                  <i className="far fa-user fa-4x"></i>
+                  <h5>Clients</h5>
+                </span>
               </li>
 
             </ul>
@@ -42,7 +57,7 @@ export const Dashboard = (props) => {
         {viewType == "calendar" ? (
           <div className="d-inline-block mx-5">
             <div>
-              <h3>Calendar</h3>
+              <h3 className="mt-3 mb-4">Calendar</h3>
             </div>
             <div>
               {< Calendar />}
@@ -53,7 +68,7 @@ export const Dashboard = (props) => {
           {viewType == "money" ? (
             <div className="d-inline-block mx-5">
               <div>
-                <h3>Your Money</h3>
+                <h3 className="mt-3 mb-4">Your Money</h3>
               </div>
               <div>{<Money />}</div>
             </div>
@@ -74,7 +89,7 @@ export const Dashboard = (props) => {
         ) : (null)}
         {viewType == "appointments" ? (
           <div className="d-inline-block mx-5">
-            <h3>Appointments</h3>
+            <h3 className="mt-3 mb-4">Appointments</h3>
             <div>{<CompletedAppointments />}</div>
           </div>
         ) : null}
