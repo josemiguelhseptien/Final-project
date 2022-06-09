@@ -61,7 +61,7 @@ export const Dashboard = (props) => {
           {viewType == "stats" ? (
             <div className="d-inline-block mx-5">
               <div>
-                <h3>Appointment Stats</h3>
+                <h3 className="mt-3 mb-4">Appointment Stats</h3>
                 <div>{<Stats />}</div>
               </div>
             </div>

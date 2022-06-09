@@ -20,12 +20,28 @@ export const Stats = (props) => {
 
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid my-2">
       {/* Form to enter Stats info */}
       <div>
         <h3>Filter By Dates:</h3>
+      </div>
+      <div className="d-flex justify-content-between mb-2 py-3 rounded goldGlow">
         <form className="d-inline-flex">
-          <div className="mb-3 mx-2">
+          <div className="mb-2 mx-2">
+            <label className="form-label">Start Month:</label>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control"
+                aria-label="Amount (to the nearest dollar)"
+                value={dates.startMonth}
+                onChange={(e) => {
+                  setDates({ ...dates, startMonth: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+          <div>
             <label className="form-label">Start Day:</label>
             <input
               type="number"
@@ -37,16 +53,16 @@ export const Stats = (props) => {
               }}
             />
           </div>
-          <div>
-            <label className="form-label">Start Month:</label>
+          <div className="mb-2 mx-2">
+            <label className="form-label">End Month:</label>
             <div className="input-group mb-3">
               <input
                 type="number"
                 className="form-control"
                 aria-label="Amount (to the nearest dollar)"
-                value={dates.startMonth}
+                value={dates.endMonth}
                 onChange={(e) => {
-                  setDates({ ...dates, startMonth: e.target.value });
+                  setDates({ ...dates, endMonth: e.target.value });
                 }}
               />
             </div>
@@ -65,33 +81,19 @@ export const Stats = (props) => {
               />
             </div>
           </div>
-          <div>
-            <label className="form-label">End Month:</label>
-            <div className="input-group mb-3">
-              <input
-                type="number"
-                className="form-control"
-                aria-label="Amount (to the nearest dollar)"
-                value={dates.endMonth}
-                onChange={(e) => {
-                  setDates({ ...dates, endMonth: e.target.value });
-                }}
-              />
-            </div>
-          </div>
+          <button
+            type="text"
+            className="btn buttonColor3 m-3"
+            onClick={(e) => {
+              setTotals(actions.displayTotalScheduled(dates));
+            }}
+          >
+            Filter
+          </button>
         </form>
-        <button
-          type="text"
-          className="btn btn-primary"
-          onClick={(e) => {
-            setTotals(actions.displayTotalScheduled(dates));
-          }}
-        >
-          Filter
-        </button>
       </div>
       {/* Boxes to display Stats overview */}
-      <div className="d-flex justify-content-between my-5 py-3 border rounded">
+      <div className="d-flex justify-content-between my-3 py-3 rounded goldGlow">
         <div className="mx-2">
           <h4>Total Scheduled</h4>
           <div className="">
@@ -123,7 +125,7 @@ export const Stats = (props) => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mt-4">
         <h3>Appointment Chart</h3>
       </div>
       <div>
