@@ -82,7 +82,7 @@ export const Profile = props => {
             <div>
                 <button
                     type="button"
-                    className="nav-btn btn btn-info"
+                    className="nav-btn btn button2"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     data-bs-whatever="@getbootstrap">
@@ -115,7 +115,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="nav-btn btn btn-info" onClick={(e) => { contactUser() }}>
+                                <button type="button" className="nav-btn btn button2" onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>

@@ -53,6 +53,7 @@ export const SignUp = props => {
                             <button className={userType == "professional" ? "btn button2 buttonColor active" : "btn buttonColor2"} id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={(e) => { setUserType("professional"), proUser() }}>Professional</button>
                         </li>
                     </ul>
+                    <br />
                 </div>
                 {userType == "client" ? (
 
