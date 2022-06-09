@@ -16,14 +16,18 @@ export const ProspectCard = (props) => {
     }
 
     return (
-        <div className="card">
-            <div style={{ width: "18rem" }}>
+        <div className="card m-3">
+            <div className="d-flex align-content-center pt-2" style={{ width: "18rem", height: "12rem" }}>
                 <div className="card-body">
-                    <h5 className="card-title">{props.user.name}</h5>
+                    <div className="d-flex justify-content-between">
+                        <h5 className="card-title">{props.user.name}</h5>
+                        <button className="btn deleteColor" title="Delete, this can't be undone!" onClick={() => actions.deleteProspect(prospectInfo)}><span>&#10005;</span></button>
+                    </div>
                     <p className="card-text">{props.user.phone} </p>
                     <p className="card-text">{props.user.email} </p>
-                    <button className="btn btn-primary" title="Add to clients" onClick={() => actions.addToClientList(prospectInfo)}>Add to Clients</button>
-                    <button className="btn btn-danger" title="Delete, this can't be undone!" onClick={() => actions.deleteProspect(prospectInfo)}><span>&#10005;</span></button>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn buttonColor3" title="Add to clients" onClick={() => actions.addToClientList(prospectInfo)}><h5 className="pt-2">Add to Clients</h5></button>
+                    </div>
                 </div>
             </div>
         </div>

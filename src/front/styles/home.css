@@ -109,17 +109,15 @@ ul {
 }
 
 .nav-btn {
-  background-color: rgba(105, 44, 175, 0.856);
+  background-color: #b046c5;
   color: white;
-  border-color: rgba(105, 44, 175, 0.856);
-
+  border-color: #b046c5;
 }
 
 button.nav-btn:active {
-  background-color: rgba(123, 74, 180, 0.856) !important;
+  background-color: #b046c5 !important;
   color: white;
-  border-color: rgba(139, 95, 189, 0.856) !important;
-
+  border-color: #b046c5 !important;
 }
 
 .landing {
