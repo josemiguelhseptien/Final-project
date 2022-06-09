@@ -11,7 +11,7 @@ export const Calendar = (props) => {
   const views = ["week", "month"];
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid goldGlow">
       <Scheduler
         timeZone="America/New_York"
         dataSource={store.calendarEntries}

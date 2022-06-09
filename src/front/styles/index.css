@@ -112,9 +112,19 @@ button {
   color: #fff;
   border: 1px solid #b046c5;
 }
+.buttonColor3Completed {
+  background-color: #73ddb1;
+  color: #b046c5;
+  border: 1px solid #72b99c;
+}
 .deleteColor {
   background-color: #ffffff;
   color: #eb0f63;
+  border: 1px solid #eb0f63;
+}
+.deleteColorSolid {
+  background-color: #b32058bb;
+  color: #000;
   border: 1px solid #eb0f63;
 }
 .padding {
@@ -135,5 +145,10 @@ button {
 li:hover {
   box-shadow: 0 10px 14px 0 rgb(242, 211, 121),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: rgb(0, 0, 0, 0.9);
+}
+.deleteColor:hover,
+.deleteColorSolid:hover {
+  box-shadow: 0 10px 14px 0 #b32058bb, 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: rgb(0, 0, 0, 0.9);
 }
