@@ -121,12 +121,10 @@ button.nav-btn:active {
 }
 
 .landing {
-  width: 100%;
-  position: absolute;
-  background-image: url("https://www.johnson-tiles.com/media/product/images/bia/bianco_BIA01F_white_marble_matt_600x600mm.jpg.1200x1200_q85_crop_upscale.jpg");
-  background-attachment: fixed;
+  background: rgba(242, 212, 120, 0.493),
 }
 
 .footer {
   height: 10vh;
+  background-color: green;
 }

@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
+
 export const LandingPage = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
@@ -14,6 +15,7 @@ export const LandingPage = props => {
             <div className="landing">
                 {/* ----------------------------Header w/image---------------------------- */}
                 <header>
+
                     <div className="container my-5">
 
                         <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg colorred ">
@@ -33,6 +35,7 @@ export const LandingPage = props => {
                         </div>
 
                     </div>
+
                 </header>
                 {/* ----------------------------About info---------------------------- */}
                 <div className="container my-5">
