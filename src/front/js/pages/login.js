@@ -47,10 +47,7 @@ export const Login = props => {
                                 setLoginInput({ ...loginInput, password: e.target.value });
                             }} placeholder="Password" id="exampleInputPassword1" />
                         </div>
-                        {loginInput.userType == "client" ? (<Link to={{ pathname: "/" }}> <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.loginClient(loginInput) }}>Submit</button></Link>) : (<Link to={{ pathname: "/" }}> <button type="button" className="btn btn-primary" onClick={(e) => { actions.loginProfessional(loginInput) }}>Submit</button></Link>)}
-
-
-
+                        {loginInput.userType == "client" ? (<Link to={{ pathname: "/" }}> <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.loginClient(loginInput) }}>Submit</button></Link>) : (<Link to={{ pathname: "/" }}> <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.loginProfessional(loginInput) }}>Submit</button></Link>)}
 
                     </form>
                 </div>
