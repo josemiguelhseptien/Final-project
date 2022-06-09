@@ -1,3 +1,13 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Patrick Hand", cursive;
+}
+p {
+  font-family: "Montserrat", sans-serif !important;
+}
+
 .center {
   text-align: center;
 }
@@ -105,8 +115,29 @@ button {
 .buttonColor2 {
   background-color: #ffffff;
   color: #b046c5;
+  border: 1px solid #b046c5;
+}
+.buttonColor3 {
+  background-color: #73ddb1;
+  color: #fff;
+  border: 1px solid #b046c5;
+}
+.deleteColor {
+  background-color: #ffffff;
+  color: #eb0f63;
+  border: 1px solid #eb0f63;
 }
 .padding {
   margin: auto;
   width: 900px;
+}
+.card {
+  border: 2px solid #f3d37a;
+  box-shadow: 0 10px 14px 0 rgb(242, 211, 121),
+    0 17px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.buttonColor2:hover,
+.buttonColor3:hover,
+.deleteColor:hover {
+  transform: scale(1.1);
 }
