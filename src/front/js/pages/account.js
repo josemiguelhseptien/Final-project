@@ -54,9 +54,9 @@ export const Account = props => {
                             <div className="userInfo d-flex">
                                 <div>
                                     <div className="Name">Justin Stevens{userInfo.name}</div>
-                                    <div className="email paddingUp"><i className="fas fa-envelope"> jstevens@mail.com</i>{userInfo.email}</div>
-                                    <div className="phone paddingUp"><i className="fas fa-phone"></i>4896415154{userInfo.phone}</div>
-                                    <div className="background paddingUp"> <i className="fas fa-school">Florida International University</i>{userInfo.background}</div>
+                                    <div className="email paddingUp"><i className="fas fa-envelope margin"></i>    jstevens@mail.com{userInfo.email}</div>
+                                    <div className="phone paddingUp"><i className="fas fa-phone"></i>    4896415154{userInfo.phone}</div>
+                                    <div className="background paddingUp"> <i className="fas fa-school"></i>    Florida International University{userInfo.background}</div>
                                 </div>
                                 <div className="userRating"><RatingStar /></div>
                             </div>
@@ -139,7 +139,7 @@ export const Account = props => {
 
 
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-info" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
+                                    <button type="button" className="btn buttonColor button2" onClick={(e) => { actions.editUserInfo(modalInfo), console.log(store.accountUser) }}>Save changes</button>
                                 </div>
                             </div>
                         </div>

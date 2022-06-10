@@ -50,9 +50,13 @@ export const Profile = props => {
                             <div className="userInfo d-flex colorred">
                                 <div className="n">
                                     <div className="Name">{userInfo.name}</div>
-                                    <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
-                                    <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
-                                    <div className="background"><i className="fas fa-map-marker-alt"></i>{userInfo.zip_code}</div>
+                                    <br />
+                                    <div className="email"><i className="fas fa-envelope"></i> {userInfo.email}</div>
+                                    <br />
+                                    <div className="phone"><i className="fas fa-phone"></i> {userInfo.phone}</div>
+                                    <br />
+                                    <div className="background"><i className="fas fa-map-marker-alt"></i> {userInfo.zip_code}</div>
+                                    <br />
                                 </div>
                                 <div className="userRating"><RatingStar /></div>
                             </div>
@@ -60,11 +64,12 @@ export const Profile = props => {
                                 <div className="aboutTitle">About Me: </div>
                                 <div className="aboutText">{userInfo.about}</div>
                             </div>
-
+                            <br />
 
                             <div className="servicesCard colorred d-flex">
                                 <div className="services">Services:</div>
                                 <div className="colorred"> {userInfo.services}</div>
+                                <br />
                             </div>
                             <div className="servicesCard colorred d-flex">
                                 <div className="services">Prices:</div>

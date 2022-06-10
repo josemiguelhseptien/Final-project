@@ -13,7 +13,7 @@ export const Footer = () => {
 			<div>
 				{store.loggedUser.id == "" ?
 					(<Link to="/">
-						<span className="navbar-brand mb-0 h1" onClick={(e) => { (actions.logout()) }}>PayMeApp</span>
+						<span className="navbar-brand mb-0 h1" onClick={(e) => { (actions.logout()) }}></span>
 					</Link>) : (<Link to="/">
 						<button type="text" className="btn btn-secondary" onClick={(e) => { (actions.logout()) }}>logout</button>
 					</Link>)

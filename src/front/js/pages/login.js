@@ -36,12 +36,14 @@ export const Login = props => {
                         <button type="button" className="btn button2 buttonColor" onClick={() => { proUser() }}>Professional</button>
                     </div>
                     <br></br>
+                    <br />
                     <form>
                         <div className="mb-3">
                             <input type="email" className="form-control" value={loginInput.email} onChange={e => {
                                 setLoginInput({ ...loginInput, email: e.target.value });
                             }} placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
+                        <br />
                         <div className="mb-3">
                             <input type="password" className="form-control" value={loginInput.password} onChange={e => {
                                 setLoginInput({ ...loginInput, password: e.target.value });
