@@ -53,7 +53,7 @@ export const MarketPlace = (props) => {
           <div className="d-flex">
             <input
               type="text"
-              className="form-control"
+              className="input"
               placeholder="service"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
@@ -63,7 +63,7 @@ export const MarketPlace = (props) => {
               }} />
           </div>
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="name"
+            <input type="text" className="input" placeholder="name"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}
@@ -72,7 +72,7 @@ export const MarketPlace = (props) => {
               }} />
           </div>
           <div className="d-flex">
-            <input type="number" className="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
+            <input type="number" className="input" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}
@@ -81,10 +81,10 @@ export const MarketPlace = (props) => {
               }} />
           </div>
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="rating" aria-label="rating" aria-describedby="basic-addon1" />
+            <input type="text" className="input" placeholder="rating" aria-label="rating" aria-describedby="basic-addon1" />
           </div>
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1"
+            <input type="text" className="input" placeholder="zip code" aria-label="zip code" aria-describedby="basic-addon1"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}

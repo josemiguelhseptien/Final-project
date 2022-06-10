@@ -187,3 +187,17 @@ li:hover {
 .height3 {
   height: 650px;
 }
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #f8e9be90;
+  color: #af46c5;
+  border-radius: 4px;
+}
+::placeholder {
+  color: #af46c5;
+  opacity: 1; /* Firefox */
+}
