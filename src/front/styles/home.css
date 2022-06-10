@@ -121,10 +121,5 @@ button.nav-btn:active {
 }
 
 .landing {
-  background: rgba(242, 212, 120, 0.493),
-}
-
-.footer {
-  height: 10vh;
-  background-color: green;
+  background: rgba(242, 212, 120, 0.493);
 }

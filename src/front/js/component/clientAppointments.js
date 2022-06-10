@@ -32,9 +32,9 @@ export const ClientAppointments = () => {
                 key={index}
             >
                 <div>
-                    <div>{appt.text} </div>
-                    <div>{appt.description} </div>
-                    <div>Start time : {appt.startDate.toString()}</div>
+                    <div><h5>{appt.text}</h5> </div>
+                    <div><p>{appt.description}</p> </div>
+                    <div><p>Start time : {appt.startDate.toString()}</p></div>
                 </div>
                 <div>
                     {appt.completed ? (
@@ -61,14 +61,14 @@ export const ClientAppointments = () => {
                         </>
                     ) : (
                         <>
-                            {appt.toConfirm ? <button className="btn btn-success mx-1" disabled >pending confirmation</button> : <button
+                            {appt.toConfirm ? <button className="btn buttonColor mx-1" disabled >pending confirmation</button> : <button
                                 type="button"
                                 onClick={(e) => {
                                     actions.editCalendarEntry(appt.text, "completed"),
                                         appt.toConfirm = "completed",
                                         console.log(appt)
                                 }}
-                                className="btn btn-outline-warning mx-1"
+                                className="btn buttonColor3 mx-1"
                             >
                                 Pay appointment
                             </button>}
@@ -86,12 +86,12 @@ export const ClientAppointments = () => {
                 key={index}
             >
                 <div>
-                    <div>{appt.text} </div>
-                    <div>{appt.description} </div>
-                    <div>Start time : {appt.startDate.toString()}</div>
+                    <div><h5>{appt.text}</h5> </div>
+                    <div><p>{appt.description}</p> </div>
+                    <div><p>Start time : {appt.startDate.toString()}</p></div>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-success" disabled>
+                    <button type="button" className="btn buttonColor3Completed" disabled>
                         Paid!
                     </button>
                 </div>
@@ -108,12 +108,12 @@ export const ClientAppointments = () => {
                     key={index}
                 >
                     <div>
-                        <div>{appt.text} </div>
-                        <div>{appt.description} </div>
-                        <div>Start time : {appt.startDate.toString()}</div>
+                        <div><h5>{appt.text}</h5> </div>
+                        <div><p>{appt.description}</p> </div>
+                        <div><p>Start time : {appt.startDate.toString()}</p></div>
                     </div>
                     <div>
-                        <button type="button" className="btn btn-danger" disabled>
+                        <button type="button" className="btn deleteColorSolid" disabled>
                             Cancelled
                         </button>
                     </div>
@@ -126,38 +126,38 @@ export const ClientAppointments = () => {
     return (
         <div className="container-fluid">
             <div className="mainBox">
-                <div className="inputDiv">
+                <div className=" my-3">
                     <h3>Appointments</h3>
                 </div>
                 <br></br>
                 <div className="inputDiv">
-                    <div>
+                    <div className="mb-1">
                         <h3>Scheduled appointments</h3>
                     </div>
                     <ul className="list-group">
                         {mappedAppointments.length == 0 ? (
                             <div className="list-group-item">
-                                <span>There are no pending appointments</span>
+                                <span><h5>There are no pending appointments</h5></span>
                             </div>
                         ) : (mappedAppointments)}
                     </ul>
                 </div>
                 <br></br>
                 <div className="inputDiv">
-                    <div>
-                        <h3>Confirmed appointments</h3>
+                    <div className="mt-3 mb-1">
+                        <h3>Confirmed Paid</h3>
                     </div>
                     <ul className="list-group">
                         <li
                             className="list-group-item li_glow d-flex justify-content-between"
                         >
                             <div>
-                                <div>Justin Stevens </div>
-                                <div>done </div>
-                                <div>Start time : Tue May 10 2022 12:30:00 GMT-0400 (Eastern Daylight Time)</div>
+                                <div><h5>Justin Stevens</h5> </div>
+                                <div><p>done</p> </div>
+                                <div><p>Start time : Tue May 10 2022 12:30:00 GMT-0400 (Eastern Daylight Time)</p></div>
                             </div>
                             <div>
-                                <button type="button" className="btn btn-success" disabled>
+                                <button type="button" className="btn buttonColor3Completed" disabled>
                                     Paid!
                                 </button>
                             </div>

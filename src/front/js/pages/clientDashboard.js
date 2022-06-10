@@ -20,13 +20,19 @@ export const ClientDashboard = props => {
             <br></br>
             <div className="d-flex double">
                 <div className="d-inline-flex">
-                    <div className="card card-body justify-content-center" style={{ width: "120px", minHeight: "80vh" }}>
+                    <div className="card card-body justify-content-center" style={{ width: "150px", minHeight: "80vh" }}>
                         <ul className="nav flex-column">
-                            <li className="nav-item py-3">
-                                <span onClick={() => setViewType("appointments")}>Appointments</span>
+                            <li className="nav-item mt-5 py-5">
+                                <span onClick={() => setViewType("appointments")}>
+                                    <i className="far fa-calendar-check fa-4x"></i>
+                                    <h5>Appointments</h5>
+                                </span>
                             </li>
-                            <li className="nav-item py-3">
-                                <span onClick={() => setViewType("Providers")}>Providers</span>
+                            <li className="nav-item mt-5 py-5">
+                                <span onClick={() => setViewType("Providers")}>
+                                    <i className="far fa-user fa-4x"></i>
+                                    <h5>Providers</h5>
+                                </span>
                             </li>
                         </ul>
                     </div>
