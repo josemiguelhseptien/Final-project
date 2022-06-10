@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/index.css";
 
 export const ClientAppointments = () => {
     const { store, actions } = useContext(Context);
@@ -27,7 +28,7 @@ export const ClientAppointments = () => {
 
         return (
             <li
-                className="list-group-item d-flex justify-content-between"
+                className="list-group-item d-flex li_glow justify-content-between"
                 key={index}
             >
                 <div>
@@ -81,7 +82,7 @@ export const ClientAppointments = () => {
     let mappedPaidAppointments = paidAppointments.map((appt, index) => {
         return (
             <li
-                className="list-group-item d-flex justify-content-between"
+                className="list-group-item li_glow d-flex justify-content-between"
                 key={index}
             >
                 <div>
@@ -148,7 +149,7 @@ export const ClientAppointments = () => {
                     </div>
                     <ul className="list-group">
                         <li
-                            className="list-group-item d-flex justify-content-between"
+                            className="list-group-item li_glow d-flex justify-content-between"
                         >
                             <div>
                                 <div><h5>Justin Stevens</h5> </div>

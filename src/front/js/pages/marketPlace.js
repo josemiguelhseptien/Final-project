@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { RatingStar } from "../component/ratingStar";
+import "../../styles/home.css";
+import "../../styles/index.css";
 
 
 import { MarketPlaceCard } from "../component/marketPlaceCard";
@@ -46,7 +48,8 @@ export const MarketPlace = (props) => {
     <div className="container-fluid ">
       <div>
         <br></br>
-        <div className="d-flex justify-content-between">
+        <br></br>
+        <div className="d-flex justify-content-between ">
           <div className="d-flex">
             <input
               type="text"
@@ -60,7 +63,7 @@ export const MarketPlace = (props) => {
               }} />
           </div>
           <div className="d-flex">
-            <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"
+            <input type="text" className="form-control" placeholder="name"
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}
@@ -90,6 +93,8 @@ export const MarketPlace = (props) => {
               }} />
             <button className="btn btn-light" onClick={(e) => { setSearchTerm(""), setResults(store.accountUser) }}><i className="fas fa-sync-alt"></i></button>
           </div>
+
+          <br></br>
           {/* <button type="button" className="btn btn-light" onClick={(e) => { actions.clearSearch() }}><i className="fas fa-sync-alt"></i></button> */}
         </div>
 
@@ -97,11 +102,13 @@ export const MarketPlace = (props) => {
 
       </div>
       <br></br>
+      <br></br>
       <div className="list-group">
         <div>
           {results.length == 0 ? mapAccountUser() : mapFilteredUsers()}
         </div>
       </div>
+
     </div>
   );
 };

@@ -28,7 +28,7 @@ export const ClientDashboard = props => {
                                     <h5>Appointments</h5>
                                 </span>
                             </li>
-                            <li className="nav-item py-5">
+                            <li className="nav-item mt-5 py-5">
                                 <span onClick={() => setViewType("Providers")}>
                                     <i className="far fa-user fa-4x"></i>
                                     <h5>Providers</h5>

@@ -4,23 +4,24 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
+
 export const LandingPage = props => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const [profileType, setProfileType] = useState("professional")
 
     return (
-        <div className="container-fluid">
-            <div className="landing">
+        <div className="container-fluid landing">
+            <div>
                 {/* ----------------------------Header w/image---------------------------- */}
                 <header>
-                    <div className="container mb-5">
+                    <div className="container  mb-5">
 
-                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg colorred ">
+                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg colorred ">
                             <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                                 <h1 className="display-4 fw-bold lh-1">Book like a pro with Bookt.io</h1>
                                 <p className="lead">Book appointments with ease, bookt.io makes booking a breeze.</p>
-                                <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                                <div className="d-grid gap-2 d-md-flex justify-content-md-center mb-4 mb-lg-3">
                                     <Link to={{ pathname: `/signup/` }}>
                                         <button type="button" className="nav-btn btn button2 btn-lg px-4 me-md-2 fw-bold">Get started now</button>
                                     </Link>
@@ -33,11 +34,12 @@ export const LandingPage = props => {
                         </div>
 
                     </div>
+
                 </header>
                 {/* ----------------------------About info---------------------------- */}
                 <div className="container my-5">
 
-                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double">
+                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg ">
                         <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                             <h1 className="display-4 fw-normal">Make Appointment Setting Easy</h1>
                             <p className="lead fw-normal">If you're tired of the constant back and forth in setting appointments, you need bookt.io.</p>
@@ -60,7 +62,7 @@ export const LandingPage = props => {
                     <div className="container my-5">
                         <hr className="featurette-divider" />
 
-                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                             <div className="col-md-7">
                                 <h2 className="featurette-heading fw-normal lh-1">Join the modern age. <span className="text-muted">Using paper is old school.</span></h2>
                                 <p className="lead">Nobody wants to look unprofessional flipping through pages of a calendar. Or worse, missing an appointment cause you lost the scrap of paper it was written on.</p>
@@ -73,7 +75,7 @@ export const LandingPage = props => {
                         <hr className="featurette-divider" />
                         {/* -------2nd Feature w/ image left--------- */}
                         <div className="container my-5">
-                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                                 <div className="col-md-7 order-md-2">
                                     <h2 className="featurette-heading fw-normal lh-1">Track what's important. <span className="text-muted">Your time & money.</span></h2>
                                     <p className="lead">And of course your clients. You can even rate them to keep track.</p>
@@ -87,7 +89,7 @@ export const LandingPage = props => {
                         <hr className="featurette-divider" />
                         {/* -------3rd Feature w/ image right--------- */}
                         <div className="container my-5">
-                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                                 <div className="col-md-7">
                                     <h2 className="featurette-heading fw-normal lh-1">And lastly, get more $. <span className="text-muted">Join the marketplace.</span></h2>
                                     <p className="lead">Let clients easily find & book appointments with you.</p>
@@ -103,7 +105,7 @@ export const LandingPage = props => {
                     <div className="container my-5">
                         <hr className="featurette-divider" />
 
-                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                             <div className="col-md-7">
                                 <h2 className="featurette-heading fw-normal lh-1">Easy as 1, 2, 3. <span className="text-muted">It’ll blow your mind.</span></h2>
                                 <p className="lead">Register for an account, find a professional and contact them to book your appointment. It really is that simple.</p>
@@ -116,7 +118,7 @@ export const LandingPage = props => {
                         <hr className="featurette-divider" />
                         {/* -------2nd Feature w/ image left--------- */}
                         <div className="container my-5">
-                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                                 <div className="col-md-7 order-md-2">
                                     <h2 className="featurette-heading fw-normal lh-1">Track your appointments. <span className="text-muted">And never forget to pay again.</span></h2>
                                     <p className="lead">In your dashboard you can see your appointments. And easily see if you've paid for it.</p>
@@ -130,7 +132,7 @@ export const LandingPage = props => {
                         <hr className="featurette-divider" />
                         {/* -------3rd Feature w/ image right--------- */}
                         <div className="container my-5">
-                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double featurette">
+                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg  featurette">
                                 <div className="col-md-7">
                                     <h2 className="featurette-heading fw-normal lh-1">And lastly, bookt more. <span className="text-muted">Check out the marketplace.</span></h2>
                                     <p className="lead">Search for more professionals by name, location or area of specialty.</p>
@@ -145,7 +147,7 @@ export const LandingPage = props => {
                 )}
                 {/* ----------------------------Call to action---------------------------- */}
                 <div className="container my-5">
-                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg double">
+                    <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3  shadow-lg ">
                         <div className="col-md-5 p-lg-5 mx-auto my-3">
                             <h1 className="display-4 fw-normal">Ready to get started?</h1>
                             <p className="lead fw-normal">Register an account with Bookt today. Who knows, you could be bookt up very soon.</p>
