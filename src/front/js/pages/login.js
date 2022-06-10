@@ -26,11 +26,12 @@ export const Login = props => {
 
     return (
         <div className="padding paddingUp">
-            <div className="container-fluid double size center ">
+            <div className="container-fluid double size height center ">
 
                 <div >
                     <div className="loginBar mt-5"><h2>Login</h2></div>
                     <br></br>
+                    <br />
                     <div className="userToggle d-flex justify-content-between">
                         <button type="button" className="btn button2 buttonColor" onClick={() => { clientUser() }}>Client</button>
                         <button type="button" className="btn button2 buttonColor" onClick={() => { proUser() }}>Professional</button>
@@ -44,10 +45,16 @@ export const Login = props => {
                             }} placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                         <br />
+
                         <div className="mb-3">
                             <input type="password" className="form-control" value={loginInput.password} onChange={e => {
                                 setLoginInput({ ...loginInput, password: e.target.value });
                             }} placeholder="Password" id="exampleInputPassword1" />
+                            <br />
+
+
+
+                            <br /><br />
                         </div>
                         {loginInput.userType == "client" ? (<Link to={{ pathname: "/" }}> <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.loginClient(loginInput) }}>Submit</button></Link>) : (<Link to={{ pathname: "/" }}> <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.loginProfessional(loginInput) }}>Submit</button></Link>)}
 

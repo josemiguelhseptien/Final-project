@@ -40,11 +40,13 @@ export const SignUp = props => {
     return (
 
         <div className="paddingUp">
-            <div className="container-fluid size double center">
+            <div className="container-fluid size double height3 center">
                 <div>
                     <br></br>
                     <br></br>
                     <div className="center"><h3>SIGN UP</h3></div>
+                    <br />
+                    <br />
                     <ul className="nav nav-pills d-flex d-flex justify-content-between" id="pills-tab" role="tablist">
                         <li className="b" role="presentation">
                             <button className={userType == "client" ? "btn button2 buttonColor active" : "btn buttonColor2"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={(e) => { setUserType("client"), clientUser() }}>Client</button>
@@ -54,6 +56,7 @@ export const SignUp = props => {
                         </li>
                     </ul>
                     <br />
+
                 </div>
                 {userType == "client" ? (
 
@@ -63,18 +66,26 @@ export const SignUp = props => {
                             <input type="text" name="name" className="form-control" required placeholder="Name" onChange={handleChange} value={inputField.name} />
 
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="email" className="form-control" required name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="password" className="form-control" required name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="phonenumber" className="form-control" required name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" onChange={handleChange} value={inputField.phone} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="text" className="form-control" required name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
                         </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                     </div>
                 ) : (
 
@@ -82,18 +93,23 @@ export const SignUp = props => {
                         <div className="input-group mb-3">
                             <input type="text" aria-label="Name" className="form-control" required name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="email" className="form-control" required name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="password" className="form-control" required name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
                         </div>
+                        <br />
                         <div className="input-group mb-3">
                             <input type="text" className="form-control" required aria-label="Sizing example input" name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone" onChange={handleChange} value={inputField.phone} />
                         </div>
+                        <br />
 
                         <div className="input-group  d-flex justify-content-between">
                             <input type="text" className="form-control" required aria-label="Sizing example input" name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
+
                             <div >
                                 <button type="button" className="signupbtn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     {inputField.format == "" ? "select service format" : inputField.format}
@@ -105,6 +121,7 @@ export const SignUp = props => {
                                 </ul>
                             </div>
                         </div>
+                        <br />
                         <br></br>
                         <div className="mb-3 d-flex">
                             <input type="text" placeholder="Services" className="form-control" required name="services" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.services} />
@@ -112,7 +129,7 @@ export const SignUp = props => {
                         </div>
                     </div>
                 )}
-
+                <br />
                 <div className="center">
                     <Link to="/dashboard">
                         <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.addUser(inputField, userType), console.log(inputField) }}>Sign up</button>

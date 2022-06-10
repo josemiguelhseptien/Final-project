@@ -17,7 +17,7 @@ export const Navbar = () => {
         {loggedUserId == "" ? (
           <div className="ml-auto">
             <Link to="/login">
-              <button className="nav-btn btn button mx-2">Log In</button>
+              <button className="nav-btn btn button2 mx-2">Log In</button>
             </Link>
             <Link to="/signup">
               <button className="nav-btn btn button2 mx-2">Sign Up</button>

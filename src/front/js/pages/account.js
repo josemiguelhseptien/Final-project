@@ -45,7 +45,7 @@ export const Account = props => {
 
         <div className="container">
             {/*------------------ Pro user view-------------------------------- */}
-
+            <br />
             <div className="container-box double" >
                 <div className="userInfo height">
                     <div className="d-flex ">
