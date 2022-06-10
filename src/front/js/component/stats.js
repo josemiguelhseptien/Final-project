@@ -27,9 +27,9 @@ export const Stats = (props) => {
       </div>
       <div className="d-flex justify-content-between mb-2 py-3 rounded goldGlow">
         <form className="d-inline-flex">
-          <div className="mb-2 mx-2">
+          <div className="mb-1 mx-1">
             <label className="form-label">Start Month:</label>
-            <div className="input-group mb-3">
+            <div className="input-group mb-1">
               <input
                 type="number"
                 className="form-control"
@@ -53,9 +53,9 @@ export const Stats = (props) => {
               }}
             />
           </div>
-          <div className="mb-2 mx-2">
+          <div className="mb-1 mx-2">
             <label className="form-label">End Month:</label>
-            <div className="input-group mb-3">
+            <div className="input-group mb-1">
               <input
                 type="number"
                 className="form-control"
@@ -69,7 +69,7 @@ export const Stats = (props) => {
           </div>
           <div>
             <label className="form-label">End Day:</label>
-            <div className="input-group mb-3">
+            <div className="input-group mb-1">
               <input
                 type="number"
                 className="form-control"
@@ -83,7 +83,7 @@ export const Stats = (props) => {
           </div>
           <button
             type="text"
-            className="btn buttonColor3 m-3"
+            className="btn buttonColor3 m-2"
             onClick={(e) => {
               setTotals(actions.displayTotalScheduled(dates));
             }}

@@ -29,25 +29,26 @@ export const CompletedAppointments = () => {
         key={index}
       >
         <div>
-          <div>{appt.text} </div>
-          <div>{appt.description} </div>
-          <div>Start time : {appt.startDate.toString()}</div>
+          <div><h5>{appt.text}</h5> </div>
+          <div><p>{appt.description}</p> </div>
+          <div><p>Start time : {appt.startDate.toString()}</p></div>
         </div>
         <div>
           {appt.completed ? (
             <>
               <button
                 type="button"
-                className="btn btn-success mx-1"
+                className="btn buttonColor mx-1"
                 onClick={(e) => {
                   actions.editCalendarEntry(appt.text, "completed");
                 }}
+                disabled
               >
                 Completed
               </button>
               <button
                 type="button"
-                className="btn btn-outline-warning mx-1"
+                className="btn buttonColor3 mx-1"
                 onClick={(e) => {
                   actions.addUserIncome({
                     userID: 1,
@@ -68,7 +69,7 @@ export const CompletedAppointments = () => {
             <>
               <button
                 type="button"
-                className="btn btn-outline-warning mx-1"
+                className="btn buttonColor2 mx-1"
                 onClick={(e) => {
                   actions.editCalendarEntry(appt.text, "completed");
                 }}
@@ -77,7 +78,7 @@ export const CompletedAppointments = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-outline-danger mx-1"
+                className="btn deleteColor mx-1"
                 onClick={(e) => {
                   actions.editCalendarEntry(appt.text, "cancelled");
                 }}
@@ -98,12 +99,12 @@ export const CompletedAppointments = () => {
         key={index}
       >
         <div>
-          <div>{appt.text} </div>
-          <div>{appt.description} </div>
-          <div>Start time : {appt.startDate.toString()}</div>
+          <div><h5>{appt.text}</h5> </div>
+          <div><p>{appt.description}</p> </div>
+          <div><p>Start time : {appt.startDate.toString()}</p></div>
         </div>
         <div>
-          <button type="button" className="btn btn-success" disabled>
+          <button type="button" className="btn buttonColor3Completed" disabled>
             Paid!
           </button>
         </div>
@@ -119,12 +120,12 @@ export const CompletedAppointments = () => {
           key={index}
         >
           <div>
-            <div>{appt.text} </div>
-            <div>{appt.description} </div>
-            <div>Start time : {appt.startDate.toString()}</div>
+            <div><h5>{appt.text}</h5> </div>
+            <div><p>{appt.description}</p> </div>
+            <div><p>Start time : {appt.startDate.toString()}</p></div>
           </div>
           <div>
-            <button type="button" className="btn btn-danger" disabled>
+            <button type="button" className="btn deleteColorSolid" disabled>
               Cancelled
             </button>
           </div>
@@ -139,14 +140,14 @@ export const CompletedAppointments = () => {
       <br></br>
       <div className="mainBox">
         <br></br>
-        <div className="inputDiv">
+        <div className="inputDiv mb-1">
           <div>
             <h3>Scheduled appointments</h3>
           </div>
           <ul className="list-group">
             {mappedAppointments.length == 0 ? (
               <div className="list-group-item">
-                <span>There are no pending appointments</span>
+                <span><h5>There are no pending appointments</h5></span>
               </div>
             ) : (
               mappedAppointments
@@ -154,14 +155,14 @@ export const CompletedAppointments = () => {
           </ul>
         </div>
         <br></br>
-        <div className="inputDiv">
+        <div className="inputDiv mt-3">
           <div>
             <h3>Paid appointments</h3>
           </div>
           <ul className="list-group">{mappedPaidAppointments}</ul>
         </div>
         <br></br>
-        <div className="inputDiv">
+        <div className="inputDiv mt-3">
           <div>
             <h3>Cancelled appointments</h3>
           </div>
