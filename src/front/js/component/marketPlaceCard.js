@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import propTypes from "prop-types";
 import "../../styles/home.css";
+import "../../styles/index.css";
 import { RatingStar } from "./ratingStar";
 
 
@@ -11,9 +12,11 @@ export const MarketPlaceCard = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="container-fluid colorblue">
-            <div className="userCard ">
-                <Link className="list-group-item list-group-item-action" to={{
+        <div className="container-fluid ">
+            <br></br>
+
+            <div className="li_glow ">
+                <Link className="list-group-item  list-group-item-action" to={{
                     pathname: `/profile/${props.user.id}`,
                     state: props.user,
                 }}>
@@ -38,6 +41,8 @@ export const MarketPlaceCard = (props) => {
                     </div>
                 </Link>
             </div>
+            <br></br>
+
         </div>
 
     );

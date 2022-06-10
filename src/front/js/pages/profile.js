@@ -39,12 +39,12 @@ export const Profile = props => {
 
     return (
 
-        <div className="container">
+        <div className="container double">
             {/*------------------ Pro user view-------------------------------- */}
 
-            <div className="container-box ">
+            <div className="container-box height2">
                 <div className="userInfo">
-                    <div className="d-flex userInfo double">
+                    <div className="d-flex userInfo ">
                         <img className="img-fluid profilePicture" src={userInfo.profilePicture} />
                         <div className="professionalCard">
                             <div className="userInfo d-flex colorred">
@@ -79,7 +79,7 @@ export const Profile = props => {
 
                 </div>
             </div>
-            <div>
+            <div className="flex-container">
                 <button
                     type="button"
                     className="nav-btn btn button2"
@@ -115,7 +115,7 @@ export const Profile = props => {
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" className="nav-btn btn button2" onClick={(e) => { contactUser() }}>
+                                <button type="button" className="nav-btn btn button2 " onClick={(e) => { contactUser() }}>
                                     Send info
                                 </button>
                             </div>
