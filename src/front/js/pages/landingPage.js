@@ -11,8 +11,8 @@ export const LandingPage = props => {
     const [profileType, setProfileType] = useState("professional")
 
     return (
-        <div className="container-fluid landing">
-            <div className="">
+        <div className="container-fluid">
+            <div className="landing">
                 {/* ----------------------------Header w/image---------------------------- */}
                 <header>
                     <div className="container  mb-5">

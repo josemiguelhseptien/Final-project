@@ -21,11 +21,10 @@ p {
   color: orange;
 }
 
-.loginCard {
-  width: 40%;
-  margin: 0 auto;
+/* .loginCard {
+  margin: auto;
   padding-top: 3rem;
-}
+} */
 
 button {
   background-color: transparent;
@@ -49,11 +48,11 @@ button {
 }
 
 .navbarb {
-  background-color: #73ddb1;
+  background-color: #37c68a;
 }
 
 .colorblue {
-  background-color: #f3d37a;
+  background-color: #f3d37ab8;
 }
 
 .colorred {
@@ -75,7 +74,7 @@ button {
   height: 80vh;
   border-color: #f3d37a;
   overflow: auto;
-  box-shadow: 10px 10px 5px #7a4db5;
+  box-shadow: 10px 10px 5px #b046c5;
   border-radius: 12px;
 }
 
@@ -151,6 +150,12 @@ button {
   transform: scale(1.1);
 }
 
+.flex-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
 li:hover {
   box-shadow: 0 10px 14px 0 rgb(242, 211, 121),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -167,4 +172,12 @@ li:hover {
 .deleteColorSolid:hover {
   box-shadow: 0 10px 14px 0 #b32058bb, 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: rgb(0, 0, 0, 0.9);
+}
+
+.height {
+  height: 450px;
+}
+
+.height2 {
+  height: 520px;
 }
