@@ -17,10 +17,10 @@ export const Dashboard = (props) => {
       <br></br>
       {actions.modifyAppt()}
       <div className="d-flex double">
-        <div className="d-inline-flex">
+        <div className="d-inline-flex justify-content-center">
           <div className="card card-body justify-content-center" style={{ width: "150px", minHeight: "80vh" }}>
             <ul className="nav flex-column">
-              <li className="nav-item my-3 py-3 ">
+              <li className="nav-item my-3 py-3">
                 <span onClick={() => setViewType("appointments")}>
                   <i className="far fa-calendar-check fa-4x"></i>
                   <h5>Appointments</h5>
