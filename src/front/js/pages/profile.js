@@ -42,7 +42,7 @@ export const Profile = props => {
         <div className="container double">
             {/*------------------ Pro user view-------------------------------- */}
 
-            <div className="container-box ">
+            <div className="container-box height2">
                 <div className="userInfo">
                     <div className="d-flex userInfo ">
                         <img className="img-fluid profilePicture" src={userInfo.profilePicture} />

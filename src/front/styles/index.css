@@ -141,24 +141,12 @@ button {
 .deleteColor:hover {
   transform: scale(1.1);
 }
-.styled-input {
-  float: left;
-  width: 33.3333%;
-  margin: 2rem 0 1rem;
-  position: relative;
 
-  color: #999;
-  padding: 1rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
-  pointer-events: none;
-}
 .flex-container {
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
+}
 li:hover {
   box-shadow: 0 10px 14px 0 rgb(242, 211, 121),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -168,4 +156,10 @@ li:hover {
 .deleteColorSolid:hover {
   box-shadow: 0 10px 14px 0 #b32058bb, 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: rgb(0, 0, 0, 0.9);
+}
+.height {
+  height: 450px;
+}
+.height2 {
+  height: 520px;
 }

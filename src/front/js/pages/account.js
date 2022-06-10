@@ -47,14 +47,14 @@ export const Account = props => {
             {/*------------------ Pro user view-------------------------------- */}
 
             <div className="container-box double" >
-                <div className="userInfo">
+                <div className="userInfo height">
                     <div className="d-flex ">
                         <img className="img-fluid profilePicture" src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg" />
                         <div className="professionalCard">
                             <div className="userInfo d-flex">
                                 <div>
                                     <div className="Name">Justin Stevens{userInfo.name}</div>
-                                    <div className="email paddingUp"><i className="fas fa-envelope">jstevens@mail.com</i>{userInfo.email}</div>
+                                    <div className="email paddingUp"><i className="fas fa-envelope"> jstevens@mail.com</i>{userInfo.email}</div>
                                     <div className="phone paddingUp"><i className="fas fa-phone"></i>4896415154{userInfo.phone}</div>
                                     <div className="background paddingUp"> <i className="fas fa-school">Florida International University</i>{userInfo.background}</div>
                                 </div>

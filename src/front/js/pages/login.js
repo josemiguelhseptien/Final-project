@@ -29,7 +29,7 @@ export const Login = props => {
             <div className="container-fluid double size center ">
 
                 <div >
-                    <div className="loginBar"><h2>Login</h2></div>
+                    <div className="loginBar mt-5"><h2>Login</h2></div>
                     <br></br>
                     <div className="userToggle d-flex justify-content-between">
                         <button type="button" className="btn button2 buttonColor" onClick={() => { clientUser() }}>Client</button>
