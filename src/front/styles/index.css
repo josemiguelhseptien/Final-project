@@ -20,11 +20,10 @@ p {
   color: orange;
 }
 
-.loginCard {
-  width: 40%;
-  margin: 0 auto;
+/* .loginCard {
+  margin: auto;
   padding-top: 3rem;
-}
+} */
 
 button {
   background-color: transparent;
@@ -48,11 +47,11 @@ button {
 }
 
 .navbarb {
-  background-color: #73ddb1;
+  background-color: #37c68a;
 }
 
 .colorblue {
-  background-color: #f3d37a;
+  background-color: #f3d37ab8;
 }
 
 .colorred {
@@ -74,7 +73,7 @@ button {
   height: 80vh;
   border-color: #f3d37a;
   overflow: auto;
-  box-shadow: 10px 10px 5px #7a4db5;
+  box-shadow: 10px 10px 5px #b046c5;
   border-radius: 12px;
 }
 
@@ -131,4 +130,23 @@ button {
 .buttonColor3:hover,
 .deleteColor:hover {
   transform: scale(1.1);
+}
+.styled-input {
+  float: left;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+}
+.flex-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
 }

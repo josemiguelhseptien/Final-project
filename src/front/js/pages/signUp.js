@@ -60,40 +60,40 @@ export const SignUp = props => {
                     <div className="show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
 
                         <div className="input-group mb-3">
-                            <input type="text" name="name" className="form-control" placeholder="Name" onChange={handleChange} value={inputField.name} />
+                            <input type="text" name="name" className="form-control" required placeholder="Name" onChange={handleChange} value={inputField.name} />
 
                         </div>
                         <div className="input-group mb-3">
-                            <input type="email" className="form-control" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
+                            <input type="email" className="form-control" required name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="password" className="form-control" name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
+                            <input type="password" className="form-control" required name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="phonenumber" className="form-control" name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" onChange={handleChange} value={inputField.phone} />
+                            <input type="phonenumber" className="form-control" required name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone number" onChange={handleChange} value={inputField.phone} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="text" className="form-control" name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
+                            <input type="text" className="form-control" required name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
                         </div>
                     </div>
                 ) : (
 
                     <div className="show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
                         <div className="input-group mb-3">
-                            <input type="text" aria-label="Name" className="form-control" name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
+                            <input type="text" aria-label="Name" className="form-control" required name="name" placeholder="Name" onChange={handleChange} value={inputField.name} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="email" className="form-control" name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
+                            <input type="email" className="form-control" required name="email" aria-describedby="inputGroup-sizing-default" placeholder="Email" onChange={handleChange} value={inputField.email} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="password" className="form-control" name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
+                            <input type="password" className="form-control" required name="password" aria-describedby="inputGroup-sizing-default" placeholder="Password" onChange={handleChange} value={inputField.password} />
                         </div>
                         <div className="input-group mb-3">
-                            <input type="text" className="form-control" aria-label="Sizing example input" name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone" onChange={handleChange} value={inputField.phone} />
+                            <input type="text" className="form-control" required aria-label="Sizing example input" name="phone" aria-describedby="inputGroup-sizing-default" placeholder="Phone" onChange={handleChange} value={inputField.phone} />
                         </div>
 
                         <div className="input-group  d-flex justify-content-between">
-                            <input type="text" className="form-control" aria-label="Sizing example input" name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
+                            <input type="text" className="form-control" required aria-label="Sizing example input" name="zip_code" aria-describedby="inputGroup-sizing-default" placeholder="Zip code" onChange={handleChange} value={inputField.zip_code} />
                             <div >
                                 <button type="button" className="signupbtn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     {inputField.format == "" ? "select service format" : inputField.format}
@@ -107,15 +107,15 @@ export const SignUp = props => {
                         </div>
                         <br></br>
                         <div className="mb-3 d-flex">
-                            <input type="text" placeholder="Services" className="form-control" name="services" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.services} />
-                            <input type="number" placeholder="Prices" className="form-control" name="prices" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.prices} />
+                            <input type="text" placeholder="Services" className="form-control" required name="services" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.services} />
+                            <input type="number" placeholder="Prices" className="form-control" required name="prices" aria-describedby="inputGroup-sizing-default" onChange={handleChange} value={inputField.prices} />
                         </div>
                     </div>
                 )}
 
                 <div className="center">
                     <Link to="/dashboard">
-                        <button type="text" className="btn button2 buttonColor" onClick={(e) => { actions.addUser(inputField, userType), console.log(inputField) }}>Sign up</button>
+                        <button type="button" className="btn button2 buttonColor" onClick={(e) => { actions.addUser(inputField, userType), console.log(inputField) }}>Sign up</button>
                     </Link>
                 </div>
 

@@ -46,40 +46,42 @@ export const Account = props => {
         <div className="container">
             {/*------------------ Pro user view-------------------------------- */}
 
-            <div className="container-box" >
+            <div className="container-box double" >
                 <div className="userInfo">
-                    <div className="d-flex double">
-                        <img className="img-fluid profilePicture" src="https://static.wixstatic.com/media/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg/v1/fill/w_514,h_596,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/0ac2e0_85c483d6fa614881a0e543bfe367336a~mv2.jpg" />
+                    <div className="d-flex ">
+                        <img className="img-fluid profilePicture" src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg" />
                         <div className="professionalCard">
                             <div className="userInfo d-flex">
                                 <div>
-                                    <div className="Name">{userInfo.name}</div>
-                                    <div className="email"><i className="fas fa-envelope"></i>{userInfo.email}</div>
-                                    <div className="phone"><i className="fas fa-phone"></i>{userInfo.phone}</div>
-                                    <div className="background"><i className="fas fa-school"></i>{userInfo.background}</div>
+                                    <div className="Name">Justin Stevens{userInfo.name}</div>
+                                    <div className="email paddingUp"><i className="fas fa-envelope">jstevens@mail.com</i>{userInfo.email}</div>
+                                    <div className="phone paddingUp"><i className="fas fa-phone"></i>4896415154{userInfo.phone}</div>
+                                    <div className="background paddingUp"> <i className="fas fa-school">Florida International University</i>{userInfo.background}</div>
                                 </div>
                                 <div className="userRating"><RatingStar /></div>
                             </div>
-                            <div className="aboutCard">
-                                <div className="aboutTitle">about Title</div>
-                                <div className="aboutText">{userInfo.about}</div>
+                            <div className="aboutCard ">
+                                <div className="aboutTitle paddingUp">about me</div>
+                                <div className="aboutText paddingUp">Teacher for 5 years, K-12 grades{userInfo.about}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="servicesCard">
-                    <div className="services">Services</div>
-                    <div>Math</div>
+
+                <div>
+                    <div className=" flex-container">Services</div>
+                    <div className="flex-container">Science & English tutoring</div>
                 </div>
                 <div className="availabilityCard">
-                    <div className="availability">availability</div>
-                    <div>M-F 9-5</div>
+                    <div className="availability flex-container">availability</div>
+                    <div className="flex-container">M-F 9-5</div>
                 </div>
-                <div>
+
+                <div className="flex-container">
                     {/*------------------ Pro user modal-------------------------------- */}
                     <button
                         type="button"
-                        className="btn btn-info"
+                        className="btn buttonColor button2"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         data-bs-whatever="@getbootstrap">
@@ -127,6 +129,7 @@ export const Account = props => {
                                                 setModalInfo({ ...modalInfo, about: e.target.value });
                                             }} />
                                         </div>
+
                                     </div>
                                     <div>
                                         <div>Services</div>
@@ -143,7 +146,7 @@ export const Account = props => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

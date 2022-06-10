@@ -26,9 +26,9 @@ export const Login = props => {
 
     return (
         <div className="padding paddingUp">
-            <div className="container-fluid double center ">
+            <div className="container-fluid double size center ">
 
-                <div className="loginCard">
+                <div >
                     <div className="loginBar"><h2>Login</h2></div>
                     <br></br>
                     <div className="userToggle d-flex justify-content-between">
